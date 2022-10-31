@@ -8,6 +8,6 @@ package Logica;
  *
  * @author UNA
  */
-public class GestroReservaciones {
+public class GestorReservaciones {
     
 }
