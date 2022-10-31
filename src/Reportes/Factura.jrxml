@@ -2,14 +2,19 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="14d8d50b-6bd7-47e3-83ab-4b1e56db3dbb">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1"/>
+	<property name="ireport.y" value="0"/>
+	<field name="fechain" class="java.lang.String"/>
+	<field name="fechafin" class="java.lang.String"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="habitacion" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50" splitType="Stretch">
+		<band height="107" splitType="Stretch">
 			<image>
-				<reportElement uuid="3fdcd7d9-c5b4-46ed-9d51-8938af293cb8" x="264" y="0" width="100" height="50"/>
+				<reportElement uuid="e88fb852-40dc-4a2b-8cde-80c5c95fb5de" x="225" y="0" width="136" height="105"/>
+				<imageExpression><![CDATA["C:\\Users\\Usuario\\Documents\\Ivan Aguero\\OneDrive\\UNA\\Programacion l\\AppHotelxyz\\src\\img\\Hotel.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -23,10 +28,63 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bda0afc9-3977-4044-9cde-fb6e4e387c28" x="0" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c4a4c98-12fd-4ff3-9208-7873aab60702" x="138" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02fff64a-7f5b-4b45-afa2-db307a537f3a" x="276" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c786981-7d2f-4271-80ad-95638f152054" x="414" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Habitacion]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0b12ace9-6db2-4cb4-8e5b-6f17e6e3a013" x="0" y="0" width="138" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fechain}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="80c8c51c-8b7c-4c29-9690-1f1964565a54" x="138" y="0" width="138" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fechafin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8ea7708-5ecb-46d5-8221-f22cb83ab857" x="276" y="0" width="138" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1c082c3d-c01a-46ff-9e08-fe6500435839" x="414" y="0" width="138" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{habitacion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="063e1950-bf82-42fb-aeb4-6b28e36d981f" x="0" y="19" width="555" height="1"/>
+			</line>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="40" splitType="Stretch">
