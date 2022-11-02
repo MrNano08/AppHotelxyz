@@ -38,6 +38,10 @@ public class jpAgregarR extends javax.swing.JPanel {
         txtAgregar = new javax.swing.JLabel();
         btnBack = new javax.swing.JPanel();
         txtbtnBack = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JPanel();
+        txtbtnCancelar = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JPanel();
+        txtbtnAgregar = new javax.swing.JLabel();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -58,40 +62,117 @@ public class jpAgregarR extends javax.swing.JPanel {
             }
         });
 
+        txtbtnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/back_iconx48.png"))); // NOI18N
+
         javax.swing.GroupLayout btnBackLayout = new javax.swing.GroupLayout(btnBack);
         btnBack.setLayout(btnBackLayout);
         btnBackLayout.setHorizontalGroup(
             btnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBackLayout.createSequentialGroup()
-                .addComponent(txtbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         btnBackLayout.setVerticalGroup(
             btnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBackLayout.createSequentialGroup()
-                .addComponent(txtbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        btnCancelar.setBackground(new java.awt.Color(55, 41, 72));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCancelarMousePressed(evt);
+            }
+        });
+
+        txtbtnCancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnCancelar.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnCancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout btnCancelarLayout = new javax.swing.GroupLayout(btnCancelar);
+        btnCancelar.setLayout(btnCancelarLayout);
+        btnCancelarLayout.setHorizontalGroup(
+            btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCancelarLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(txtbtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        btnCancelarLayout.setVerticalGroup(
+            btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
+
+        btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAgregarMousePressed(evt);
+            }
+        });
+
+        txtbtnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnAgregar.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnAgregar.setText("Agregar");
+
+        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
+        btnAgregar.setLayout(btnAgregarLayout);
+        btnAgregarLayout.setHorizontalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(txtbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        btnAgregarLayout.setVerticalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
         bgAgregarLayout.setHorizontalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 750, Short.MAX_VALUE)
-                .addComponent(txtAgregar)
+            .addGroup(bgAgregarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAgregar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
+                        .addGap(0, 660, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bgAgregarLayout.setVerticalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAgregarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtAgregar)
-                .addContainerGap(615, Short.MAX_VALUE))
-            .addGroup(bgAgregarLayout.createSequentialGroup()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAgregar)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -129,6 +210,49 @@ public class jpAgregarR extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnBackMousePressed
 
+    private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
+        btnCancelar.setBackground(new Color(37, 27, 55));
+        txtbtnCancelar.setForeground(new Color(255, 202, 202));
+    }//GEN-LAST:event_btnCancelarMouseEntered
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        btnCancelar.setBackground(new Color(55, 41, 72));
+        txtbtnCancelar.setForeground(new Color(255, 236, 239));
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void btnCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMousePressed
+        jpReservaciones reservaciones = new jpReservaciones();
+        reservaciones.setSize(contenido.getWidth(), contenido.getHeight());
+        reservaciones.setLocation(0, 0);
+
+        contenido.removeAll();
+        contenido.add(reservaciones, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+        
+    }//GEN-LAST:event_btnCancelarMousePressed
+
+    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
+        btnAgregar.setBackground(new Color(37, 27, 55));
+        txtbtnAgregar.setForeground(new Color(255, 202, 202));
+    }//GEN-LAST:event_btnAgregarMouseEntered
+
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        btnAgregar.setBackground(new Color(55, 41, 72));
+        txtbtnAgregar.setForeground(new Color(255, 236, 239));
+    }//GEN-LAST:event_btnAgregarMouseExited
+
+    private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
+        jpAgregarC agregar = new jpAgregarC();
+        agregar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+        agregar.setLocation(0, 0);
+
+        Dashboard.contenido.removeAll();
+        Dashboard.contenido.add(agregar, BorderLayout.CENTER);
+        Dashboard.contenido.revalidate();
+        Dashboard.contenido.repaint();
+    }//GEN-LAST:event_btnAgregarMousePressed
+
 void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80,65,97));
 
@@ -145,8 +269,12 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAgregar;
+    private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
+    private javax.swing.JPanel btnCancelar;
     private javax.swing.JLabel txtAgregar;
+    private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnBack;
+    private javax.swing.JLabel txtbtnCancelar;
     // End of variables declaration//GEN-END:variables
 }
