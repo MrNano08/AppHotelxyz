@@ -37,7 +37,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtCliente = new javax.swing.JLabel();
         txtHabitacion = new javax.swing.JLabel();
         cbFechaInicial = new javax.swing.JComboBox<>();
-        FechaFinal = new javax.swing.JComboBox<>();
+        cbFechaFinal = new javax.swing.JComboBox<>();
         cbCliente = new javax.swing.JComboBox<>();
         cbHabitacion = new javax.swing.JComboBox<>();
         cbxCliente = new javax.swing.JCheckBox();
@@ -69,42 +69,42 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtFechaInicial.setBackground(new java.awt.Color(0, 0, 0));
         txtFechaInicial.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         txtFechaInicial.setText("Fecha inicial:");
-        jPanel1.add(txtFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, 40));
+        jPanel1.add(txtFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, 40));
 
         txtFechaFinal.setBackground(new java.awt.Color(0, 0, 0));
         txtFechaFinal.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         txtFechaFinal.setText("Fecha final:");
-        jPanel1.add(txtFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, 40));
+        jPanel1.add(txtFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, 40));
 
         txtCliente.setBackground(new java.awt.Color(0, 0, 0));
         txtCliente.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         txtCliente.setText("Cliente:");
-        jPanel1.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, 40));
+        jPanel1.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, 40));
 
         txtHabitacion.setBackground(new java.awt.Color(0, 0, 0));
         txtHabitacion.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         txtHabitacion.setText("Habitacion:");
-        jPanel1.add(txtHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, 40));
+        jPanel1.add(txtHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, 40));
 
-        cbFechaInicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 170, 30));
+        cbFechaInicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        jPanel1.add(cbFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 170, 30));
 
-        FechaFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(FechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 170, 30));
+        cbFechaFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        jPanel1.add(cbFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 170, 30));
 
-        cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 182, 170, 30));
+        cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        jPanel1.add(cbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 170, 30));
 
-        cbHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 170, 30));
-        jPanel1.add(cbxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+        cbHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        jPanel1.add(cbHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, 30));
+        jPanel1.add(cbxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         chxHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chxHabitacionActionPerformed(evt);
             }
         });
-        jPanel1.add(chxHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
+        jPanel1.add(chxHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         btnHabitacionesO.setBackground(new java.awt.Color(55, 41, 72));
         btnHabitacionesO.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,7 +175,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
             .addComponent(txtbtnGenerarReporte1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        jPanel1.add(btnGenerarReporte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 170, -1));
+        jPanel1.add(btnGenerarReporte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 170, -1));
 
         btnHabitacionesMeR.setBackground(new java.awt.Color(55, 41, 72));
         btnHabitacionesMeR.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -351,11 +351,11 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -467,7 +467,6 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> FechaFinal;
     private javax.swing.JPanel btnGenerarReporte1;
     private javax.swing.JPanel btnHabitacionMaR;
     private javax.swing.JPanel btnHabitacionesD;
@@ -476,6 +475,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private javax.swing.JPanel btnIngresosCliente;
     private javax.swing.JPanel btnIngresosHabitacion;
     private javax.swing.JComboBox<String> cbCliente;
+    private javax.swing.JComboBox<String> cbFechaFinal;
     private javax.swing.JComboBox<String> cbFechaInicial;
     private javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JCheckBox cbxCliente;

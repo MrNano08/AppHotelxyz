@@ -11,14 +11,16 @@ package Logica;
 public class Clientes {
     private int id;
     private String nombre;
+    private String apellidos;
     private String direccion;
 
     public Clientes() {
     }
 
-    public Clientes(int id, String nombre, String direccion) {
+    public Clientes(int id, String nombre, String apellidos, String direccion) {
         this.id = id;
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.direccion = direccion;
     }
 
@@ -38,6 +40,14 @@ public class Clientes {
         this.nombre = nombre;
     }
 
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
     public String getDireccion() {
         return direccion;
     }
@@ -48,9 +58,10 @@ public class Clientes {
 
     @Override
     public String toString() {
-        return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + '}';
+        return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion + '}';
     }
 
+    
  
     
    public void morosidad() {

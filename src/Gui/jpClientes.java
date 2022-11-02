@@ -32,7 +32,7 @@ public class jpClientes extends javax.swing.JPanel {
         bgClientes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
         txtbtnAgregar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JPanel();
@@ -48,43 +48,21 @@ public class jpClientes extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Clientes");
 
-        jTable1.setBackground(new java.awt.Color(255, 236, 239));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 236, 239));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setBackground(new java.awt.Color(255, 236, 239));
+        tblClientes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tblClientes.setForeground(new java.awt.Color(255, 236, 239));
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "ID HUESPED", "NOMBRE", "APELLIDOS", "DIRECCIÓN", "EMPRESA", "CORREO", "TELÉFONO"
             }
         ));
-        jTable1.setOpaque(false);
-        jTable1.setSelectionBackground(new java.awt.Color(84, 186, 185));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tblClientes.setOpaque(false);
+        tblClientes.setSelectionBackground(new java.awt.Color(84, 186, 185));
+        tblClientes.setShowGrid(true);
+        jScrollPane1.setViewportView(tblClientes);
 
         btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,7 +291,7 @@ public class jpClientes extends javax.swing.JPanel {
     private javax.swing.JPanel btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblClientes;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnEditar;
     private javax.swing.JLabel txtbtnEliminar;
