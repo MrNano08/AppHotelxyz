@@ -25,7 +25,7 @@ public class Dashboard extends javax.swing.JFrame {
    static String panel;
     int pantallaAl;
     int pantallaAn;
-    
+    static boolean abierto = false;
 
 
     public Dashboard() {
@@ -100,7 +100,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setAlwaysOnTop(true);
         setLocationByPlatform(true);
         setUndecorated(true);
 
@@ -168,8 +167,8 @@ public class Dashboard extends javax.swing.JFrame {
         btnReservacionesLayout.setHorizontalGroup(
             btnReservacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnReservacionesLayout.createSequentialGroup()
-                .addComponent(txtReservaciones)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addComponent(txtReservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
         btnReservacionesLayout.setVerticalGroup(
             btnReservacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +241,7 @@ public class Dashboard extends javax.swing.JFrame {
         txtAyuda.setForeground(new java.awt.Color(255, 236, 239));
         txtAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/infox14.png"))); // NOI18N
         txtAyuda.setText("Ayuda");
-        txtAyuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtAyuda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtAyudaMousePressed(evt);
@@ -333,7 +332,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         btnSalir.setBackground(new java.awt.Color(55, 41, 72));
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSalirMouseEntered(evt);
@@ -403,14 +402,14 @@ public class Dashboard extends javax.swing.JFrame {
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGap(0, 880, Short.MAX_VALUE)
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        background.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 870, 650));
+        background.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 880, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -442,10 +441,14 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_topBarMouseDragged
 
     private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
-        int resp = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro de que desea salir?", "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (resp == JOptionPane.YES_OPTION){
-         System.exit(0);
+
+        if (abierto == false ) {
+        new frmSalir().setVisible(true);    
+        abierto = true;
         }
+        
+        
+        
     }//GEN-LAST:event_btnSalirMousePressed
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered

@@ -10,11 +10,11 @@ import java.awt.Color;
  *
  * @author UNA
  */
-public class fmrMessagep extends javax.swing.JFrame {
+public class frmMessagep extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
-    public fmrMessagep() {
+    public frmMessagep() {
         initComponents();
         
     }
@@ -50,12 +50,12 @@ public class fmrMessagep extends javax.swing.JFrame {
             }
         });
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        background.add(txtMessageImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 48, 48));
+        background.add(txtMessageImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 64, 64));
 
         txtMessage.setBackground(new java.awt.Color(0, 0, 0));
-        txtMessage.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        txtMessage.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         txtMessage.setText("Default message");
-        background.add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 240, 30));
+        background.add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 310, 30));
 
         btnAceptar.setBackground(new java.awt.Color(55, 41, 72));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,20 +148,21 @@ public class fmrMessagep extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fmrMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fmrMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fmrMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(fmrMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMessagep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fmrMessagep().setVisible(true);
+                new frmMessagep().setVisible(true);
             }
         });
     }
@@ -169,12 +170,8 @@ public class fmrMessagep extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel btnAceptar;
-    private javax.swing.JPanel btnEditar1;
-    private javax.swing.JPanel btnEditar2;
     public static javax.swing.JLabel txtMessage;
     public static javax.swing.JLabel txtMessageImage;
     private javax.swing.JLabel txtbtnAceptar;
-    private javax.swing.JLabel txtbtnEditar1;
-    private javax.swing.JLabel txtbtnEditar2;
     // End of variables declaration//GEN-END:variables
 }

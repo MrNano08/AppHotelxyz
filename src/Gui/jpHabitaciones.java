@@ -337,10 +337,10 @@ public class jpHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
-        new fmrMessagep().setVisible(true);
-        fmrMessagep.txtMessage.setText("Esta opción aun no ha sido creada");
-        ImageIcon icon = new ImageIcon("resources/Icons/information_x48.png");
-        fmrMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/information_x48.png")));
+        new frmMessagep().setVisible(true);
+        frmMessagep.txtMessage.setText("Esta opción aun no ha sido creada");
+        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+        
         
     }//GEN-LAST:event_btnEditarMousePressed
 
