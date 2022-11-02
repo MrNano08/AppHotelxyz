@@ -167,8 +167,8 @@ public class Dashboard extends javax.swing.JFrame {
         btnReservacionesLayout.setHorizontalGroup(
             btnReservacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnReservacionesLayout.createSequentialGroup()
-                .addComponent(txtReservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addComponent(txtReservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         btnReservacionesLayout.setVerticalGroup(
             btnReservacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
