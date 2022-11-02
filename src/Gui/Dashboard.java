@@ -72,7 +72,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnReportesFacturacion = new javax.swing.JPanel();
         txtReportesFacturacion = new javax.swing.JLabel();
         infoBar = new javax.swing.JPanel();
-        topBar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
         txtSalir = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
@@ -198,7 +198,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnHabitacionesLayout.setHorizontalGroup(
             btnHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnHabitacionesLayout.createSequentialGroup()
-                .addComponent(txtHabitaciones)
+                .addComponent(txtHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         btnHabitacionesLayout.setVerticalGroup(
@@ -317,19 +317,18 @@ public class Dashboard extends javax.swing.JFrame {
         background.add(MenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 150, 650));
 
         infoBar.setBackground(new java.awt.Color(55, 41, 72));
-
-        topBar.setBackground(new java.awt.Color(55, 41, 72));
-        topBar.setForeground(new java.awt.Color(55, 41, 72));
-        topBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        infoBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                topBarMouseDragged(evt);
+                infoBarMouseDragged(evt);
             }
         });
-        topBar.addMouseListener(new java.awt.event.MouseAdapter() {
+        infoBar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                topBarMousePressed(evt);
+                infoBarMousePressed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/Images/Hotel_img148x70.png"))); // NOI18N
 
         btnSalir.setBackground(new java.awt.Color(55, 41, 72));
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -362,20 +361,7 @@ public class Dashboard extends javax.swing.JFrame {
             btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(txtSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout topBarLayout = new javax.swing.GroupLayout(topBar);
-        topBar.setLayout(topBarLayout);
-        topBarLayout.setHorizontalGroup(
-            topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarLayout.createSequentialGroup()
-                .addGap(0, 983, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        topBarLayout.setVerticalGroup(
-            topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout infoBarLayout = new javax.swing.GroupLayout(infoBar);
@@ -383,15 +369,16 @@ public class Dashboard extends javax.swing.JFrame {
         infoBarLayout.setHorizontalGroup(
             infoBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(topBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 847, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         infoBarLayout.setVerticalGroup(
             infoBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoBarLayout.createSequentialGroup()
-                .addComponent(topBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         background.add(infoBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 70));
@@ -426,19 +413,6 @@ public class Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void topBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topBarMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-        
-
-    }//GEN-LAST:event_topBarMousePressed
-
-    private void topBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topBarMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_topBarMouseDragged
 
     private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
 
@@ -652,6 +626,17 @@ public class Dashboard extends javax.swing.JFrame {
         contenido.repaint();
     }//GEN-LAST:event_btnReportesFacturacionMousePressed
 
+    private void infoBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBarMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_infoBarMousePressed
+
+    private void infoBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBarMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_infoBarMouseDragged
+
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(37, 27, 55));
 
@@ -721,8 +706,8 @@ public class Dashboard extends javax.swing.JFrame {
     public static javax.swing.JPanel contenido;
     private javax.swing.JPanel infoBar;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel topBar;
     private javax.swing.JLabel txtAyuda;
     private javax.swing.JLabel txtClientes;
     private javax.swing.JLabel txtHabitaciones;
