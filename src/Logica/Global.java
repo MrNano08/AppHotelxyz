@@ -12,6 +12,7 @@ public interface Global {
     ArrayList<Clientes> listaClientes = new ArrayList<>();
     ArrayList<Reservaciones> listaReservaciones = new ArrayList<>();
     ArrayList<Factura> listaFacturas = new ArrayList<>();
+    ArrayList<Usuario> listaUsuario = new ArrayList<>();
 
     public void guardarEnArchivo();
 

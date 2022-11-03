@@ -71,6 +71,8 @@ public class Dashboard extends javax.swing.JFrame {
         txtAyuda = new javax.swing.JLabel();
         btnReportesFacturacion = new javax.swing.JPanel();
         txtReportesFacturacion = new javax.swing.JLabel();
+        btnConfiguracion = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         infoBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
@@ -243,6 +245,12 @@ public class Dashboard extends javax.swing.JFrame {
         txtAyuda.setText("Ayuda");
         txtAyuda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtAyudaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtAyudaMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtAyudaMousePressed(evt);
             }
@@ -279,6 +287,35 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(txtReportesFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
         );
 
+        btnConfiguracion.setBackground(new java.awt.Color(55, 41, 72));
+        btnConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConfiguracionMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/engranaje.png"))); // NOI18N
+        jLabel2.setText("Configuracion");
+
+        javax.swing.GroupLayout btnConfiguracionLayout = new javax.swing.GroupLayout(btnConfiguracion);
+        btnConfiguracion.setLayout(btnConfiguracionLayout);
+        btnConfiguracionLayout.setHorizontalGroup(
+            btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnConfiguracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btnConfiguracionLayout.setVerticalGroup(
+            btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnConfiguracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout MenuBarLayout = new javax.swing.GroupLayout(MenuBar);
         MenuBar.setLayout(MenuBarLayout);
         MenuBarLayout.setHorizontalGroup(
@@ -290,11 +327,16 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnReservaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuBarLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(txtAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(9, 9, 9))
-                    .addComponent(btnReportesFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnReportesFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuBarLayout.createSequentialGroup()
+                        .addGroup(MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MenuBarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(MenuBarLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(txtAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(9, 9, 9)))
                 .addContainerGap())
         );
         MenuBarLayout.setVerticalGroup(
@@ -309,7 +351,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportesFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
+                .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -637,6 +681,34 @@ public class Dashboard extends javax.swing.JFrame {
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_infoBarMouseDragged
 
+    private void btnConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMouseClicked
+    panel = "Configuracion de usuario";
+        resetColor(btnInicio);
+        resetColor(btnReservaciones);
+        resetColor(btnHabitaciones);
+        resetColor(btnClientes);
+        resetColor(btnReportesFacturacion);
+        setColor(btnConfiguracion);
+
+        jpConfiguracion configuracion = new jpConfiguracion();
+        configuracion.setSize(contenido.getWidth(), contenido.getHeight());
+        configuracion.setLocation(0, 0);
+
+        contenido.removeAll();
+        contenido.add(configuracion, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_btnConfiguracionMouseClicked
+
+    private void txtAyudaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAyudaMouseEntered
+     
+        textsetColor(txtAyuda);
+    }//GEN-LAST:event_txtAyudaMouseEntered
+
+    private void txtAyudaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAyudaMouseExited
+       textresetColor(txtAyuda);
+    }//GEN-LAST:event_txtAyudaMouseExited
+
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(37, 27, 55));
 
@@ -698,6 +770,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel MenuBar;
     private javax.swing.JPanel background;
     private javax.swing.JPanel btnClientes;
+    private javax.swing.JPanel btnConfiguracion;
     private javax.swing.JPanel btnHabitaciones;
     private javax.swing.JPanel btnInicio;
     private javax.swing.JPanel btnReportesFacturacion;
@@ -707,6 +780,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel infoBar;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel txtAyuda;
     private javax.swing.JLabel txtClientes;
