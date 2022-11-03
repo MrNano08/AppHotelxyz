@@ -11,6 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Gui.Dashboard;
 
 /**
  *
@@ -49,6 +50,8 @@ public class jpConfiguracion extends javax.swing.JPanel {
         txtContrasenna = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnCerrarS = new javax.swing.JPanel();
+        txtbtnCerrarS = new javax.swing.JLabel();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -123,23 +126,46 @@ public class jpConfiguracion extends javax.swing.JPanel {
 
         jLabel2.setText("Introdusca la nueva contaseña:");
 
+        btnCerrarS.setBackground(new java.awt.Color(55, 41, 72));
+        btnCerrarS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrarSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarSMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCerrarSMousePressed(evt);
+            }
+        });
+
+        txtbtnCerrarS.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnCerrarS.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnCerrarS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnCerrarS.setText("Cerrar sesión");
+
+        javax.swing.GroupLayout btnCerrarSLayout = new javax.swing.GroupLayout(btnCerrarS);
+        btnCerrarS.setLayout(btnCerrarSLayout);
+        btnCerrarSLayout.setHorizontalGroup(
+            btnCerrarSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarSLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(txtbtnCerrarS, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+        btnCerrarSLayout.setVerticalGroup(
+            btnCerrarSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnCerrarS, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
         bgAgregarLayout.setHorizontalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAgregarLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
-                        .addComponent(txtAgregar)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
@@ -147,26 +173,39 @@ public class jpConfiguracion extends javax.swing.JPanel {
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(250, 250, 250))))
+                        .addGap(0, 427, Short.MAX_VALUE))
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtAgregar))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(btnCerrarS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         bgAgregarLayout.setVerticalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAgregarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtAgregar)
-                .addGap(151, 151, 151)
+                .addGap(28, 28, 28)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(148, 148, 148)
+                .addGap(18, 18, 18)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, Short.MAX_VALUE)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCerrarS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -182,24 +221,22 @@ public class jpConfiguracion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        jpAgregarC agregar = new jpAgregarC();
-        agregar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
-        agregar.setLocation(0, 0);
 
-        Dashboard.contenido.removeAll();
-        Dashboard.contenido.add(agregar, BorderLayout.CENTER);
-        Dashboard.contenido.revalidate();
-        Dashboard.contenido.repaint();
+        jpInicio inicio = new jpInicio();
+        inicio.setSize(contenido.getWidth(), contenido.getHeight());
+        inicio.setLocation(0, 0);
 
+        contenido.removeAll();
+        contenido.add(inicio, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
         Usuario usuario = new Usuario();
         usuario.setUsuario(txtUsuario.getText());
-        usuario.setContasenna(Integer.parseInt(txtContrasenna.getText()));
+        usuario.setContrasena(txtContrasenna.getText());
         {
             gestorUsuario.guardarUsuario(usuario);
             gestorUsuario.guardarEnArchivo();
         }
-
-
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
@@ -234,6 +271,19 @@ public class jpConfiguracion extends javax.swing.JPanel {
         txtbtnCancelar.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_btnCancelarMouseEntered
 
+    private void btnCerrarSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSMouseEntered
+
+    private void btnCerrarSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSMouseExited
+
+    private void btnCerrarSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSMousePressed
+        
+         new frmlogin().setVisible(true);
+    }//GEN-LAST:event_btnCerrarSMousePressed
+
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80, 65, 97));
 
@@ -249,6 +299,7 @@ public class jpConfiguracion extends javax.swing.JPanel {
     private javax.swing.JPanel bgAgregar;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnCancelar;
+    private javax.swing.JPanel btnCerrarS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel txtAgregar;
@@ -256,6 +307,7 @@ public class jpConfiguracion extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnCancelar;
+    private javax.swing.JLabel txtbtnCerrarS;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -35,9 +35,9 @@ public class GestorUsuario implements Global, Serializable {
         }
     }
     
-     public boolean existeClave(int clave) {
+     public boolean existeClave(String clave) {
         for (Usuario usuario : listaUsuario) {
-            if (usuario.getContasenna() == clave) {
+            if (usuario.getContrasena().equals(clave)) {
                 return true;
             }
         }
@@ -45,7 +45,7 @@ public class GestorUsuario implements Global, Serializable {
     }
     
     public void guardarClave(Usuario usuario) {
-         if (!existeClave(usuario.getContasenna())) {
+         if (!existeClave(usuario.getContrasena())) {
             listaUsuario.add(usuario);
         }
     }

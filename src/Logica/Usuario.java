@@ -12,31 +12,38 @@ import java.io.Serializable;
  */
 public class Usuario implements Serializable {
     private String usuario;
-    private int contasenna;
+    private String contrasena;
 
     public Usuario() {
     }
 
-    public Usuario(String usuario, int contasenna) {
+    public Usuario(String usuario, String contrasena) {
         this.usuario = usuario;
-        this.contasenna = contasenna;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public void setContasenna(int contasenna) {
-        this.contasenna = contasenna;
+        this.contrasena = contrasena;
     }
 
     public String getUsuario() {
         return usuario;
     }
 
-    public int getContasenna() {
-        return contasenna;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "usuario=" + usuario + ", contrasena=" + contrasena + '}';
+    }
+
+
     
     
 }
