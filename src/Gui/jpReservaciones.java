@@ -30,7 +30,6 @@ public class jpReservaciones extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
@@ -41,16 +40,12 @@ public class jpReservaciones extends javax.swing.JPanel {
         txtbtnEliminar = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JPanel();
         txtbtnImprimir = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(650, 530));
 
         jPanel1.setBackground(new java.awt.Color(255, 236, 239));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Reservaciones");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jTable1.setBackground(new java.awt.Color(255, 236, 239));
         jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -68,7 +63,7 @@ public class jpReservaciones extends javax.swing.JPanel {
         jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 880, 550));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 880, 550));
 
         btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,6 +191,11 @@ public class jpReservaciones extends javax.swing.JPanel {
         );
 
         jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Reservaciones");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

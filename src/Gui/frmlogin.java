@@ -142,10 +142,10 @@ public class frmlogin extends javax.swing.JFrame {
         });
 
         loginbtntxt1.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        loginbtntxt1.setForeground(new java.awt.Color(255, 255, 255));
+        loginbtntxt1.setForeground(new java.awt.Color(255, 236, 239));
         loginbtntxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginbtntxt1.setText("Aceptar");
-        loginbtntxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginbtntxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginbtntxt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginbtntxt1MouseClicked(evt);
@@ -180,10 +180,10 @@ public class frmlogin extends javax.swing.JFrame {
         cancelarbtn.setForeground(new java.awt.Color(255, 255, 255));
 
         cancelarbtntxt.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        cancelarbtntxt.setForeground(new java.awt.Color(255, 255, 255));
+        cancelarbtntxt.setForeground(new java.awt.Color(255, 236, 239));
         cancelarbtntxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cancelarbtntxt.setText("Cancelar");
-        cancelarbtntxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelarbtntxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cancelarbtntxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelarbtntxtMouseClicked(evt);
@@ -216,7 +216,7 @@ public class frmlogin extends javax.swing.JFrame {
         txtmsgError.setBackground(new java.awt.Color(255, 255, 255));
         txtmsgError.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtmsgError.setForeground(new java.awt.Color(255, 255, 255));
-        txtmsgError.setText("Usuario o contraseña incorrectos");
+        txtmsgError.setText("Usuario o contraseña incorrectos   Intentos restantes:");
         bg.add(txtmsgError, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,19 +254,23 @@ public class frmlogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarbtntxtMouseClicked
 
     private void loginbtntxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtntxt1MouseEntered
-        setColor(loginbtn);
+        loginbtn.setBackground(new Color(37, 27, 55));
+        loginbtntxt1.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_loginbtntxt1MouseEntered
 
     private void loginbtntxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtntxt1MouseExited
-        resetColor(loginbtn);
+        loginbtn.setBackground(new Color(55, 41, 72));
+        loginbtntxt1.setForeground(new Color(255, 236, 239));
     }//GEN-LAST:event_loginbtntxt1MouseExited
 
     private void cancelarbtntxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarbtntxtMouseEntered
-        setColor(cancelarbtn);
+        cancelarbtn.setBackground(new Color(37, 27, 55));
+        cancelarbtntxt.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_cancelarbtntxtMouseEntered
 
     private void cancelarbtntxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarbtntxtMouseExited
-        resetColor(cancelarbtn);
+        cancelarbtn.setBackground(new Color(55, 41, 72));
+        cancelarbtntxt.setForeground(new Color(255, 236, 239));
     }//GEN-LAST:event_cancelarbtntxtMouseExited
 
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
