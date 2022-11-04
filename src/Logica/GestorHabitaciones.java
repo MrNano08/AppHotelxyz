@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author UNA
  */
 public class GestorHabitaciones implements Global, Serializable {
-    
+    int fila = 0;
     public boolean existe(int idHabitacion) {
         for (Habitaciones habitaciones : listaHabitaciones) {
             if (habitaciones.getId() == idHabitacion) {
@@ -68,8 +68,9 @@ public class GestorHabitaciones implements Global, Serializable {
             fila[2] = habitaciones.getImagen().toUpperCase();
             fila[3] = "" + habitaciones.getNumMaxHus();
             fila[4] = "" + habitaciones.getPreAdultos();
-            fila[5] = habitaciones.isEstado() == true ? "Ocupada" : "Desocupada";
-            fila[6] = habitaciones.isActiva() == true ? "Si" : "No";
+            fila[5] = "" + habitaciones.getPreNinno();
+            fila[6] = habitaciones.isEstado() == true ? "Ocupada" : "Desocupada";
+            fila[7] = habitaciones.isActiva() == true ? "Si" : "No";
             modelo.addRow(fila);
         }
         return modelo;
@@ -120,6 +121,19 @@ public class GestorHabitaciones implements Global, Serializable {
 
         }
 
+    }
+    
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    @Override
+    public String toString() {
+        return "GestorHabitaciones{" + "fila=" + fila + '}';
     }
 
     

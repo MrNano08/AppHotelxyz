@@ -27,10 +27,9 @@ public class jpAgregarH extends javax.swing.JPanel {
     public jpAgregarH() {
         gestorHabitaciones = new GestorHabitaciones();
         gestorHabitaciones.recuperarDeArchivo();
-        
+
         initComponents();
 
-        //rsscalelabel.RSScaleLabel.setScaleLabel(txtbtnBack, "src/resources/Icons/arrow-leftx512.png");
     }
 
     /**
@@ -48,8 +47,8 @@ public class jpAgregarH extends javax.swing.JPanel {
         txtbtnBack = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JPanel();
         txtbtnCancelar = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JPanel();
-        txtbtnAgregar = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JPanel();
+        txtbtnGuardar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -136,41 +135,36 @@ public class jpAgregarH extends javax.swing.JPanel {
             .addComponent(txtbtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGuardar.setBackground(new java.awt.Color(55, 41, 72));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseEntered(evt);
+                btnGuardarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseExited(evt);
+                btnGuardarMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAgregarMousePressed(evt);
+                btnGuardarMousePressed(evt);
             }
         });
 
-        txtbtnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        txtbtnAgregar.setForeground(new java.awt.Color(247, 236, 222));
-        txtbtnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtbtnAgregar.setText("Agregar");
-        txtbtnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtbtnAgregarMousePressed(evt);
-            }
-        });
+        txtbtnGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnGuardar.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnGuardar.setText("Guardar");
 
-        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
-        btnAgregar.setLayout(btnAgregarLayout);
-        btnAgregarLayout.setHorizontalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAgregarLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnGuardarLayout = new javax.swing.GroupLayout(btnGuardar);
+        btnGuardar.setLayout(btnGuardarLayout);
+        btnGuardarLayout.setHorizontalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGuardarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(txtbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-        btnAgregarLayout.setVerticalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        btnGuardarLayout.setVerticalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
@@ -221,7 +215,7 @@ public class jpAgregarH extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(bgAgregarLayout.createSequentialGroup()
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +308,7 @@ public class jpAgregarH extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -373,17 +367,17 @@ public class jpAgregarH extends javax.swing.JPanel {
         contenido.repaint();
     }//GEN-LAST:event_btnCancelarMousePressed
 
-    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        btnAgregar.setBackground(new Color(37, 27, 55));
-        txtbtnAgregar.setForeground(new Color(255, 202, 202));
-    }//GEN-LAST:event_btnAgregarMouseEntered
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        btnGuardar.setBackground(new Color(37, 27, 55));
+        txtbtnGuardar.setForeground(new Color(255, 202, 202));
+    }//GEN-LAST:event_btnGuardarMouseEntered
 
-    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        btnAgregar.setBackground(new Color(55, 41, 72));
-        txtbtnAgregar.setForeground(new Color(255, 236, 239));
-    }//GEN-LAST:event_btnAgregarMouseExited
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        btnGuardar.setBackground(new Color(55, 41, 72));
+        txtbtnGuardar.setForeground(new Color(255, 236, 239));
+    }//GEN-LAST:event_btnGuardarMouseExited
 
-    private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
+    private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
         String error = validarEntrada();
         if (error.equals("")) {//no hay errores
             Habitaciones habitaciones = new Habitaciones();
@@ -395,7 +389,8 @@ public class jpAgregarH extends javax.swing.JPanel {
             habitaciones.setPreAdultos(Integer.parseInt(txtPreAdultos.getText()));
             habitaciones.setEstado(cboOcupado.isSelected());
             habitaciones.setActiva(cboActivo.isSelected());
-            if (txtAgregar.equals("Guardar")) {
+
+            if (txtAgregar.getText().equals("Agregar")) {
                 if (gestorHabitaciones.existe(habitaciones.getId())) {
                     new frmMessagep().setVisible(true);
                     frmMessagep.txtMessage.setText("Id de habitacion ya registrada");
@@ -403,9 +398,11 @@ public class jpAgregarH extends javax.swing.JPanel {
 
                 } else {
                     gestorHabitaciones.guardar(habitaciones);
+
                     new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Datos guardados correctamente.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
                     gestorHabitaciones.guardarEnArchivo();
-                    
 
                 }
             } else {
@@ -421,12 +418,7 @@ public class jpAgregarH extends javax.swing.JPanel {
 
         }
 
-    }//GEN-LAST:event_btnAgregarMousePressed
-
-    private void txtbtnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbtnAgregarMousePressed
-
-
-    }//GEN-LAST:event_txtbtnAgregarMousePressed
+    }//GEN-LAST:event_btnGuardarMousePressed
 
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80, 65, 97));
@@ -441,9 +433,9 @@ public class jpAgregarH extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAgregar;
-    private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCancelar;
+    private javax.swing.JPanel btnGuardar;
     private javax.swing.JCheckBox cboActivo;
     private javax.swing.JCheckBox cboOcupado;
     private javax.swing.JLabel jLabel1;
@@ -456,16 +448,16 @@ public class jpAgregarH extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel txtAgregar;
+    public javax.swing.JLabel txtAgregar;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtIdHabitacion;
     private javax.swing.JTextPane txtImagen;
     private javax.swing.JTextField txtNumHues;
     private javax.swing.JTextField txtPreAdultos;
     private javax.swing.JTextField txtPreNinnos;
-    private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnBack;
     private javax.swing.JLabel txtbtnCancelar;
+    private javax.swing.JLabel txtbtnGuardar;
     // End of variables declaration//GEN-END:variables
 
     private String validarEntrada() {
