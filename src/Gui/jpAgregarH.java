@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  *
  * @author UNA
  */
-public class jpAgregarH extends javax.swing.JPanel {
+public class jpAgregarH extends jpHabitaciones {
 
     GestorHabitaciones gestorHabitaciones;
 
@@ -186,13 +186,20 @@ public class jpAgregarH extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setText("Numero de Huespedes:");
 
+        txtImagen.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         jScrollPane1.setViewportView(txtImagen);
+
+        txtNumHues.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel6.setText("Precio por dia (adultos):");
 
+        txtPreAdultos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Precio por dia (niños):");
+
+        txtPreNinnos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setText("Ocupado");
@@ -436,8 +443,8 @@ public class jpAgregarH extends javax.swing.JPanel {
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCancelar;
     private javax.swing.JPanel btnGuardar;
-    private javax.swing.JCheckBox cboActivo;
-    private javax.swing.JCheckBox cboOcupado;
+    protected static javax.swing.JCheckBox cboActivo;
+    protected static javax.swing.JCheckBox cboOcupado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -449,12 +456,12 @@ public class jpAgregarH extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel txtAgregar;
-    private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtIdHabitacion;
-    private javax.swing.JTextPane txtImagen;
-    private javax.swing.JTextField txtNumHues;
-    private javax.swing.JTextField txtPreAdultos;
-    private javax.swing.JTextField txtPreNinnos;
+    protected static javax.swing.JTextField txtDescripcion;
+    protected static javax.swing.JTextField txtIdHabitacion;
+    protected static javax.swing.JTextPane txtImagen;
+    protected static javax.swing.JTextField txtNumHues;
+    protected static javax.swing.JTextField txtPreAdultos;
+    protected static javax.swing.JTextField txtPreNinnos;
     private javax.swing.JLabel txtbtnBack;
     private javax.swing.JLabel txtbtnCancelar;
     private javax.swing.JLabel txtbtnGuardar;

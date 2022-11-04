@@ -18,10 +18,12 @@ import javax.swing.JTable;
 public class jpHabitaciones extends javax.swing.JPanel {
 
     GestorHabitaciones gestorHabitaciones;
+//    protected String
+//    protected String
+//    protected String
+//    protected String
+//    protected String
 
-    /**
-     * Creates new form jpHabitaciones
-     */
     public jpHabitaciones() {
         initComponents();
         gestorHabitaciones = new GestorHabitaciones();
@@ -155,6 +157,9 @@ public class jpHabitaciones extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
         });
 
         txtbtnEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -205,7 +210,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
             .addComponent(txtbtnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        lblTotal.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblTotal.setFont(new java.awt.Font("Roboto", 3, 16)); // NOI18N
         lblTotal.setText("Total: 0");
 
         javax.swing.GroupLayout bgHabitacionesLayout = new javax.swing.GroupLayout(bgHabitaciones);
@@ -241,7 +246,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTotal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,31 +320,68 @@ public class jpHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
-//        jpAgregarH editar = new jpAgregarH();
-//       
-////        new frmMessagep().setVisible(true);
-////        frmMessagep.txtMessage.setText("Esta opción aun no ha sido creada");
-////        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
-//        GestorHabitaciones gestor = new GestorHabitaciones();
-//
-//        gestor.setFila(tblHabitaciones.getSelectedRow());
-//        if (gestor.getFila() != -1) {
-//            editar.txtAgregar.setText("Editar");
-//            editar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
-//            editar.setLocation(0, 0);
-//
-//            Dashboard.contenido.removeAll();
-//            Dashboard.contenido.add(editar, BorderLayout.CENTER);
-//            Dashboard.contenido.revalidate();
-//            Dashboard.contenido.repaint();
-//
-//       } else {
-//        new frmMessagep().setVisible(true);
-//        frmMessagep.txtMessage.setText("Seleccione la habitación que desea editar");
-//        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
-//        }
-//
+        jpAgregarH editar = new jpAgregarH();
+        GestorHabitaciones gestor = new GestorHabitaciones();
+
+        gestor.setFila(tblHabitaciones.getSelectedRow());
+
+        if (gestor.getFila() != -1) {
+            editar.txtAgregar.setText("Editar");
+            editar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+            editar.setLocation(0, 0);
+
+            Dashboard.contenido.removeAll();
+            Dashboard.contenido.add(editar, BorderLayout.CENTER);
+            Dashboard.contenido.revalidate();
+            Dashboard.contenido.repaint();
+
+            jpAgregarH.txtIdHabitacion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 0).toString());
+            jpAgregarH.txtIdHabitacion.setEditable(false);
+            jpAgregarH.txtDescripcion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 1).toString());
+            jpAgregarH.txtImagen.setText(tblHabitaciones.getValueAt(gestor.getFila(), 2).toString());
+            jpAgregarH.txtNumHues.setText(tblHabitaciones.getValueAt(gestor.getFila(), 3).toString());
+            jpAgregarH.txtPreAdultos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 4).toString());
+            jpAgregarH.txtPreNinnos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 5).toString());
+
+            if (tblHabitaciones.getValueAt(gestor.getFila(), 6).toString().equals("Ocupada")) {
+                jpAgregarH.cboOcupado.setSelected(true);
+            } else {
+                jpAgregarH.cboOcupado.setSelected(false);
+            }
+
+            if (tblHabitaciones.getValueAt(gestor.getFila(), 7).toString().equals("Si")) {
+                jpAgregarH.cboActivo.setSelected(true);
+            } else {
+                jpAgregarH.cboActivo.setSelected(false);
+            }
+
+        } else {
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Seleccione la habitación que desea editar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
+        }
+
     }//GEN-LAST:event_btnEditarMousePressed
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        GestorHabitaciones gestor = new GestorHabitaciones();
+        gestor.setFila(tblHabitaciones.getSelectedRow());
+        if (gestor.getFila() != -1) {
+            int idP = Integer.parseInt(tblHabitaciones.getValueAt(gestor.getFila(), 0).toString());
+            int resp = JOptionPane.showConfirmDialog(null,
+                    "¿Esta seguro de eliminar la persona seleccionada?", "Eliminar",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+            if (resp == JOptionPane.YES_OPTION) {
+                gestor.eliminar(idP);
+                gestor.guardarEnArchivo();
+                cargarDatos();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione la persona a eliminar",
+                    "Eliminar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarMousePressed
 
     public JTable getTblHabitaciones() {
         return tblHabitaciones;
@@ -359,11 +401,14 @@ public class jpHabitaciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JTable tblHabitaciones;
+    protected javax.swing.JTable tblHabitaciones;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnEditar;
     private javax.swing.JLabel txtbtnEliminar;
     private javax.swing.JLabel txtbtnImprimir;
     // End of variables declaration//GEN-END:variables
-
+private void cargarDatos() {
+        tblHabitaciones.setModel(gestorHabitaciones.obtenerModeloTabla());
+        lblTotal.setText("Total: " + tblHabitaciones.getRowCount());
+    }
 }

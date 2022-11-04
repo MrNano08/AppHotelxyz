@@ -71,7 +71,7 @@
                   <Component id="jScrollPane1" min="-2" pref="523" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTotal" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnAgregar" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="btnImprimir" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -172,6 +172,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -270,6 +273,7 @@
           <Events>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEliminarMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEliminarMouseExited"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEliminarMousePressed"/>
           </Events>
 
           <Layout>
@@ -348,7 +352,7 @@
         <Component class="javax.swing.JLabel" name="lblTotal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="3"/>
+              <Font name="Roboto" size="16" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total: 0"/>
           </Properties>
