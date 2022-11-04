@@ -55,7 +55,7 @@ public class frmMessagep extends javax.swing.JFrame {
         txtMessage.setBackground(new java.awt.Color(0, 0, 0));
         txtMessage.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         txtMessage.setText("Default message");
-        background.add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 310, 30));
+        background.add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 440, 30));
 
         btnAceptar.setBackground(new java.awt.Color(55, 41, 72));
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,13 +89,13 @@ public class frmMessagep extends javax.swing.JFrame {
             .addComponent(txtbtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        background.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
+        background.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

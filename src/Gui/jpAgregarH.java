@@ -5,10 +5,13 @@
 package Gui;
 
 import static Gui.Dashboard.contenido;
+import Logica.GestorHabitaciones;
+import Logica.Habitaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 
 /**
  *
@@ -16,12 +19,17 @@ import javax.swing.JPanel;
  */
 public class jpAgregarH extends javax.swing.JPanel {
 
+    GestorHabitaciones gestorHabitaciones;
+
     /**
      * Creates new form jpAgregar
      */
     public jpAgregarH() {
+        gestorHabitaciones = new GestorHabitaciones();
+        gestorHabitaciones.recuperarDeArchivo();
+        
         initComponents();
- 
+
         //rsscalelabel.RSScaleLabel.setScaleLabel(txtbtnBack, "src/resources/Icons/arrow-leftx512.png");
     }
 
@@ -48,11 +56,22 @@ public class jpAgregarH extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtIdHabitacion = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtImagen = new javax.swing.JTextPane();
+        txtNumHues = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtPreAdultos = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtPreNinnos = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        cboOcupado = new javax.swing.JCheckBox();
+        cboActivo = new javax.swing.JCheckBox();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
         txtAgregar.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        txtAgregar.setForeground(new java.awt.Color(0, 0, 0));
         txtAgregar.setText("Agregar");
 
         btnBack.setBackground(new java.awt.Color(255, 236, 239));
@@ -134,6 +153,11 @@ public class jpAgregarH extends javax.swing.JPanel {
         txtbtnAgregar.setForeground(new java.awt.Color(247, 236, 222));
         txtbtnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtbtnAgregar.setText("Agregar");
+        txtbtnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtbtnAgregarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
         btnAgregar.setLayout(btnAgregarLayout);
@@ -156,7 +180,7 @@ public class jpAgregarH extends javax.swing.JPanel {
         jLabel2.setText("Id habitación:");
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setText("Descrpción:");
+        jLabel3.setText("Descripción:");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setText("Imagen:");
@@ -164,6 +188,23 @@ public class jpAgregarH extends javax.swing.JPanel {
         txtIdHabitacion.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         txtDescripcion.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel5.setText("Numero de Huespedes:");
+
+        jScrollPane1.setViewportView(txtImagen);
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel6.setText("Precio por dia (adultos):");
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel7.setText("Precio por dia (niños):");
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel8.setText("Ocupado");
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel9.setText("Activo");
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
@@ -183,19 +224,50 @@ public class jpAgregarH extends javax.swing.JPanel {
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(bgAgregarLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgAgregarLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIdHabitacion))
-                    .addComponent(jLabel1)
+                        .addGap(56, 56, 56)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtIdHabitacion))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNumHues))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(bgAgregarLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4))
-                .addContainerGap(395, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(34, 34, 34)
+                                .addComponent(txtPreNinnos, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPreAdultos))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboOcupado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboActivo)
+                .addGap(291, 291, 291))
         );
         bgAgregarLayout.setVerticalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,12 +284,34 @@ public class jpAgregarH extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addComponent(txtIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtNumHues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPreAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(37, 37, 37)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPreNinnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(37, 37, 37)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)))
+                    .addComponent(cboOcupado)
+                    .addComponent(cboActivo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,8 +339,7 @@ public class jpAgregarH extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackMouseExited
 
     private void btnBackMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMousePressed
-        
-        
+
         jpHabitaciones habitaciones = new jpHabitaciones();
         habitaciones.setSize(contenido.getWidth(), contenido.getHeight());
         habitaciones.setLocation(0, 0);
@@ -255,8 +348,8 @@ public class jpAgregarH extends javax.swing.JPanel {
         contenido.add(habitaciones, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
-        
-        
+
+
     }//GEN-LAST:event_btnBackMousePressed
 
     private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
@@ -291,44 +384,151 @@ public class jpAgregarH extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        jpAgregarC agregar = new jpAgregarC();
-        agregar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
-        agregar.setLocation(0, 0);
+        String error = validarEntrada();
+        if (error.equals("")) {//no hay errores
+            Habitaciones habitaciones = new Habitaciones();
+            habitaciones.setId(Integer.parseInt(txtIdHabitacion.getText()));
+            habitaciones.setDescripcion(txtDescripcion.getText());
+            habitaciones.setImagen(txtImagen.getText());
+            habitaciones.setNumMaxHus(Integer.parseInt(txtNumHues.getText()));
+            habitaciones.setPreNinno(Integer.parseInt(txtPreNinnos.getText()));
+            habitaciones.setPreAdultos(Integer.parseInt(txtPreAdultos.getText()));
+            habitaciones.setEstado(cboOcupado.isSelected());
+            habitaciones.setActiva(cboActivo.isSelected());
+            if (txtAgregar.equals("Guardar")) {
+                if (gestorHabitaciones.existe(habitaciones.getId())) {
+                    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Id de habitacion ya registrada");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
-        Dashboard.contenido.removeAll();
-        Dashboard.contenido.add(agregar, BorderLayout.CENTER);
-        Dashboard.contenido.revalidate();
-        Dashboard.contenido.repaint();
+                } else {
+                    gestorHabitaciones.guardar(habitaciones);
+                    new frmMessagep().setVisible(true);
+                    gestorHabitaciones.guardarEnArchivo();
+                    
+
+                }
+            } else {
+                gestorHabitaciones.editar(habitaciones);
+                gestorHabitaciones.guardarEnArchivo();
+            }
+
+        } else {
+            new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText(validarEntrada());
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+        }
+
     }//GEN-LAST:event_btnAgregarMousePressed
 
-void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
-        panel.setBackground(new Color(80,65,97));
+    private void txtbtnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbtnAgregarMousePressed
+
+
+    }//GEN-LAST:event_txtbtnAgregarMousePressed
+
+    void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
+        panel.setBackground(new Color(80, 65, 97));
 
     }
 
     void resetColor(JPanel panel) { //Color por defecto de los paneles(botones)
-        panel.setBackground(new Color(255,236,239));
+        panel.setBackground(new Color(255, 236, 239));
 
     }
-    
 
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAgregar;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCancelar;
+    private javax.swing.JCheckBox cboActivo;
+    private javax.swing.JCheckBox cboOcupado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel txtAgregar;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtIdHabitacion;
+    private javax.swing.JTextPane txtImagen;
+    private javax.swing.JTextField txtNumHues;
+    private javax.swing.JTextField txtPreAdultos;
+    private javax.swing.JTextField txtPreNinnos;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnBack;
     private javax.swing.JLabel txtbtnCancelar;
     // End of variables declaration//GEN-END:variables
+
+    private String validarEntrada() {
+        if (txtIdHabitacion.getText().trim().equals("")) {
+            txtIdHabitacion.requestFocus();
+            return "Se requiere el id de la habitacion";
+        } else {
+            try {
+                Integer.parseInt(txtIdHabitacion.getText());
+            } catch (NumberFormatException e) {
+                txtIdHabitacion.requestFocus();
+                return "El id de la habitacion debe ser numerico";
+            }
+
+            if (txtDescripcion.getText().trim().equals("")) {
+                txtDescripcion.requestFocus();
+                return "Ingrese la descripcion de la habitacion";
+            }
+
+            if (txtNumHues.getText().trim().equals("")) {
+                txtNumHues.requestFocus();
+                return "Ingrese la cantidad de huespedes";
+            } else {
+                try {
+                    Integer.parseInt(txtNumHues.getText());
+                } catch (NumberFormatException e) {
+                    txtNumHues.requestFocus();
+                    return "La cantidad de Huespedes debe ser numerica";
+                }
+            }
+
+            if (txtPreNinnos.getText().trim().equals("")) {
+                txtPreNinnos.requestFocus();
+                return "Ingrese el precio para niños";
+            } else {
+                try {
+                    Integer.parseInt(txtPreNinnos.getText());
+                } catch (NumberFormatException e) {
+                    txtPreNinnos.requestFocus();
+                    return "Los precio deben ser numericos";
+                }
+            }
+
+            if (txtPreAdultos.getText().trim().equals("")) {
+                txtPreAdultos.requestFocus();
+                return "Ingrese el precio para Adultos";
+            } else {
+                try {
+                    Integer.parseInt(txtPreAdultos.getText());
+                } catch (NumberFormatException e) {
+                    txtPreAdultos.requestFocus();
+                    return "Los precios deben ser numericos";
+                }
+            }
+            return "";
+
+        }
+    }
+
+    /*   private void cargarDatos() { 
+        
+        tblHabitaciones.setModel(gestorHabitaciones.obtenerModeloTabla());
+        lblTotal.setText("Total: " + tblHabitaciones.getRowCount());
+
+    }*/
 }

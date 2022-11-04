@@ -4,7 +4,7 @@
  */
 package Gui;
 
-
+import Logica.GestorHabitaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -15,11 +15,18 @@ import javax.swing.ImageIcon;
  */
 public class jpHabitaciones extends javax.swing.JPanel {
 
+    GestorHabitaciones gestorHabitaciones;
+
     /**
      * Creates new form jpHabitaciones
      */
     public jpHabitaciones() {
         initComponents();
+        gestorHabitaciones = new GestorHabitaciones();
+        gestorHabitaciones.recuperarDeArchivo();
+        tblHabitaciones.setModel(gestorHabitaciones.obtenerModeloTabla());
+        lblTotal.setText("Total: " + tblHabitaciones.getRowCount());
+
     }
 
     /**
@@ -34,7 +41,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
         bgHabitaciones = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHabitaciones = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
         txtbtnAgregar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JPanel();
@@ -43,17 +50,16 @@ public class jpHabitaciones extends javax.swing.JPanel {
         txtbtnEliminar = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JPanel();
         txtbtnImprimir = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
 
         bgHabitaciones.setBackground(new java.awt.Color(255, 236, 239));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Habitaciones");
 
-        jTable1.setBackground(new java.awt.Color(255, 236, 239));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHabitaciones.setBackground(new java.awt.Color(255, 236, 239));
+        tblHabitaciones.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tblHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -61,18 +67,18 @@ public class jpHabitaciones extends javax.swing.JPanel {
                 "Id", "Descripción", "Imagen", "Número máximo de Huespedes", "Precio por día adulto", "Precio por día niño", "Estado", "Activa"
             }
         ));
-        jTable1.setOpaque(false);
-        jTable1.setSelectionBackground(new java.awt.Color(66, 28, 86));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(40);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(45);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(140);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(40);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(20);
+        tblHabitaciones.setOpaque(false);
+        tblHabitaciones.setSelectionBackground(new java.awt.Color(66, 28, 86));
+        tblHabitaciones.setShowGrid(true);
+        jScrollPane1.setViewportView(tblHabitaciones);
+        if (tblHabitaciones.getColumnModel().getColumnCount() > 0) {
+            tblHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblHabitaciones.getColumnModel().getColumn(2).setPreferredWidth(45);
+            tblHabitaciones.getColumnModel().getColumn(3).setPreferredWidth(140);
+            tblHabitaciones.getColumnModel().getColumn(4).setPreferredWidth(80);
+            tblHabitaciones.getColumnModel().getColumn(5).setPreferredWidth(80);
+            tblHabitaciones.getColumnModel().getColumn(6).setPreferredWidth(40);
+            tblHabitaciones.getColumnModel().getColumn(7).setPreferredWidth(20);
         }
 
         btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
@@ -124,6 +130,11 @@ public class jpHabitaciones extends javax.swing.JPanel {
         txtbtnEditar.setForeground(new java.awt.Color(247, 236, 222));
         txtbtnEditar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtbtnEditar.setText("Editar");
+        txtbtnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtbtnEditarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnEditarLayout = new javax.swing.GroupLayout(btnEditar);
         btnEditar.setLayout(btnEditarLayout);
@@ -197,17 +208,17 @@ public class jpHabitaciones extends javax.swing.JPanel {
             .addComponent(txtbtnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblTotal.setText("Total: 0");
+
         javax.swing.GroupLayout bgHabitacionesLayout = new javax.swing.GroupLayout(bgHabitaciones);
         bgHabitaciones.setLayout(bgHabitacionesLayout);
         bgHabitacionesLayout.setHorizontalGroup(
             bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
             .addGroup(bgHabitacionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgHabitacionesLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 713, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgHabitacionesLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +227,12 @@ public class jpHabitaciones extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bgHabitacionesLayout.createSequentialGroup()
+                        .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(lblTotal))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         bgHabitacionesLayout.setVerticalGroup(
@@ -225,8 +241,10 @@ public class jpHabitaciones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,7 +276,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
-       btnEditar.setBackground(new Color(37, 27, 55));
+        btnEditar.setBackground(new Color(37, 27, 55));
         txtbtnEditar.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_btnEditarMouseEntered
 
@@ -268,7 +286,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarMouseExited
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-         btnEliminar.setBackground(new Color(37, 27, 55));
+        btnEliminar.setBackground(new Color(37, 27, 55));
         txtbtnEliminar.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_btnEliminarMouseEntered
 
@@ -278,17 +296,17 @@ public class jpHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarMouseExited
 
     private void btnImprimirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMouseEntered
-      btnImprimir.setBackground(new Color(37, 27, 55));
+        btnImprimir.setBackground(new Color(37, 27, 55));
         txtbtnImprimir.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_btnImprimirMouseEntered
 
     private void btnImprimirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMouseExited
-       btnImprimir.setBackground(new Color(55, 41, 72));
+        btnImprimir.setBackground(new Color(55, 41, 72));
         txtbtnImprimir.setForeground(new Color(255, 236, 239));
     }//GEN-LAST:event_btnImprimirMouseExited
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        jpAgregarH agregar = new jpAgregarH(); 
+        jpAgregarH agregar = new jpAgregarH();
         agregar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
         agregar.setLocation(0, 0);
 
@@ -302,9 +320,13 @@ public class jpHabitaciones extends javax.swing.JPanel {
         new frmMessagep().setVisible(true);
         frmMessagep.txtMessage.setText("Esta opción aun no ha sido creada");
         frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
-        
-        
+
+
     }//GEN-LAST:event_btnEditarMousePressed
+
+    private void txtbtnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbtnEditarMousePressed
+
+    }//GEN-LAST:event_txtbtnEditarMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,12 +337,12 @@ public class jpHabitaciones extends javax.swing.JPanel {
     private javax.swing.JPanel btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JTable tblHabitaciones;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnEditar;
     private javax.swing.JLabel txtbtnEliminar;
     private javax.swing.JLabel txtbtnImprimir;
     // End of variables declaration//GEN-END:variables
-
 
 }
