@@ -8,6 +8,9 @@ import Logica.GestorClientes;
 import Logica.GestorHabitaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.print.PrinterException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -172,6 +175,9 @@ public class jpClientes extends javax.swing.JPanel {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnImprimirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnImprimirMousePressed(evt);
             }
         });
 
@@ -351,6 +357,10 @@ public class jpClientes extends javax.swing.JPanel {
                     "Eliminar", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
+        gestorClientes.cargarReporte();
+    }//GEN-LAST:event_btnImprimirMousePressed
 
     public JTable getTblClientes() {
         return tblClientes;
