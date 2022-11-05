@@ -55,7 +55,7 @@ public class jpClientes extends javax.swing.JPanel {
         jLabel1.setText("Clientes");
 
         tblClientes.setBackground(new java.awt.Color(255, 236, 239));
-        tblClientes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tblClientes.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

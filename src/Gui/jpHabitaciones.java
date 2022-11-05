@@ -62,7 +62,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
         jLabel1.setText("Habitaciones");
 
         tblHabitaciones.setBackground(new java.awt.Color(255, 236, 239));
-        tblHabitaciones.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tblHabitaciones.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         tblHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

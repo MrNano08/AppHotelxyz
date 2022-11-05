@@ -5,8 +5,11 @@
 package Gui;
 
 import static Gui.Dashboard.contenido;
+import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JPanel;
 
 
@@ -16,13 +19,14 @@ import javax.swing.JPanel;
  */
 public class jpAgregarR extends javax.swing.JPanel {
 
-    /**
-     * Creates new form jpAgregar
-     */
+   Calendar fecha_actual= new GregorianCalendar();
+    
     public jpAgregarR() {
-        initComponents();
- 
-        //rsscalelabel.RSScaleLabel.setScaleLabel(txtbtnBack, "src/resources/Icons/arrow-leftx512.png");
+        initComponents(); 
+        
+        jcFechaActual.setCalendar(fecha_actual);
+        
+        
     }
 
     /**
@@ -55,18 +59,20 @@ public class jpAgregarR extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        cbFechaActual = new javax.swing.JComboBox<>();
         cbOcupantesNinos = new javax.swing.JComboBox<>();
         cbIdHuesped = new javax.swing.JComboBox<>();
         cbIdHabitacion = new javax.swing.JComboBox<>();
         cbOcupantesAdultos = new javax.swing.JComboBox<>();
         txtFormaPago = new javax.swing.JTextField();
         cdDescuento = new javax.swing.JComboBox<>();
-        cbFechaInicial = new javax.swing.JComboBox<>();
-        cbFechaFinal = new javax.swing.JComboBox<>();
         txtTotal = new javax.swing.JTextField();
         txtDiasHospedaje = new javax.swing.JTextField();
         txtSubtotal = new javax.swing.JTextField();
+        jcFechaActual = new com.toedter.calendar.JDateChooser();
+        jcFechaFinal = new com.toedter.calendar.JDateChooser();
+        jcFechaInicial = new com.toedter.calendar.JDateChooser();
+        btnCalcular = new javax.swing.JPanel();
+        txtbtnCalcular = new javax.swing.JLabel();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -190,7 +196,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         jLabel7.setText("Fecha inicial:");
 
         jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel8.setText("Fecha final");
+        jLabel8.setText("Fecha final:");
 
         jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel9.setText("Días de hospedaje:");
@@ -206,9 +212,6 @@ public class jpAgregarR extends javax.swing.JPanel {
 
         jLabel13.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
         jLabel13.setText("Datos de la renta");
-
-        cbFechaActual.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbFechaActual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         cbOcupantesNinos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cbOcupantesNinos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
@@ -227,17 +230,52 @@ public class jpAgregarR extends javax.swing.JPanel {
         cdDescuento.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cdDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        cbFechaInicial.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbFechaInicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-
-        cbFechaFinal.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbFechaFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-
         txtTotal.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         txtDiasHospedaje.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         txtSubtotal.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
+        jcFechaActual.setDateFormatString("dd/MM/yyyy");
+        jcFechaActual.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
+        jcFechaFinal.setDateFormatString("dd/MM/yyyy");
+        jcFechaFinal.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
+        jcFechaInicial.setDateFormatString("dd/MM/yyyy");
+        jcFechaInicial.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
+        btnCalcular.setBackground(new java.awt.Color(55, 41, 72));
+        btnCalcular.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCalcularMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCalcularMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCalcularMousePressed(evt);
+            }
+        });
+
+        txtbtnCalcular.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnCalcular.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnCalcular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnCalcular.setText("Calcular");
+
+        javax.swing.GroupLayout btnCalcularLayout = new javax.swing.GroupLayout(btnCalcular);
+        btnCalcular.setLayout(btnCalcularLayout);
+        btnCalcularLayout.setHorizontalGroup(
+            btnCalcularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCalcularLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(txtbtnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        btnCalcularLayout.setVerticalGroup(
+            btnCalcularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
@@ -253,44 +291,51 @@ public class jpAgregarR extends javax.swing.JPanel {
                     .addGroup(bgAgregarLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(bgAgregarLayout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                                        .addComponent(cdDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(bgAgregarLayout.createSequentialGroup()
-                                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(bgAgregarLayout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                                    .addComponent(cdDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(bgAgregarLayout.createSequentialGroup()
+                                    .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtTotal)
+                                        .addComponent(txtDiasHospedaje)
+                                        .addComponent(txtSubtotal)
+                                        .addGroup(bgAgregarLayout.createSequentialGroup()
                                             .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(cbFechaActual, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(cbOcupantesNinos, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(cbIdHuesped, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(cbIdHabitacion, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(cbOcupantesAdultos, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(txtFormaPago)
-                                                .addComponent(cbFechaInicial, 0, 376, Short.MAX_VALUE)
-                                                .addComponent(cbFechaFinal, 0, 376, Short.MAX_VALUE))
-                                            .addComponent(txtTotal)
-                                            .addComponent(txtDiasHospedaje)
-                                            .addComponent(txtSubtotal))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jcFechaActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jcFechaFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jcFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addGap(0, 73, Short.MAX_VALUE)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         bgAgregarLayout.setVerticalGroup(
@@ -303,56 +348,62 @@ public class jpAgregarR extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cbFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbIdHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cbIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cbOcupantesAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cbOcupantesNinos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(cbFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cbFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtDiasHospedaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(cdDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(21, 21, 21)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cbIdHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cbIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(cbOcupantesAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(cbOcupantesNinos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jcFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel8)
+                                .addGap(21, 21, 21)
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(txtDiasHospedaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(cdDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addComponent(jcFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
 
@@ -424,15 +475,22 @@ public class jpAgregarR extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        jpAgregarC agregar = new jpAgregarC();
-        agregar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
-        agregar.setLocation(0, 0);
-
-        Dashboard.contenido.removeAll();
-        Dashboard.contenido.add(agregar, BorderLayout.CENTER);
-        Dashboard.contenido.revalidate();
-        Dashboard.contenido.repaint();
+        
     }//GEN-LAST:event_btnAgregarMousePressed
+
+    private void btnCalcularMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseEntered
+        btnCalcular.setBackground(new Color(37, 27, 55));
+        txtbtnCalcular.setForeground(new Color(255, 202, 202));
+    }//GEN-LAST:event_btnCalcularMouseEntered
+
+    private void btnCalcularMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseExited
+        btnCalcular.setBackground(new Color(55, 41, 72));
+        txtbtnCalcular.setForeground(new Color(255, 236, 239));
+    }//GEN-LAST:event_btnCalcularMouseExited
+
+    private void btnCalcularMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMousePressed
+        calcular(jcFechaInicial, jcFechaFinal);
+    }//GEN-LAST:event_btnCalcularMousePressed
 
 void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80,65,97));
@@ -452,10 +510,8 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private javax.swing.JPanel bgAgregar;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
+    private javax.swing.JPanel btnCalcular;
     private javax.swing.JPanel btnCancelar;
-    private javax.swing.JComboBox<String> cbFechaActual;
-    private javax.swing.JComboBox<String> cbFechaFinal;
-    private javax.swing.JComboBox<String> cbFechaInicial;
     private javax.swing.JComboBox<String> cbIdHabitacion;
     private javax.swing.JComboBox<String> cbIdHuesped;
     private javax.swing.JComboBox<String> cbOcupantesAdultos;
@@ -474,6 +530,9 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private com.toedter.calendar.JDateChooser jcFechaActual;
+    private com.toedter.calendar.JDateChooser jcFechaFinal;
+    private com.toedter.calendar.JDateChooser jcFechaInicial;
     private javax.swing.JLabel txtAgregar;
     private javax.swing.JTextField txtDiasHospedaje;
     private javax.swing.JTextField txtFormaPago;
@@ -481,6 +540,26 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private javax.swing.JTextField txtTotal;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnBack;
+    private javax.swing.JLabel txtbtnCalcular;
     private javax.swing.JLabel txtbtnCancelar;
     // End of variables declaration//GEN-END:variables
+
+public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
+    
+    if (jcFechaInicial.getDate() != null && jcFechaFinal.getDate()!=null) {
+        Calendar inicio = jcFechaInicial.getCalendar();
+        Calendar termino = jcFechaFinal.getCalendar();
+        int dias =-1;
+        
+        while (inicio.before(termino)|| inicio.equals(termino)) {            
+            dias++;
+            inicio.add(Calendar.DATE,1);
+        }
+        txtDiasHospedaje.setText(String.valueOf(dias));
+    } else {
+    }
+
+
+}
+
 }
