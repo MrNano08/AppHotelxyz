@@ -6,6 +6,7 @@ package Gui;
 
 import static Gui.Dashboard.contenido;
 import Logica.GestorHabitaciones;
+import Logica.Global;
 import Logica.Habitaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,9 +22,6 @@ public class jpAgregarH extends jpHabitaciones {
 
     GestorHabitaciones gestorHabitaciones;
 
-    /**
-     * Creates new form jpAgregar
-     */
     public jpAgregarH() {
         gestorHabitaciones = new GestorHabitaciones();
         gestorHabitaciones.recuperarDeArchivo();
@@ -524,10 +522,4 @@ public class jpAgregarH extends jpHabitaciones {
         }
     }
 
-    /*   private void cargarDatos() { 
-        
-        tblHabitaciones.setModel(gestorHabitaciones.obtenerModeloTabla());
-        lblTotal.setText("Total: " + tblHabitaciones.getRowCount());
-
-    }*/
 }

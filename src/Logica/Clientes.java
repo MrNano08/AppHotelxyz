@@ -4,61 +4,93 @@
  */
 package Logica;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Usuario
  */
-public class Clientes {
+public class Clientes implements Serializable{
     private int id;
     private String nombre;
     private String apellidos;
     private String direccion;
+    private String empresa;
+    private String correo;
+    private int telefono;
 
     public Clientes() {
     }
 
-    public Clientes(int id, String nombre, String apellidos, String direccion) {
+    public Clientes(int id, String nombre, String apellidos, String direccion, String empresa, String correo, int telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
-    }
-
-    public int getId() {
-        return id;
+        this.empresa = empresa;
+        this.correo = correo;
+        this.telefono = telefono;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
     }
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
     @Override
     public String toString() {
-        return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion + '}';
+        return "Clientes{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion + ", empresa=" + empresa + ", correo=" + correo + ", telefono=" + telefono + '}';
     }
 
     

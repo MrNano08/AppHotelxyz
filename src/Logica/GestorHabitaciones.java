@@ -20,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author UNA
  */
+
 public class GestorHabitaciones implements Global, Serializable {
-    int fila = 0;
+    private int fila = 0;
     public boolean existe(int idHabitacion) {
         for (Habitaciones habitaciones : listaHabitaciones) {
             if (habitaciones.getId() == idHabitacion) {
@@ -30,14 +31,14 @@ public class GestorHabitaciones implements Global, Serializable {
         }
         return false;
     }
-    //Avisa la existencia si agunas de las categorias ya existe.
+
 
     public void guardar(Habitaciones habitaciones) {
         if (!existe(habitaciones.getId())) {
             listaHabitaciones.add(habitaciones);
         }
     }
-    //guarda una categoria dentro del contenedor 
+ 
 
     public void editar(Habitaciones habitaciones) {
         if (existe(habitaciones.getId())) {
@@ -45,7 +46,7 @@ public class GestorHabitaciones implements Global, Serializable {
             listaHabitaciones.set(pos, habitaciones);
         }
     }
-    //elimina alguna categoria ya existente y la cambio por una nueva en la misma posicion.        
+      
 
     public int obtenerPosicionDe(int idhabitacion) {
         for (Habitaciones habitaciones: listaHabitaciones) {

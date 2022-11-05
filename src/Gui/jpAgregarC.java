@@ -8,21 +8,24 @@ import static Gui.Dashboard.contenido;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
+import Logica.Clientes;
+import Logica.GestorClientes;
 
+import Logica.Global;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author UNA
  */
-public class jpAgregarC extends javax.swing.JPanel {
+public class jpAgregarC extends jpClientes {
 
-    /**
-     * Creates new form jpAgregar
-     */
+    GestorClientes gestorClientes;
     public jpAgregarC() {
+        gestorClientes= new GestorClientes();
+        gestorClientes.recuperarDeArchivo();
         initComponents();
  
-        //rsscalelabel.RSScaleLabel.setScaleLabel(txtbtnBack, "src/resources/Icons/arrow-leftx512.png");
     }
 
     /**
@@ -39,11 +42,11 @@ public class jpAgregarC extends javax.swing.JPanel {
         lblNombre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtidhuesped = new javax.swing.JTextField();
+        txtIdHuesped = new javax.swing.JTextField();
         btnBack = new javax.swing.JPanel();
         txtbtnBack = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JPanel();
-        txtbtnAgregar = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JPanel();
+        txtbtnGuardar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JPanel();
         txtbtnCancelar = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
@@ -55,6 +58,8 @@ public class jpAgregarC extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -70,9 +75,12 @@ public class jpAgregarC extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel2.setText("ID Huésped:");
 
-        txtidhuesped.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+
+        txtIdHuesped.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+        txtIdHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidhuespedActionPerformed(evt);
+                txtIdHuespedActionPerformed(evt);
             }
         });
 
@@ -106,36 +114,36 @@ public class jpAgregarC extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGuardar.setBackground(new java.awt.Color(55, 41, 72));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseEntered(evt);
+                btnGuardarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseExited(evt);
+                btnGuardarMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAgregarMousePressed(evt);
+                btnGuardarMousePressed(evt);
             }
         });
 
-        txtbtnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        txtbtnAgregar.setForeground(new java.awt.Color(247, 236, 222));
-        txtbtnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtbtnAgregar.setText("Agregar");
+        txtbtnGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnGuardar.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnGuardar.setText("Guardar");
 
-        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
-        btnAgregar.setLayout(btnAgregarLayout);
-        btnAgregarLayout.setHorizontalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAgregarLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnGuardarLayout = new javax.swing.GroupLayout(btnGuardar);
+        btnGuardar.setLayout(btnGuardarLayout);
+        btnGuardarLayout.setHorizontalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGuardarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(txtbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-        btnAgregarLayout.setVerticalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        btnGuardarLayout.setVerticalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         btnCancelar.setBackground(new java.awt.Color(55, 41, 72));
@@ -170,6 +178,7 @@ public class jpAgregarC extends javax.swing.JPanel {
             .addComponent(txtbtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
+        txtDireccion.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         txtDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionActionPerformed(evt);
@@ -187,12 +196,14 @@ public class jpAgregarC extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel5.setText("Empresa:");
 
+        txtEmpresa.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         txtEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmpresaActionPerformed(evt);
             }
         });
 
+        txtCorreo.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoActionPerformed(evt);
@@ -203,6 +214,7 @@ public class jpAgregarC extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel6.setText("Correo:");
 
+        txtTelefono.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
@@ -212,6 +224,12 @@ public class jpAgregarC extends javax.swing.JPanel {
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel7.setText("Teléfono:");
+
+        lblApellidos.setBackground(new java.awt.Color(0, 0, 0));
+        lblApellidos.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        lblApellidos.setText("Apellidos:");
+
+        txtApellidos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
@@ -230,7 +248,7 @@ public class jpAgregarC extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(bgAgregarLayout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,15 +260,17 @@ public class jpAgregarC extends javax.swing.JPanel {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNombre)
-                                    .addComponent(txtidhuesped, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                                    .addComponent(txtIdHuesped, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                     .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                     .addComponent(txtEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))))
+                                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                                    .addComponent(txtApellidos))))
                         .addGap(0, 329, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -263,9 +283,13 @@ public class jpAgregarC extends javax.swing.JPanel {
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellidos)
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtidhuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(38, 38, 38)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -294,7 +318,7 @@ public class jpAgregarC extends javax.swing.JPanel {
                     .addGroup(bgAgregarLayout.createSequentialGroup()
                         .addComponent(txtAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -332,30 +356,61 @@ public class jpAgregarC extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnBackMousePressed
 
-    private void txtidhuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidhuespedActionPerformed
+    private void txtIdHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdHuespedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtidhuespedActionPerformed
+    }//GEN-LAST:event_txtIdHuespedActionPerformed
 
-    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        btnAgregar.setBackground(new Color(37, 27, 55));
-        txtbtnAgregar.setForeground(new Color(255, 202, 202));
-    }//GEN-LAST:event_btnAgregarMouseEntered
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        btnGuardar.setBackground(new Color(37, 27, 55));
+        txtbtnGuardar.setForeground(new Color(255, 202, 202));
+    }//GEN-LAST:event_btnGuardarMouseEntered
 
-    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        btnAgregar.setBackground(new Color(55, 41, 72));
-        txtbtnAgregar.setForeground(new Color(255, 236, 239));
-    }//GEN-LAST:event_btnAgregarMouseExited
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        btnGuardar.setBackground(new Color(55, 41, 72));
+        txtbtnGuardar.setForeground(new Color(255, 236, 239));
+    }//GEN-LAST:event_btnGuardarMouseExited
 
-    private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        jpAgregarC agregar = new jpAgregarC();
-        agregar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
-        agregar.setLocation(0, 0);
+    private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
+       String error = validarEntrada();
+        if (error.equals("")) {//no hay errores
+            Clientes clientes = new Clientes();
+            clientes.setId(Integer.parseInt(txtIdHuesped.getText()));
+            clientes.setNombre(txtNombre.getText());
+            clientes.setApellidos(txtApellidos.getText());
+            clientes.setDireccion(txtDireccion.getText());
+            clientes.setEmpresa(txtEmpresa.getText());
+            clientes.setCorreo(txtCorreo.getText().toLowerCase());
+            clientes.setTelefono(Integer.parseInt(txtTelefono.getText()));
 
-        Dashboard.contenido.removeAll();
-        Dashboard.contenido.add(agregar, BorderLayout.CENTER);
-        Dashboard.contenido.revalidate();
-        Dashboard.contenido.repaint();
-    }//GEN-LAST:event_btnAgregarMousePressed
+            if (txtAgregar.getText().equals("Agregar")) {
+                if (gestorClientes.existe(clientes.getId())) {
+                    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Id de cliente ya registrada");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+                } else {
+                    gestorClientes.guardar(clientes);
+
+                    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Datos guardados correctamente.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+                    gestorClientes.guardarEnArchivo();
+
+                }
+            } else {
+                gestorClientes.editar(clientes);
+                gestorClientes.guardarEnArchivo();
+            }
+
+        } else {
+            new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText(validarEntrada());
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+        }
+           
+    }//GEN-LAST:event_btnGuardarMousePressed
 
     private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
         btnCancelar.setBackground(new Color(37, 27, 55));
@@ -410,25 +465,86 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAgregar;
-    private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCancelar;
+    private javax.swing.JPanel btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel txtAgregar;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEmpresa;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JLabel txtbtnAgregar;
+    protected javax.swing.JLabel txtAgregar;
+    protected static javax.swing.JTextField txtApellidos;
+    protected static javax.swing.JTextField txtCorreo;
+    protected static javax.swing.JTextField txtDireccion;
+    protected static javax.swing.JTextField txtEmpresa;
+    protected static javax.swing.JTextField txtIdHuesped;
+    protected static javax.swing.JTextField txtNombre;
+    protected static javax.swing.JTextField txtTelefono;
     private javax.swing.JLabel txtbtnBack;
     private javax.swing.JLabel txtbtnCancelar;
-    private javax.swing.JTextField txtidhuesped;
+    private javax.swing.JLabel txtbtnGuardar;
     // End of variables declaration//GEN-END:variables
+
+private String validarEntrada() {
+        
+
+            if (txtNombre.getText().trim().equals("")) {
+                txtNombre.requestFocus();
+                return "Ingrese el Nombre del cliente";
+            }
+            
+             if (txtApellidos.getText().trim().equals("")) {
+                txtApellidos.requestFocus();
+                return "Digite los apellidos del cliente";
+            }
+            
+            if (txtIdHuesped.getText().trim().equals("")) {
+            txtIdHuesped.requestFocus();
+            return "Se requiere el id del cliente";
+        } else {
+            try {
+                Integer.parseInt(txtIdHuesped.getText());
+            } catch (NumberFormatException e) {
+                txtIdHuesped.requestFocus();
+                return "El id del cliente debe ser numerico";
+            }
+
+            if (txtDireccion.getText().trim().equals("")) {
+                txtDireccion.requestFocus();
+                return "Ingrese la dirección";
+            }
+
+            if (txtEmpresa.getText().trim().equals("")) {
+                txtEmpresa.requestFocus();
+                return "Ingrese la empresa del cliente";
+            }
+
+            if (txtCorreo.getText().trim().equals("")) {
+                txtCorreo.requestFocus();
+                return "Ingrese el correo del cliente";
+            }
+            
+            if (txtTelefono.getText().trim().equals("")) {
+            txtTelefono.requestFocus();
+            return "Se requiere el número de teléfono del cliente";
+        } else {
+            try {
+                    Integer.parseInt(txtTelefono.getText());
+            } catch (NumberFormatException e) {
+                txtTelefono.requestFocus();
+                return "número de teléfono cliente debe ser numerico";
+            }
+                
+            }
+            return "";
+
+        }
+    }
 }
+
+
+
