@@ -47,7 +47,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtHabitacion = new javax.swing.JLabel();
         cbCliente = new javax.swing.JComboBox<>();
         cbHabitacion = new javax.swing.JComboBox<>();
-        cbxCliente = new javax.swing.JCheckBox();
+        chxCliente = new javax.swing.JCheckBox();
         chxHabitacion = new javax.swing.JCheckBox();
         btnHabitacionesO = new javax.swing.JPanel();
         txtbtnHabitacionesO = new javax.swing.JLabel();
@@ -100,7 +100,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
 
         cbHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         jPanel1.add(cbHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, 30));
-        jPanel1.add(cbxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel1.add(chxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         chxHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -486,7 +486,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private javax.swing.JPanel btnIngresosHabitacion;
     private javax.swing.JComboBox<String> cbCliente;
     private javax.swing.JComboBox<String> cbHabitacion;
-    private javax.swing.JCheckBox cbxCliente;
+    private javax.swing.JCheckBox chxCliente;
     private javax.swing.JCheckBox chxHabitacion;
     private com.toedter.calendar.JDateChooser dtFinal;
     private com.toedter.calendar.JDateChooser dtInicial;
@@ -525,23 +525,29 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
  private String validarEntrada() {
         if (dtInicial.getDate()==null) {
            dtInicial.requestFocus();
-            return "Se requiere la fecha de entrada";
+            return "Se requiere la fecha de inicial";
          }
         
         if (dtFinal.getDate()==null) {
             dtFinal.requestFocus();
-            return "Ingrese el nombre de la categoria";
+            return "Se requiere la fecha de final";
         }
+        
+        if (chxCliente.isSelected()){
         if (cbCliente.getSelectedIndex()==0) {
             cbCliente.requestFocus();
             return "Elija el id del cliente";
         }
+        }
         
+        if (chxHabitacion.isSelected()){
         if (cbHabitacion.getSelectedIndex()==0) {
             cbHabitacion.requestFocus();
             return "Elija el id de la habitacion";
         }
+        }
+        
         return "";
-    }
-
+    
+}
 }

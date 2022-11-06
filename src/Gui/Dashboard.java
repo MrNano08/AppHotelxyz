@@ -31,7 +31,6 @@ public class Dashboard extends javax.swing.JFrame {
 
     public Dashboard() {
         initComponents();
-        //this.setExtendedState(MAXIMIZED_BOTH);
         jpInicio inicio = new jpInicio();
         inicio.setSize(650, 500);
         inicio.setLocation(0, 0);
@@ -555,7 +554,8 @@ public class Dashboard extends javax.swing.JFrame {
         resetColor(btnHabitaciones);
         resetColor(btnClientes);
         resetColor(btnReportesFacturacion);
-
+        jpHabitaciones habitaciones = new jpHabitaciones();
+        jpClientes clientes = new jpClientes();
         jpReservaciones reservaciones = new jpReservaciones();
         reservaciones.setSize(contenido.getWidth(), contenido.getHeight());
         reservaciones.setLocation(0, 0);

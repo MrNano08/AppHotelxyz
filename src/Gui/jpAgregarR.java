@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
@@ -69,7 +70,6 @@ public class jpAgregarR extends javax.swing.JPanel {
         cbCliente = new javax.swing.JComboBox<>();
         cbHabitacion = new javax.swing.JComboBox<>();
         cbOcupantesAdultos = new javax.swing.JComboBox<>();
-        txtFormaPago = new javax.swing.JTextField();
         cdDescuento = new javax.swing.JComboBox<>();
         txtTotal = new javax.swing.JTextField();
         txtDiasHospedaje = new javax.swing.JTextField();
@@ -79,6 +79,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         jcFechaInicial = new com.toedter.calendar.JDateChooser();
         btnCalcular = new javax.swing.JPanel();
         txtbtnCalcular = new javax.swing.JLabel();
+        cbFormaPago = new javax.swing.JComboBox<>();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -219,7 +220,8 @@ public class jpAgregarR extends javax.swing.JPanel {
         jLabel13.setText("Datos de la renta");
 
         cbOcupantesNinos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbOcupantesNinos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cbOcupantesNinos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1", "2", "3", "4" }));
+        cbOcupantesNinos.setToolTipText("");
 
         cbCliente.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
@@ -228,9 +230,8 @@ public class jpAgregarR extends javax.swing.JPanel {
         cbHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         cbOcupantesAdultos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbOcupantesAdultos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-
-        txtFormaPago.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+        cbOcupantesAdultos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1", "2", "3", "4" }));
+        cbOcupantesAdultos.setToolTipText("");
 
         cdDescuento.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cdDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
@@ -282,6 +283,9 @@ public class jpAgregarR extends javax.swing.JPanel {
             .addComponent(txtbtnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
+        cbFormaPago.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+        cbFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Efectivo", "Tarjeta" }));
+
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
         bgAgregarLayout.setHorizontalGroup(
@@ -325,10 +329,10 @@ public class jpAgregarR extends javax.swing.JPanel {
                                                 .addComponent(cbCliente, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(cbHabitacion, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(cbOcupantesAdultos, 0, 376, Short.MAX_VALUE)
-                                                .addComponent(txtFormaPago)
                                                 .addComponent(jcFechaActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jcFechaFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jcFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(jcFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(cbFormaPago, 0, 376, Short.MAX_VALUE))
                                             .addGap(0, 0, Short.MAX_VALUE)))))
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -367,7 +371,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                         .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -480,7 +484,19 @@ public class jpAgregarR extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
+    String error = validarEntrada();
+        if (error.equals("")) {
         
+            System.out.println("Si funca");
+        
+        
+        } else {
+            new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText(validarEntrada());
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+        }
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnCalcularMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseEntered
@@ -518,6 +534,7 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private javax.swing.JPanel btnCalcular;
     private javax.swing.JPanel btnCancelar;
     private javax.swing.JComboBox<String> cbCliente;
+    private javax.swing.JComboBox<String> cbFormaPago;
     private javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JComboBox<String> cbOcupantesAdultos;
     private javax.swing.JComboBox<String> cbOcupantesNinos;
@@ -540,7 +557,6 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private com.toedter.calendar.JDateChooser jcFechaInicial;
     private javax.swing.JLabel txtAgregar;
     private javax.swing.JTextField txtDiasHospedaje;
-    private javax.swing.JTextField txtFormaPago;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JLabel txtbtnAgregar;
@@ -584,6 +600,53 @@ public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
         }
 
     }
+    
+    private String validarEntrada() {
+        
+        if (jcFechaActual.getDate()==null) {
+           jcFechaActual.requestFocus();
+            return "Se requiere la fecha actual";
+         }
+        
+        if (cbCliente.getSelectedIndex()==0) {
+            cbCliente.requestFocus();
+            return "Elija el id del cliente";
+        }
+        
+        if (cbHabitacion.getSelectedIndex()==0) {
+            cbHabitacion.requestFocus();
+            return "Elija el id de la habitacion";
+        }
+        
+        if (cbFormaPago.getSelectedIndex()==0) {
+            cbFormaPago.requestFocus();
+            return "Elija la forma de pago";
+        }
+        
+        if (cbOcupantesAdultos.getSelectedIndex()==0) {
+            cbOcupantesAdultos.requestFocus();
+            return "Elija la cantidad de ocupante adultos";
+        }
+        
+        if (cbOcupantesNinos.getSelectedIndex()==0) {
+            cbOcupantesNinos.requestFocus();
+            return "Elija la cantidad de ocupante niños";
+        }
+        
+        if (jcFechaInicial.getDate()==null) {
+           jcFechaInicial.requestFocus();
+            return "Se requiere la fecha de inicial";
+         }
+        
+        if (jcFechaFinal.getDate()==null) {
+            jcFechaFinal.requestFocus();
+            return "Se requiere la fecha de final";
+        }
+        
+        
+            return "";
+
+        }
 
 
 }
