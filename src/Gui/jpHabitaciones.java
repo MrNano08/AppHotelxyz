@@ -189,6 +189,9 @@ public class jpHabitaciones extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnImprimirMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnImprimirMousePressed(evt);
+            }
         });
 
         txtbtnImprimir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -380,6 +383,10 @@ public class jpHabitaciones extends javax.swing.JPanel {
                     "Eliminar", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
+        gestorHabitaciones.cargarReporte();
+    }//GEN-LAST:event_btnImprimirMousePressed
 
     public JTable getTblHabitaciones() {
         return tblHabitaciones;

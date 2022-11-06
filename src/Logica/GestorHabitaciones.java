@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import static Logica.Global.listaClientes;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,8 +13,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -123,6 +133,37 @@ public class GestorHabitaciones implements Global, Serializable {
         }
 
     }
+    
+    public void cargarReporte() {
+        String logotipo = "/Reporte/logo.png";
+        JasperReport reporte;
+        JasperPrint reporte_view;
+        try {
+//direccion del archivo JASPER
+            URL in = this.getClass().getResource("/Reportes/rptHabitaciones.jasper");
+            reporte = (JasperReport) JRLoader.loadObject(in);
+//Se crea un objeto HashMap
+            Map parametros = new HashMap();
+            parametros.clear();
+            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
+//==================================================================
+            HabitacionesDataSource datasource = new HabitacionesDataSource();
+            for (Habitaciones habitaciones : listaHabitaciones) {
+                datasource.addHabitaciones(habitaciones);
+            }
+//==================================================================
+            parametros.put("total", datasource.getTotal());
+            reporte_view = JasperFillManager.fillReport(reporte, parametros, datasource);
+            JasperViewer.viewReport(reporte_view, false);
+        } catch (JRException ex) {
+            System.out.println(ex);
+        } catch (NullPointerException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     
     public int getFila() {
         return fila;

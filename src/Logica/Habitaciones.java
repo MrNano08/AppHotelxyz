@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Habitaciones implements Serializable {
    private int id;
    private String descripcion;
-   private String Imagen;
+   private String imagen;
    private int numMaxHus;
    private int preAdultos;
    private int preNinno;
@@ -26,7 +26,7 @@ public class Habitaciones implements Serializable {
     public Habitaciones(int id, String descripcion, String Imagen, int numMaxHus, int preAdultos, int preNinno, boolean estado, boolean activa) {
         this.id = id;
         this.descripcion = descripcion;
-        this.Imagen = Imagen;
+        this.imagen = Imagen;
         this.numMaxHus = numMaxHus;
         this.preAdultos = preAdultos;
         this.preNinno = preNinno;
@@ -43,7 +43,7 @@ public class Habitaciones implements Serializable {
     }
 
     public void setImagen(String Imagen) {
-        this.Imagen = Imagen;
+        this.imagen = Imagen;
     }
 
     public void setNumMaxHus(int numMaxHus) {
@@ -75,7 +75,7 @@ public class Habitaciones implements Serializable {
     }
 
     public String getImagen() {
-        return Imagen;
+        return imagen;
     }
 
     public int getNumMaxHus() {
