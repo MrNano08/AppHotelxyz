@@ -2,7 +2,7 @@ package Logica;
 
 import java.io.Serializable;
 
-public class Reservaciones implements Serializable {
+public class Reservaciones implements Serializable{
 
     private static int fecha;
     private String idRentaHabi;
