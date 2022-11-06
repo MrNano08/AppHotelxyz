@@ -15,15 +15,19 @@ public class Factura implements Serializable {
    private String fechafin;
    private String cliente;
    private String habitacion;
+   private boolean chClientes;
+   private boolean chHabitaciones;
 
     public Factura() {
     }
 
-    public Factura(String fechain, String fechafin, String cliente, String habitacion) {
+    public Factura(String fechain, String fechafin, String cliente, String habitacion, boolean chClientes, boolean chHabitaciones) {
         this.fechain = fechain;
         this.fechafin = fechafin;
         this.cliente = cliente;
         this.habitacion = habitacion;
+        this.chClientes = chClientes;
+        this.chHabitaciones = chHabitaciones;
     }
 
     public void setFechain(String fechain) {
@@ -42,6 +46,14 @@ public class Factura implements Serializable {
         this.habitacion = habitacion;
     }
 
+    public void setChClientes(boolean chClientes) {
+        this.chClientes = chClientes;
+    }
+
+    public void setChHabitaciones(boolean chHabitaciones) {
+        this.chHabitaciones = chHabitaciones;
+    }
+
     public String getFechain() {
         return fechain;
     }
@@ -57,7 +69,13 @@ public class Factura implements Serializable {
     public String getHabitacion() {
         return habitacion;
     }
-   
-   
+
+    public boolean isChClientes() {
+        return chClientes;
+    }
+
+    public boolean isChHabitaciones() {
+        return chHabitaciones;
+    }
    
 }

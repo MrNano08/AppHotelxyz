@@ -5,9 +5,11 @@
 package Gui;
 
 import static Gui.Dashboard.contenido;
+import Logica.GestorReservaciones;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JPanel;
@@ -20,11 +22,15 @@ import javax.swing.JPanel;
 public class jpAgregarR extends javax.swing.JPanel {
 
    Calendar fecha_actual= new GregorianCalendar();
+   GestorReservaciones gestorReservaciones;
     
     public jpAgregarR() {
         initComponents(); 
         
         jcFechaActual.setCalendar(fecha_actual);
+        gestorReservaciones = new GestorReservaciones();
+        cargarIdsHabitaciones();
+        cargarIdsClientes();
         
         
     }
@@ -60,8 +66,8 @@ public class jpAgregarR extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         cbOcupantesNinos = new javax.swing.JComboBox<>();
-        cbIdHuesped = new javax.swing.JComboBox<>();
-        cbIdHabitacion = new javax.swing.JComboBox<>();
+        cbCliente = new javax.swing.JComboBox<>();
+        cbHabitacion = new javax.swing.JComboBox<>();
         cbOcupantesAdultos = new javax.swing.JComboBox<>();
         txtFormaPago = new javax.swing.JTextField();
         cdDescuento = new javax.swing.JComboBox<>();
@@ -77,7 +83,6 @@ public class jpAgregarR extends javax.swing.JPanel {
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
         txtAgregar.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        txtAgregar.setForeground(new java.awt.Color(0, 0, 0));
         txtAgregar.setText("Agregar");
 
         btnBack.setBackground(new java.awt.Color(255, 236, 239));
@@ -216,11 +221,11 @@ public class jpAgregarR extends javax.swing.JPanel {
         cbOcupantesNinos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cbOcupantesNinos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        cbIdHuesped.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbIdHuesped.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cbCliente.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+        cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        cbIdHabitacion.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbIdHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cbHabitacion.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+        cbHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         cbOcupantesAdultos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cbOcupantesAdultos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
@@ -317,8 +322,8 @@ public class jpAgregarR extends javax.swing.JPanel {
                                         .addGroup(bgAgregarLayout.createSequentialGroup()
                                             .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(cbOcupantesNinos, 0, 376, Short.MAX_VALUE)
-                                                .addComponent(cbIdHuesped, 0, 376, Short.MAX_VALUE)
-                                                .addComponent(cbIdHabitacion, 0, 376, Short.MAX_VALUE)
+                                                .addComponent(cbCliente, 0, 376, Short.MAX_VALUE)
+                                                .addComponent(cbHabitacion, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(cbOcupantesAdultos, 0, 376, Short.MAX_VALUE)
                                                 .addComponent(txtFormaPago)
                                                 .addComponent(jcFechaActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -354,11 +359,11 @@ public class jpAgregarR extends javax.swing.JPanel {
                         .addGap(21, 21, 21)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(cbIdHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(cbIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -512,8 +517,8 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCalcular;
     private javax.swing.JPanel btnCancelar;
-    private javax.swing.JComboBox<String> cbIdHabitacion;
-    private javax.swing.JComboBox<String> cbIdHuesped;
+    private javax.swing.JComboBox<String> cbCliente;
+    private javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JComboBox<String> cbOcupantesAdultos;
     private javax.swing.JComboBox<String> cbOcupantesNinos;
     private javax.swing.JComboBox<String> cdDescuento;
@@ -561,5 +566,24 @@ public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
 
 
 }
+
+ private void cargarIdsHabitaciones() {
+        ArrayList<String> lista = gestorReservaciones.obtenerIdHabitaciones();
+      
+        for (String hab : lista) {
+            cbHabitacion.addItem(hab);
+        }
+
+    }
+
+    private void cargarIdsClientes() {
+        ArrayList<String> lista = gestorReservaciones.obtenerIdClientes();
+        
+        for (String cli : lista) {
+            cbCliente.addItem(cli);
+        }
+
+    }
+
 
 }

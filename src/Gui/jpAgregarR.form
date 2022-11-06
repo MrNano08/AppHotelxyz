@@ -75,8 +75,8 @@
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="cbOcupantesNinos" pref="376" max="32767" attributes="0"/>
-                                                  <Component id="cbIdHuesped" pref="376" max="32767" attributes="0"/>
-                                                  <Component id="cbIdHabitacion" pref="376" max="32767" attributes="0"/>
+                                                  <Component id="cbCliente" pref="376" max="32767" attributes="0"/>
+                                                  <Component id="cbHabitacion" pref="376" max="32767" attributes="0"/>
                                                   <Component id="cbOcupantesAdultos" pref="376" max="32767" attributes="0"/>
                                                   <Component id="txtFormaPago" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jcFechaActual" max="32767" attributes="0"/>
@@ -126,12 +126,12 @@
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbIdHuesped" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbIdHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -203,9 +203,6 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto Black" size="24" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
@@ -455,7 +452,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbIdHuesped">
+        <Component class="javax.swing.JComboBox" name="cbCliente">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="15" style="1"/>
@@ -470,7 +467,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbIdHabitacion">
+        <Component class="javax.swing.JComboBox" name="cbHabitacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="15" style="1"/>

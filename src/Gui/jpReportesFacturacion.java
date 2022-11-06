@@ -5,8 +5,12 @@
 package Gui;
 
 import static Gui.Dashboard.contenido;
+import Logica.GestorFactura;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +18,16 @@ import java.awt.Color;
  */
 public class jpReportesFacturacion extends javax.swing.JPanel {
 
+    GestorFactura gestorFactura;
+
     /**
      * Creates new form jpReservaciones
      */
     public jpReportesFacturacion() {
         initComponents();
+        gestorFactura = new GestorFactura();
+        cargarIdsHabitaciones();
+        cargarIdsClientes();
     }
 
     /**
@@ -36,8 +45,6 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtFechaFinal = new javax.swing.JLabel();
         txtCliente = new javax.swing.JLabel();
         txtHabitacion = new javax.swing.JLabel();
-        cbFechaInicial = new javax.swing.JComboBox<>();
-        cbFechaFinal = new javax.swing.JComboBox<>();
         cbCliente = new javax.swing.JComboBox<>();
         cbHabitacion = new javax.swing.JComboBox<>();
         cbxCliente = new javax.swing.JCheckBox();
@@ -56,6 +63,8 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtbtnHabitacionMaR = new javax.swing.JLabel();
         btnIngresosCliente = new javax.swing.JPanel();
         txtbtnIngresosCliente = new javax.swing.JLabel();
+        dtInicial = new com.toedter.calendar.JDateChooser();
+        dtFinal = new com.toedter.calendar.JDateChooser();
 
         setPreferredSize(new java.awt.Dimension(650, 530));
 
@@ -85,12 +94,6 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtHabitacion.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         txtHabitacion.setText("Habitacion:");
         jPanel1.add(txtHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, 40));
-
-        cbFechaInicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-        jPanel1.add(cbFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 170, 30));
-
-        cbFechaFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-        jPanel1.add(cbFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 170, 30));
 
         cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         jPanel1.add(cbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 170, 30));
@@ -346,6 +349,8 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         );
 
         jPanel1.add(btnIngresosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 250, -1));
+        jPanel1.add(dtInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 170, -1));
+        jPanel1.add(dtFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -388,7 +393,12 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGenerarReporte1MouseExited
 
     private void btnGenerarReporte1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MousePressed
-        // TODO add your handling code here:
+    String error = validarEntrada();
+      new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText(validarEntrada());
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
     }//GEN-LAST:event_btnGenerarReporte1MousePressed
 
     private void btnHabitacionesMeRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesMeRMouseEntered
@@ -475,11 +485,11 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private javax.swing.JPanel btnIngresosCliente;
     private javax.swing.JPanel btnIngresosHabitacion;
     private javax.swing.JComboBox<String> cbCliente;
-    private javax.swing.JComboBox<String> cbFechaFinal;
-    private javax.swing.JComboBox<String> cbFechaInicial;
     private javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JCheckBox cbxCliente;
     private javax.swing.JCheckBox chxHabitacion;
+    private com.toedter.calendar.JDateChooser dtFinal;
+    private com.toedter.calendar.JDateChooser dtInicial;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtFechaFinal;
@@ -494,4 +504,44 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private javax.swing.JLabel txtbtnIngresosCliente;
     private javax.swing.JLabel txtbtnIngresosHabitacion;
     // End of variables declaration//GEN-END:variables
+ private void cargarIdsHabitaciones() {
+        ArrayList<String> lista = gestorFactura.obtenerIdHabitaciones();
+      
+        for (String hab : lista) {
+            cbHabitacion.addItem(hab);
+        }
+
+    }
+
+    private void cargarIdsClientes() {
+        ArrayList<String> lista = gestorFactura.obtenerIdClientes();
+        
+        for (String cli : lista) {
+            cbCliente.addItem(cli);
+        }
+
+    }
+
+ private String validarEntrada() {
+        if (dtInicial.getDate()==null) {
+           dtInicial.requestFocus();
+            return "Se requiere la fecha de entrada";
+         }
+        
+        if (dtFinal.getDate()==null) {
+            dtFinal.requestFocus();
+            return "Ingrese el nombre de la categoria";
+        }
+        if (cbCliente.getSelectedIndex()==0) {
+            cbCliente.requestFocus();
+            return "Elija el id del cliente";
+        }
+        
+        if (cbHabitacion.getSelectedIndex()==0) {
+            cbHabitacion.requestFocus();
+            return "Elija el id de la habitacion";
+        }
+        return "";
+    }
+
 }
