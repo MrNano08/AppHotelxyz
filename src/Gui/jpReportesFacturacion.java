@@ -63,8 +63,8 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         txtbtnHabitacionMaR = new javax.swing.JLabel();
         btnIngresosCliente = new javax.swing.JPanel();
         txtbtnIngresosCliente = new javax.swing.JLabel();
-        dtInicial = new com.toedter.calendar.JDateChooser();
-        dtFinal = new com.toedter.calendar.JDateChooser();
+        jcInicial = new com.toedter.calendar.JDateChooser();
+        jcFinal = new com.toedter.calendar.JDateChooser();
 
         setPreferredSize(new java.awt.Dimension(650, 530));
 
@@ -349,8 +349,8 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         );
 
         jPanel1.add(btnIngresosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 250, -1));
-        jPanel1.add(dtInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 170, -1));
-        jPanel1.add(dtFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, -1));
+        jPanel1.add(jcInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 170, -1));
+        jPanel1.add(jcFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -394,10 +394,20 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
 
     private void btnGenerarReporte1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MousePressed
     String error = validarEntrada();
-      new frmMessagep().setVisible(true);
+        if (error.equals("")) {
+        
+            System.out.println("Si funca");
+        
+        
+        } else {
+            new frmMessagep().setVisible(true);
 
             frmMessagep.txtMessage.setText(validarEntrada());
             frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+        }
+     
+      
 
     }//GEN-LAST:event_btnGenerarReporte1MousePressed
 
@@ -488,9 +498,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JCheckBox chxCliente;
     private javax.swing.JCheckBox chxHabitacion;
-    private com.toedter.calendar.JDateChooser dtFinal;
-    private com.toedter.calendar.JDateChooser dtInicial;
     private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jcFinal;
+    private com.toedter.calendar.JDateChooser jcInicial;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtFechaFinal;
     private javax.swing.JLabel txtFechaInicial;
@@ -523,15 +533,22 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }
 
  private String validarEntrada() {
-        if (dtInicial.getDate()==null) {
-           dtInicial.requestFocus();
+        
+     
+     if (jcInicial.getDate()==null) {
+           jcInicial.requestFocus();
             return "Se requiere la fecha de inicial";
          }
         
-        if (dtFinal.getDate()==null) {
-            dtFinal.requestFocus();
+        if (jcFinal.getDate()==null) {
+            jcFinal.requestFocus();
             return "Se requiere la fecha de final";
         }
+        
+        if(jcInicial.getDate().after(jcFinal.getDate())){
+     
+     return "La fecha inicial debe ser anterior a la fecha final";
+     }
         
         if (chxCliente.isSelected()){
         if (cbCliente.getSelectedIndex()==0) {

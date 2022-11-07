@@ -390,8 +390,8 @@ public class jpAgregarH extends jpHabitaciones {
             habitaciones.setDescripcion(txtDescripcion.getText());
             habitaciones.setImagen(txtImagen.getText());
             habitaciones.setNumMaxHus(Integer.parseInt(txtNumHues.getText()));
-            habitaciones.setPreNinno(Integer.parseInt(txtPreNinnos.getText()));
-            habitaciones.setPreAdultos(Integer.parseInt(txtPreAdultos.getText()));
+            habitaciones.setPreNinno(Double.parseDouble(txtPreNinnos.getText()));
+            habitaciones.setPreAdultos(Double.parseDouble(txtPreAdultos.getText()));
             habitaciones.setEstado(cboOcupado.isSelected());
             habitaciones.setActiva(cboActivo.isSelected());
 

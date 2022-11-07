@@ -510,7 +510,22 @@ public class jpAgregarR extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCalcularMouseExited
 
     private void btnCalcularMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMousePressed
-        calcular(jcFechaInicial, jcFechaFinal);
+    String errorcal = validacionbtnCalcular();
+        if (errorcal.equals("")) {
+        
+            CalcularDiasHos(jcFechaInicial, jcFechaFinal);
+            CalcularSubTotal();
+        
+        
+        } else {
+            new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText(validacionbtnCalcular());
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+        }        
+        
+        
     }//GEN-LAST:event_btnCalcularMousePressed
 
 void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
@@ -565,7 +580,7 @@ void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
     private javax.swing.JLabel txtbtnCancelar;
     // End of variables declaration//GEN-END:variables
 
-public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
+public void CalcularDiasHos(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
     
     if (jcFechaInicial.getDate() != null && jcFechaFinal.getDate()!=null) {
         Calendar inicio = jcFechaInicial.getCalendar();
@@ -576,9 +591,11 @@ public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
             dias++;
             inicio.add(Calendar.DATE,1);
         }
+        if (dias == 0) {
+            dias++;
+        }
         txtDiasHospedaje.setText(String.valueOf(dias));
-    } else {
-    }
+    } 
 
 
 }
@@ -628,10 +645,6 @@ public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
             return "Elija la cantidad de ocupante adultos";
         }
         
-        if (cbOcupantesNinos.getSelectedIndex()==0) {
-            cbOcupantesNinos.requestFocus();
-            return "Elija la cantidad de ocupante niños";
-        }
         
         if (jcFechaInicial.getDate()==null) {
            jcFechaInicial.requestFocus();
@@ -647,6 +660,84 @@ public void calcular(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal){
             return "";
 
         }
+    
+    private String validacionbtnCalcular() {
+        
+        if (cbHabitacion.getSelectedIndex()==0) {
+            cbHabitacion.requestFocus();
+            return "Elija el id de la habitacion";
+        }
+        
+        if (cbOcupantesAdultos.getSelectedIndex()==0) {
+            cbOcupantesAdultos.requestFocus();
+            return "Elija la cantidad de ocupante adultos";
+        }
+        
+        
+        if (jcFechaInicial.getDate()==null) {
+           jcFechaInicial.requestFocus();
+            return "Se requiere la fecha de inicial";
+         }
+        
+        if (jcFechaFinal.getDate()==null) {
+            jcFechaFinal.requestFocus();
+            return "Se requiere la fecha de final";
+        }
+        
+        
+        if(jcFechaInicial.getDate().after(jcFechaFinal.getDate())){
+     
+     return "La fecha inicial debe ser anterior a la fecha final";
+     }
+        
+        
+            return "";
 
+        }
+    
+    public double calcularPrecioAdultos() {
+        double pAdultos = 0;
+        int filatbl = cbHabitacion.getSelectedIndex()-1;
+        int cantidad = cbOcupantesAdultos.getSelectedIndex();
+         jpHabitaciones hab = new jpHabitaciones();
+         pAdultos = Double.parseDouble(hab.tblHabitaciones.getValueAt(filatbl, 4).toString()) * Double.parseDouble(txtDiasHospedaje.getText());
+         pAdultos = pAdultos * cbOcupantesAdultos.getSelectedIndex();
+         return pAdultos;
+         
+    }
 
+     public double calcularPrecioNinnos() {
+        double pNinnos = 0;
+        int filatbl = cbHabitacion.getSelectedIndex()-1;
+         jpHabitaciones hab = new jpHabitaciones();
+         pNinnos= Double.parseDouble(hab.tblHabitaciones.getValueAt(filatbl, 5).toString()) * Double.parseDouble(txtDiasHospedaje.getText());
+         pNinnos= pNinnos * cbOcupantesNinos.getSelectedIndex();
+         return pNinnos;
+    }
+ 
+     public void CalcularSubTotal(){
+         double subtotal;
+         subtotal = calcularPrecioAdultos() + calcularPrecioNinnos();
+         
+         txtSubtotal.setText(String.valueOf(subtotal));
+    }
+
+/*     public double calcularPrecioTotal {
+    switch (descuento) {
+            case '0%':
+                return CalcularSubTotal();
+            case "5%":
+                return CalcularSubTotal() - (no se como se restan los prcentages sorry);
+            case "10%":
+                return CalcularSubTotal() - (10%);
+            case "15":
+                return CalcularSubTotal() - (15%);
+                }
+    return 0;
+    
+    }
+    
+
+     */ 
+    
 }

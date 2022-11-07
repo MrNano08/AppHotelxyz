@@ -48,6 +48,8 @@ public class GestorReservaciones implements Global, Serializable {
         }
         return listaDeIdH;
     }
+    
+
 
 
     public boolean existe(String idRentaHabi) {

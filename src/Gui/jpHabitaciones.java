@@ -18,11 +18,7 @@ import javax.swing.JTable;
 public class jpHabitaciones extends javax.swing.JPanel {
 
     GestorHabitaciones gestorHabitaciones;
-//    protected String
-//    protected String
-//    protected String
-//    protected String
-//    protected String
+
 
     public jpHabitaciones() {
         initComponents();

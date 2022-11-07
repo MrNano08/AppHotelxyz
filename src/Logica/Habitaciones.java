@@ -15,54 +15,22 @@ public class Habitaciones implements Serializable {
    private String descripcion;
    private String imagen;
    private int numMaxHus;
-   private int preAdultos;
-   private int preNinno;
+   private double preAdultos;
+   private double preNinno;
    private boolean estado;
    private boolean activa;
 
     public Habitaciones() {
     }
 
-    public Habitaciones(int id, String descripcion, String Imagen, int numMaxHus, int preAdultos, int preNinno, boolean estado, boolean activa) {
+    public Habitaciones(int id, String descripcion, String imagen, int numMaxHus, double preAdultos, double preNinno, boolean estado, boolean activa) {
         this.id = id;
         this.descripcion = descripcion;
-        this.imagen = Imagen;
+        this.imagen = imagen;
         this.numMaxHus = numMaxHus;
         this.preAdultos = preAdultos;
         this.preNinno = preNinno;
         this.estado = estado;
-        this.activa = activa;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setImagen(String Imagen) {
-        this.imagen = Imagen;
-    }
-
-    public void setNumMaxHus(int numMaxHus) {
-        this.numMaxHus = numMaxHus;
-    }
-
-    public void setPreAdultos(int preAdultos) {
-        this.preAdultos = preAdultos;
-    }
-
-    public void setPreNinno(int preNinno) {
-        this.preNinno = preNinno;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public void setActiva(boolean activa) {
         this.activa = activa;
     }
 
@@ -70,33 +38,72 @@ public class Habitaciones implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getImagen() {
         return imagen;
     }
 
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     public int getNumMaxHus() {
         return numMaxHus;
     }
 
-    public int getPreAdultos() {
+    public void setNumMaxHus(int numMaxHus) {
+        this.numMaxHus = numMaxHus;
+    }
+
+    public double getPreAdultos() {
         return preAdultos;
     }
 
-    public int getPreNinno() {
+    public void setPreAdultos(double preAdultos) {
+        this.preAdultos = preAdultos;
+    }
+
+    public double getPreNinno() {
         return preNinno;
+    }
+
+    public void setPreNinno(double preNinno) {
+        this.preNinno = preNinno;
     }
 
     public boolean isEstado() {
         return estado;
     }
 
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public boolean isActiva() {
         return activa;
     }
+
+    public void setActiva(boolean activa) {
+        this.activa = activa;
+    }
+
+    @Override
+    public String toString() {
+        return "Habitaciones{" + "id=" + id + ", descripcion=" + descripcion + ", imagen=" + imagen + ", numMaxHus=" + numMaxHus + ", preAdultos=" + preAdultos + ", preNinno=" + preNinno + ", estado=" + estado + ", activa=" + activa + '}';
+    }
+
+    
 
     
 

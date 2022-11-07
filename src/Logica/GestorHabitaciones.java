@@ -78,8 +78,8 @@ public class GestorHabitaciones implements Global, Serializable {
             fila[1] = habitaciones.getDescripcion().toUpperCase();
             fila[2] = habitaciones.getImagen().toUpperCase();
             fila[3] = "" + habitaciones.getNumMaxHus();
-            fila[4] = "" + habitaciones.getPreAdultos();
-            fila[5] = "" + habitaciones.getPreNinno();
+            fila[4] = String.valueOf(habitaciones.getPreAdultos());
+            fila[5] = String.valueOf(habitaciones.getPreNinno());
             fila[6] = habitaciones.isEstado() == true ? "Ocupada" : "Desocupada";
             fila[7] = habitaciones.isActiva() == true ? "Si" : "No";
             modelo.addRow(fila);
