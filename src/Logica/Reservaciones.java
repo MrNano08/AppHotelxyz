@@ -2,7 +2,7 @@ package Logica;
 
 import java.io.Serializable;
 
-public class Reservaciones implements Serializable{
+public class Reservaciones implements Serializable {
 
     private static int fecha;
     private String idRentaHabi;
@@ -38,8 +38,6 @@ public class Reservaciones implements Serializable{
         this.total = total;
         this.estado = estado;
     }
-
-   
 
     public String autogenerarId() {
         if (fecha < 10) {
@@ -170,4 +168,32 @@ public class Reservaciones implements Serializable{
         return "Reservaciones{" + "idRentaHabi=" + idRentaHabi + ", fecha=" + fecha + ", idHabi=" + idHabi + ", idCliente=" + idCliente + ", formaPago=" + formaPago + ", Adultos=" + Adultos + ", ninnos=" + ninnos + ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin + ", diasHos=" + diasHos + ", SubTotal=" + SubTotal + ", descuento=" + descuento + ", total=" + total + ", estado=" + estado + '}';
     }
 
-}
+    /* public double calcularPrecioNinnos() {
+        return getNinnos() * (aqui va el precio por niño);
+    }
+
+     public double calcularPrecioAdulto(){
+         return getAdultos() * (aqui va el precio por adulto);
+    }
+    
+     public double CalcularPrecioPersona(){
+         return calcularPrecioNinnos() ++ calcularPrecioAdultos();
+    }  
+     public double calcularSubTotal()
+         return calcularPrecioPersona() * getDiasHos();
+    
+     public double calcularPrecioTotal {
+    switch (descuento) {
+            case '0%':
+                return calcularSubTotal();
+            case "5%":
+                return calcularSubTotal() - (no se como se restan los prcentages sorry);
+            case "10%":
+                return calcularSubTotal() - (10%);
+            case "15":
+                return calcularSubTotal() - (15%);
+                }
+    return 0;
+    }
+
+     */ }

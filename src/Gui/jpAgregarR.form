@@ -513,8 +513,12 @@
               <Font name="Roboto" size="15" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="5">
                 <StringItem index="0" value="Seleccionar"/>
+                <StringItem index="1" value="0%"/>
+                <StringItem index="2" value="5%"/>
+                <StringItem index="3" value="10%"/>
+                <StringItem index="4" value="15%"/>
               </StringArray>
             </Property>
           </Properties>
@@ -616,10 +620,11 @@
               <Font name="Roboto" size="15" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="4">
                 <StringItem index="0" value="Seleccionar"/>
                 <StringItem index="1" value="Efectivo"/>
                 <StringItem index="2" value="Tarjeta"/>
+                <StringItem index="3" value="Al contado "/>
               </StringArray>
             </Property>
           </Properties>

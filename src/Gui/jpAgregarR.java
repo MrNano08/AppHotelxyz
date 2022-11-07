@@ -234,7 +234,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         cbOcupantesAdultos.setToolTipText("");
 
         cdDescuento.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cdDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cdDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "0%", "5%", "10%", "15%" }));
 
         txtTotal.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
@@ -284,7 +284,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         );
 
         cbFormaPago.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Efectivo", "Tarjeta" }));
+        cbFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Efectivo", "Tarjeta", "Al contado " }));
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
