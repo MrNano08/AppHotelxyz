@@ -4,6 +4,7 @@
  */
 package Gui;
 
+import Logica.GestorReservaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -13,11 +14,15 @@ import java.awt.Color;
  */
 public class jpReservaciones extends javax.swing.JPanel {
 
+    GestorReservaciones gestorReservaciones;
     /**
      * Creates new form jpReservaciones
      */
     public jpReservaciones() {
         initComponents();
+        gestorReservaciones = new GestorReservaciones();
+        gestorReservaciones.recuperarDeArchivo();
+        tblReservaciones.setModel(gestorReservaciones.obtenerModeloTabla());
     }
 
     /**
@@ -31,7 +36,7 @@ public class jpReservaciones extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblReservaciones = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
         txtbtnAgregar = new javax.swing.JLabel();
         btnEditar = new javax.swing.JPanel();
@@ -47,10 +52,9 @@ public class jpReservaciones extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 236, 239));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(255, 236, 239));
-        jTable1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 236, 239));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblReservaciones.setBackground(new java.awt.Color(255, 236, 239));
+        tblReservaciones.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        tblReservaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -58,10 +62,10 @@ public class jpReservaciones extends javax.swing.JPanel {
                 "ID RENTA", "FECHA", "ID HABITACIÓN", "ID CLIENTE", "FORMAS DE PAGO", "TOTAL"
             }
         ));
-        jTable1.setOpaque(false);
-        jTable1.setSelectionBackground(new java.awt.Color(0, 0, 0));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tblReservaciones.setOpaque(false);
+        tblReservaciones.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        tblReservaciones.setShowGrid(true);
+        jScrollPane1.setViewportView(tblReservaciones);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 880, 550));
 
@@ -268,7 +272,7 @@ public class jpReservaciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblReservaciones;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnEditar;
     private javax.swing.JLabel txtbtnEliminar;
