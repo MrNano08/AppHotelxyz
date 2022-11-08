@@ -88,15 +88,16 @@ public class GestorReservaciones implements Global, Serializable {
     public DefaultTableModel obtenerModeloTabla() {
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO"}
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
         );
-        String fila[] = new String[5];
+        String fila[] = new String[6];
         for (Reservaciones reservaciones : listaReservaciones) {
             fila[0] = reservaciones.getIdRentaHabi();
             fila[1] = "" + reservaciones.getFecha();
             fila[2] = "" + reservaciones.getIdHabi();
             fila[3] = "" + reservaciones.getIdCliente();
             fila[4] = reservaciones.getFormaPago().toUpperCase();
+            fila[5] = String.valueOf(reservaciones.getTotal());
             modelo.addRow(fila);
         }
         return modelo;

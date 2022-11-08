@@ -162,7 +162,7 @@ public class Dashboard extends javax.swing.JFrame {
         txtReservaciones.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         txtReservaciones.setForeground(new java.awt.Color(255, 236, 239));
         txtReservaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txtReservaciones.setText("  Reservaciones");
+        txtReservaciones.setText("  Reservación");
 
         javax.swing.GroupLayout btnReservacionesLayout = new javax.swing.GroupLayout(btnReservaciones);
         btnReservaciones.setLayout(btnReservacionesLayout);

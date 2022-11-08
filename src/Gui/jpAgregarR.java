@@ -6,6 +6,7 @@ package Gui;
 
 import static Gui.Dashboard.contenido;
 import Logica.GestorReservaciones;
+import Logica.Reservaciones;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -80,7 +81,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         jcFechaActual = new com.toedter.calendar.JDateChooser();
         jcFechaFinal = new com.toedter.calendar.JDateChooser();
         jcFechaInicial = new com.toedter.calendar.JDateChooser();
-        cbFormaPago = new javax.swing.JComboBox<>();
+        txtFormaPago = new javax.swing.JTextField();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -282,9 +283,6 @@ public class jpAgregarR extends javax.swing.JPanel {
             }
         });
 
-        cbFormaPago.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        cbFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Efectivo", "Tarjeta", "Al contado " }));
-
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
         bgAgregarLayout.setHorizontalGroup(
@@ -302,7 +300,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                             .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(bgAgregarLayout.createSequentialGroup()
                                     .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                                     .addComponent(cbDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(bgAgregarLayout.createSequentialGroup()
                                     .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -331,7 +329,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                                                 .addComponent(jcFechaActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jcFechaFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jcFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(cbFormaPago, 0, 376, Short.MAX_VALUE))
+                                                .addComponent(txtFormaPago))
                                             .addGap(0, 0, Short.MAX_VALUE)))))
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
@@ -364,8 +362,8 @@ public class jpAgregarR extends javax.swing.JPanel {
                         .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(cbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
+                            .addComponent(txtFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(cbOcupantesAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -474,9 +472,40 @@ public class jpAgregarR extends javax.swing.JPanel {
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
         String error = validarEntrada();
-        if (error.equals("")) {
+        if (error.equals("")) {//no hay errores
+            Reservaciones reservaciones = new Reservaciones();
+            reservaciones.setFecha(jcFechaActual.getDate().toString());
+            reservaciones.setIdCliente(cbCliente.getSelectedIndex());
+            reservaciones.setIdHabi(cbHabitacion.getSelectedIndex());
+            reservaciones.setFormaPago(txtFormaPago.getText());
+            reservaciones.setAdultos(cbOcupantesAdultos.getSelectedIndex());
+            reservaciones.setNinnos(cbOcupantesNinos.getSelectedIndex());
+            reservaciones.setFechaIni(jcFechaInicial.getDate().toString());
+            reservaciones.setFechaFin(jcFechaFinal.getDate().toString());
+            reservaciones.setDiasHos(Integer.parseInt(txtDiasHospedaje.getText()));
+            reservaciones.setSubTotal(Double.parseDouble(txtSubtotal.getText()));
+            reservaciones.setDescuento(cbDescuento.getSelectedIndex());
+            reservaciones.setTotal(Double.parseDouble(txtTotal.getText()));
 
-            System.out.println("Si funca");
+            if (txtAgregar.getText().equals("Agregar")) {
+                if (gestorReservaciones.existe(reservaciones.getIdRentaHabi())) {
+                    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Id de cliente ya registrada");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+                } else {
+                    gestorReservaciones.guardar(reservaciones);
+
+                    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Datos guardados correctamente.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+                    gestorReservaciones.guardarEnArchivo();
+
+                }
+            } else {
+                gestorReservaciones.editar(reservaciones);
+                gestorReservaciones.guardarEnArchivo();
+            }
 
         } else {
             new frmMessagep().setVisible(true);
@@ -485,6 +514,7 @@ public class jpAgregarR extends javax.swing.JPanel {
             frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
         }
+
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void cbHabitacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHabitacionItemStateChanged
@@ -508,7 +538,7 @@ public class jpAgregarR extends javax.swing.JPanel {
 
     private void cbOcupantesAdultosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbOcupantesAdultosItemStateChanged
         CargarDatosprecio();
-        
+
     }//GEN-LAST:event_cbOcupantesAdultosItemStateChanged
 
     private void cbOcupantesNinosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbOcupantesNinosItemStateChanged
@@ -545,7 +575,6 @@ public class jpAgregarR extends javax.swing.JPanel {
     private javax.swing.JPanel btnCancelar;
     private javax.swing.JComboBox<String> cbCliente;
     private javax.swing.JComboBox<String> cbDescuento;
-    private javax.swing.JComboBox<String> cbFormaPago;
     private javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JComboBox<String> cbOcupantesAdultos;
     private javax.swing.JComboBox<String> cbOcupantesNinos;
@@ -567,6 +596,7 @@ public class jpAgregarR extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser jcFechaInicial;
     private javax.swing.JLabel txtAgregar;
     private javax.swing.JTextField txtDiasHospedaje;
+    private javax.swing.JTextField txtFormaPago;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JLabel txtbtnAgregar;
@@ -630,9 +660,9 @@ public class jpAgregarR extends javax.swing.JPanel {
             return "Elija el id de la habitacion";
         }
 
-        if (cbFormaPago.getSelectedIndex() == 0) {
-            cbFormaPago.requestFocus();
-            return "Elija la forma de pago";
+        if (txtFormaPago.getText().trim().equals("")) {
+            txtFormaPago.requestFocus();
+            return "Por favor ingrese la forma de pago";
         }
 
         if (cbOcupantesAdultos.getSelectedIndex() == 0) {
@@ -769,18 +799,17 @@ public class jpAgregarR extends javax.swing.JPanel {
 //
 //        }
     }
-    
-    public void CargarDatosprecio(){
-    jpHabitaciones hab = new jpHabitaciones();
+
+    public void CargarDatosprecio() {
+        jpHabitaciones hab = new jpHabitaciones();
         int filatbl = cbHabitacion.getSelectedIndex() - 1;
-        
-        if (cbHabitacion.getSelectedIndex() != 0 && cbOcupantesAdultos.getSelectedIndex() !=0 && jcFechaInicial.getDate() != null && jcFechaFinal.getDate() != null &&(cbOcupantesAdultos.getSelectedIndex()+cbOcupantesNinos.getSelectedIndex())<=Integer.parseInt((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())) && jcFechaFinal.getDate().after(jcFechaInicial.getDate())) {
+
+        if (cbHabitacion.getSelectedIndex() != 0 && cbOcupantesAdultos.getSelectedIndex() != 0 && jcFechaInicial.getDate() != null && jcFechaFinal.getDate() != null && (cbOcupantesAdultos.getSelectedIndex() + cbOcupantesNinos.getSelectedIndex()) <= Integer.parseInt((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())) && jcFechaFinal.getDate().after(jcFechaInicial.getDate())) {
             CalcularDiasHos(jcFechaInicial, jcFechaFinal);
             txtSubtotal.setText(String.valueOf(CalcularSubTotal()));
             txtTotal.setText(String.valueOf(calcularPrecioTotal()));
         }
-    
-    
+
     }
 
     public double calcularPrecioAdultos() {

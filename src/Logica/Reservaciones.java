@@ -4,26 +4,26 @@ import java.io.Serializable;
 
 public class Reservaciones implements Serializable {
 
-    private static int fecha;
+    private String fecha;
     private String idRentaHabi;
     private int idHabi;
     private int idCliente;
     private String formaPago;
     private int Adultos;
     private int ninnos;
-    private int fechaIni;
-    private int fechaFin;
+    private String fechaIni;
+    private String fechaFin;
     private int diasHos;
-    private int SubTotal;
+    private double SubTotal;
     private int descuento;
-    private int total;
+    private double total;
     private boolean estado;
 
     public Reservaciones() {
         idRentaHabi = autogenerarId();
     }
 
-    public Reservaciones(String idRentaHabi, int idHabi, int idCliente, String formaPago, int Adultos, int ninnos, int fechaIni, int fechaFin, int diasHos, int SubTotal, int descuento, int total, boolean estado) {
+    public Reservaciones(String idRentaHabi, int idHabi, int idCliente, String formaPago, int Adultos, int ninnos, String fechaIni, String fechaFin, int diasHos, double SubTotal, int descuento, double total, boolean estado) {
         this.idRentaHabi = idRentaHabi;
         this.idHabi = idHabi;
         this.idCliente = idCliente;
@@ -40,14 +40,14 @@ public class Reservaciones implements Serializable {
     }
 
     public String autogenerarId() {
-        if (fecha < 10) {
-            return "R-000" + (++fecha);
-        } else if (fecha < 100) {
-            return "R-00" + (++fecha);
-        } else if (fecha < 1000) {
-            return "A-0" + (++fecha);
+        if (total < 10) {
+            return "R-000" + (++total);
+        } else if (total < 100) {
+            return "R-00" + (++total);
+        } else if (total < 1000) {
+            return "A-0" + (++total);
         } else {
-            return "A-" + (++fecha);
+            return "A-" + (++total);
         }
     }
 
@@ -55,7 +55,7 @@ public class Reservaciones implements Serializable {
         this.idRentaHabi = idRentaHabi;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -79,11 +79,11 @@ public class Reservaciones implements Serializable {
         this.ninnos = ninnos;
     }
 
-    public void setFechaIni(int fechaIni) {
+    public void setFechaIni(String fechaIni) {
         this.fechaIni = fechaIni;
     }
 
-    public void setFechaFin(int fechaFin) {
+    public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -91,7 +91,7 @@ public class Reservaciones implements Serializable {
         this.diasHos = diasHos;
     }
 
-    public void setSubTotal(int SubTotal) {
+    public void setSubTotal(double SubTotal) {
         this.SubTotal = SubTotal;
     }
 
@@ -99,7 +99,7 @@ public class Reservaciones implements Serializable {
         this.descuento = descuento;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -111,7 +111,7 @@ public class Reservaciones implements Serializable {
         return idRentaHabi;
     }
 
-    public int getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
@@ -135,11 +135,11 @@ public class Reservaciones implements Serializable {
         return ninnos;
     }
 
-    public int getFechaIni() {
+    public String getFechaIni() {
         return fechaIni;
     }
 
-    public int getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
@@ -147,7 +147,7 @@ public class Reservaciones implements Serializable {
         return diasHos;
     }
 
-    public int getSubTotal() {
+    public double getSubTotal() {
         return SubTotal;
     }
 
@@ -155,7 +155,7 @@ public class Reservaciones implements Serializable {
         return descuento;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 

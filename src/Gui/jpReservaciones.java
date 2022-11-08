@@ -55,7 +55,7 @@ public class jpReservaciones extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID RENTA", "FECHA", "ID HABITACIÓN", "ID CLIENTE", "FORMAS DE PAGO"
+                "ID RENTA", "FECHA", "ID HABITACIÓN", "ID CLIENTE", "FORMAS DE PAGO", "TOTAL"
             }
         ));
         jTable1.setOpaque(false);
@@ -193,7 +193,6 @@ public class jpReservaciones extends javax.swing.JPanel {
         jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Reservaciones");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
