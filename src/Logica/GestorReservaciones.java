@@ -51,7 +51,6 @@ public class GestorReservaciones implements Global, Serializable {
     
 
 
-
     public boolean existe(String idRentaHabi) {
         for (Reservaciones reservaciones : listaReservaciones) {
             if (reservaciones.getIdRentaHabi().equals(idRentaHabi)) {
