@@ -108,6 +108,9 @@ public class GestorClientes implements Global, Serializable {
             }
         } else {
             System.out.println("No hay datos que guardar. La lista está vacía. ");
+                            
+            
+
         }
     }
 

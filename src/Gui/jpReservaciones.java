@@ -4,9 +4,16 @@
  */
 package Gui;
 
+
 import Logica.GestorReservaciones;
+import static Logica.Global.listaReservaciones;
+import static Logica.Global.listaReservaciones;
+import Logica.Reservaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +30,7 @@ public class jpReservaciones extends javax.swing.JPanel {
         gestorReservaciones = new GestorReservaciones();
         gestorReservaciones.recuperarDeArchivo();
         tblReservaciones.setModel(gestorReservaciones.obtenerModeloTabla());
+        lblTotal.setText("Total: " + tblReservaciones.getRowCount());
     }
 
     /**
@@ -46,6 +54,7 @@ public class jpReservaciones extends javax.swing.JPanel {
         btnImprimir = new javax.swing.JPanel();
         txtbtnImprimir = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(650, 530));
 
@@ -111,6 +120,9 @@ public class jpReservaciones extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnEditarMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEditarMousePressed(evt);
+            }
         });
 
         txtbtnEditar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -142,6 +154,9 @@ public class jpReservaciones extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
         });
 
         txtbtnEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -153,14 +168,14 @@ public class jpReservaciones extends javax.swing.JPanel {
         btnEliminar.setLayout(btnEliminarLayout);
         btnEliminarLayout.setHorizontalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnEliminarLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(txtbtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         btnEliminarLayout.setVerticalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(txtbtnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 610, -1, -1));
@@ -199,6 +214,10 @@ public class jpReservaciones extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabel1.setText("Reservaciones");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        lblTotal.setFont(new java.awt.Font("Roboto", 3, 16)); // NOI18N
+        lblTotal.setText("Total: 0");
+        jPanel1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -263,6 +282,55 @@ public class jpReservaciones extends javax.swing.JPanel {
         txtbtnImprimir.setForeground(new Color(255, 236, 239));
     }//GEN-LAST:event_btnImprimirMouseExited
 
+    private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
+        jpAgregarR editar = new jpAgregarR();
+        GestorReservaciones gestor = new GestorReservaciones();
+
+        gestor.setFila(tblReservaciones.getSelectedRow());
+
+        if (gestor.getFila() != -1) {
+            editar.txtAgregar.setText("Editar");
+            editar.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+            editar.setLocation(0, 0);
+
+            Dashboard.contenido.removeAll();
+            Dashboard.contenido.add(editar, BorderLayout.CENTER);
+            Dashboard.contenido.revalidate();
+            Dashboard.contenido.repaint();
+            jpAgregarR.cbCliente.setSelectedItem(listaReservaciones.get(gestor.getFila()).getIdCliente());
+            
+            
+        }else {
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Seleccione la reservación que desea editar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
+        }        
+        
+        
+    }//GEN-LAST:event_btnEditarMousePressed
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        System.out.println("hola");
+        GestorReservaciones gestor = new GestorReservaciones();
+        gestor.setFila(tblReservaciones.getSelectedRow());
+        if (gestor.getFila() != -1) {
+            String idP = (tblReservaciones.getValueAt(gestor.getFila(), 0).toString());
+            int resp = JOptionPane.showConfirmDialog(null,
+                    "¿Esta seguro de eliminar al cliente seleccionado?", "Eliminar",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+            if (resp == JOptionPane.YES_OPTION) {
+                gestor.eliminar(idP);
+                gestor.guardarEnArchivo();
+                cargarDatos();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione el cliente a eliminar",
+                    "Eliminar", JOptionPane.ERROR_MESSAGE);
+        }
+        System.out.println("adios");
+    }//GEN-LAST:event_btnEliminarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnAgregar;
@@ -272,10 +340,18 @@ public class jpReservaciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tblReservaciones;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnEditar;
     private javax.swing.JLabel txtbtnEliminar;
     private javax.swing.JLabel txtbtnImprimir;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos() {
+        tblReservaciones.setModel(gestorReservaciones.obtenerModeloTabla());
+        lblTotal.setText("Total: " + tblReservaciones.getRowCount());
+    }
+
+
 }

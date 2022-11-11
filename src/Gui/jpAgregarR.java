@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+
 /**
  *
  * @author UNA
@@ -81,7 +82,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         jcFechaActual = new com.toedter.calendar.JDateChooser();
         jcFechaFinal = new com.toedter.calendar.JDateChooser();
         jcFechaInicial = new com.toedter.calendar.JDateChooser();
-        txtFormaPago = new javax.swing.JTextField();
+        cbFormaPago = new javax.swing.JComboBox<>();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -283,6 +284,14 @@ public class jpAgregarR extends javax.swing.JPanel {
             }
         });
 
+        cbFormaPago.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
+        cbFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Tarjeta", "Efectivo" }));
+        cbFormaPago.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbFormaPagoItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
         bgAgregarLayout.setHorizontalGroup(
@@ -329,7 +338,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                                                 .addComponent(jcFechaActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jcFechaFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jcFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtFormaPago))
+                                                .addComponent(cbFormaPago, 0, 376, Short.MAX_VALUE))
                                             .addGap(0, 0, Short.MAX_VALUE)))))
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
@@ -362,8 +371,8 @@ public class jpAgregarR extends javax.swing.JPanel {
                         .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                            .addComponent(cbFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(cbOcupantesAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -474,14 +483,14 @@ public class jpAgregarR extends javax.swing.JPanel {
         String error = validarEntrada();
         if (error.equals("")) {//no hay errores
             Reservaciones reservaciones = new Reservaciones();
-            reservaciones.setFecha(jcFechaActual.getDate().toString());
-            reservaciones.setIdCliente(cbCliente.getSelectedIndex());
+            reservaciones.setFecha(jcFechaActual.getDate());
+            reservaciones.setIdCliente(Integer.parseInt(cbCliente.getSelectedItem().toString()));
             reservaciones.setIdHabi(cbHabitacion.getSelectedIndex());
-            reservaciones.setFormaPago(txtFormaPago.getText());
+            reservaciones.setFormaPago(String.valueOf(cbFormaPago.getSelectedIndex()).toUpperCase() );
             reservaciones.setAdultos(cbOcupantesAdultos.getSelectedIndex());
             reservaciones.setNinnos(cbOcupantesNinos.getSelectedIndex());
-            reservaciones.setFechaIni(jcFechaInicial.getDate().toString());
-            reservaciones.setFechaFin(jcFechaFinal.getDate().toString());
+            reservaciones.setFechaIni(jcFechaInicial.getDate());
+            reservaciones.setFechaFin(jcFechaFinal.getDate());
             reservaciones.setDiasHos(Integer.parseInt(txtDiasHospedaje.getText()));
             reservaciones.setSubTotal(Double.parseDouble(txtSubtotal.getText()));
             reservaciones.setDescuento(cbDescuento.getSelectedIndex());
@@ -490,7 +499,7 @@ public class jpAgregarR extends javax.swing.JPanel {
             if (txtAgregar.getText().equals("Agregar")) {
                 if (gestorReservaciones.existe(reservaciones.getIdRentaHabi())) {
                     new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Id de cliente ya registrada");
+                    frmMessagep.txtMessage.setText("Id de reservación ya registrada.");
                     frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
                 } else {
@@ -557,6 +566,10 @@ public class jpAgregarR extends javax.swing.JPanel {
         CargarDatosprecio();
     }//GEN-LAST:event_jcFechaFinalPropertyChange
 
+    private void cbFormaPagoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFormaPagoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFormaPagoItemStateChanged
+
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80, 65, 97));
 
@@ -573,11 +586,12 @@ public class jpAgregarR extends javax.swing.JPanel {
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCancelar;
-    private javax.swing.JComboBox<String> cbCliente;
-    private javax.swing.JComboBox<String> cbDescuento;
-    private javax.swing.JComboBox<String> cbHabitacion;
-    private javax.swing.JComboBox<String> cbOcupantesAdultos;
-    private javax.swing.JComboBox<String> cbOcupantesNinos;
+    protected static javax.swing.JComboBox<String> cbCliente;
+    protected static javax.swing.JComboBox<String> cbDescuento;
+    protected static javax.swing.JComboBox<String> cbFormaPago;
+    protected static javax.swing.JComboBox<String> cbHabitacion;
+    protected static javax.swing.JComboBox<String> cbOcupantesAdultos;
+    protected static javax.swing.JComboBox<String> cbOcupantesNinos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -591,14 +605,13 @@ public class jpAgregarR extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private com.toedter.calendar.JDateChooser jcFechaActual;
-    private com.toedter.calendar.JDateChooser jcFechaFinal;
-    private com.toedter.calendar.JDateChooser jcFechaInicial;
-    private javax.swing.JLabel txtAgregar;
-    private javax.swing.JTextField txtDiasHospedaje;
-    private javax.swing.JTextField txtFormaPago;
-    private javax.swing.JTextField txtSubtotal;
-    private javax.swing.JTextField txtTotal;
+    protected static com.toedter.calendar.JDateChooser jcFechaActual;
+    protected static com.toedter.calendar.JDateChooser jcFechaFinal;
+    protected static com.toedter.calendar.JDateChooser jcFechaInicial;
+    protected javax.swing.JLabel txtAgregar;
+    protected static javax.swing.JTextField txtDiasHospedaje;
+    protected static javax.swing.JTextField txtSubtotal;
+    protected static javax.swing.JTextField txtTotal;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnBack;
     private javax.swing.JLabel txtbtnCancelar;
@@ -647,48 +660,44 @@ public class jpAgregarR extends javax.swing.JPanel {
 
         if (jcFechaActual.getDate() == null) {
             jcFechaActual.requestFocus();
-            return "Se requiere la fecha actual";
+            return "Se requiere la fecha actual.";
         }
 
         if (cbCliente.getSelectedIndex() == 0) {
             cbCliente.requestFocus();
-            return "Elija el id del cliente";
+            return "Elija el id del cliente.";
         }
 
         if (cbHabitacion.getSelectedIndex() == 0) {
             cbHabitacion.requestFocus();
-            return "Elija el id de la habitacion";
+            return "Elija el id de la habitación.";
         }
 
-        if (txtFormaPago.getText().trim().equals("")) {
-            txtFormaPago.requestFocus();
-            return "Por favor ingrese la forma de pago";
+        if (cbFormaPago.getSelectedIndex() == 0) {
+            cbFormaPago.requestFocus();
+            return "Elija la forma de pago.";
         }
 
         if (cbOcupantesAdultos.getSelectedIndex() == 0) {
             cbOcupantesAdultos.requestFocus();
-            return "Elija la cantidad de ocupante adultos";
+            return "Elija la cantidad de ocupantes adultos.";
         }
 
         if (jcFechaInicial.getDate() == null) {
             jcFechaInicial.requestFocus();
-            return "Se requiere la fecha de inicial";
+            return "Se requiere la fecha de inicial.";
         }
 
         if (jcFechaFinal.getDate() == null) {
             jcFechaFinal.requestFocus();
-            return "Se requiere la fecha de final";
+            return "Se requiere la fecha de final.";
         }
 
         if (cbHabitacion.getSelectedIndex() == 0) {
             cbHabitacion.requestFocus();
-            return "Elija el id de la habitacion";
+            return "Elija el id de la habitación.";
         }
 
-        if (cbOcupantesAdultos.getSelectedIndex() == 0) {
-            cbOcupantesAdultos.requestFocus();
-            return "Elija la cantidad de ocupantes adultos";
-        }
 
         if ((cbOcupantesAdultos.getSelectedIndex() + cbOcupantesNinos.getSelectedIndex() > Integer.parseInt((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())))) {
             return "La cantidad de ocupantes máxima es de " + Integer.valueOf((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())) + " personas.";
@@ -696,58 +705,33 @@ public class jpAgregarR extends javax.swing.JPanel {
 
         if (jcFechaInicial.getDate() == null) {
             jcFechaInicial.requestFocus();
-            return "Se requiere la fecha de inicial";
+            return "Se requiere la fecha de inicial.";
         }
 
         if (jcFechaFinal.getDate() == null) {
             jcFechaFinal.requestFocus();
-            return "Se requiere la fecha de final";
+            return "Se requiere la fecha de final.";
         }
 
         if (jcFechaInicial.getDate().after(jcFechaFinal.getDate())) {
 
-            return "La fecha inicial debe ser anterior a la fecha final";
+            return "La fecha inicial debe ser anterior a la fecha final.";
+        }
+        
+        if (jcFechaActual.getDate().after(jcFechaInicial.getDate())) {
+
+            return "La fecha inicial debe ser posterior a la fecha actual.";
+        }
+        if (jcFechaActual.getDate().after(jcFechaFinal.getDate())) {
+
+            return "La fecha final debe ser posterior a la fecha actual.";
         }
 
         return "";
+        
 
     }
 
-    private String validacionbtnCalcular() {
-        jpHabitaciones hab = new jpHabitaciones();
-        int filatbl = cbHabitacion.getSelectedIndex() - 1;
-        if (cbHabitacion.getSelectedIndex() == 0) {
-            cbHabitacion.requestFocus();
-            return "Elija el id de la habitacion";
-        }
-
-        if (cbOcupantesAdultos.getSelectedIndex() == 0) {
-            cbOcupantesAdultos.requestFocus();
-            return "Elija la cantidad de ocupantes adultos";
-        }
-
-        if ((cbOcupantesAdultos.getSelectedIndex() + cbOcupantesNinos.getSelectedIndex() > Integer.parseInt((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())))) {
-            return "La cantidad de ocupantes máxima es de " + Integer.valueOf((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())) + " personas.";
-        }
-
-        if (jcFechaInicial.getDate() == null) {
-            jcFechaInicial.requestFocus();
-            return "Se requiere la fecha de inicial";
-        }
-
-        if (jcFechaFinal.getDate() == null) {
-            jcFechaFinal.requestFocus();
-            return "Se requiere la fecha de final";
-        }
-
-        if (jcFechaInicial.getDate().after(jcFechaFinal.getDate())) {
-
-            return "La fecha inicial debe ser anterior a la fecha final";
-        }
-
-        return "";
-
-    }
 
     public int cantidadMaxHues() {
         int cantidadMHues = 0;
@@ -760,7 +744,6 @@ public class jpAgregarR extends javax.swing.JPanel {
     public void cargarCantidadMaxhues() {
 
         if (cbHabitacion.getSelectedIndex() != 0) {
-            //resetCantidaMH();
 
             while (iA <= cantidadMaxHues()) {
 
@@ -780,31 +763,12 @@ public class jpAgregarR extends javax.swing.JPanel {
 
     }
 
-    public void resetCantidaMH() {
-
-//        if (cbHabitacion.getSelectedIndex() != seleccionado) {
-//
-//            while (iA > 1) {
-//
-//                cbOcupantesAdultos.removeItemAt(textA - 1);
-//                textA--;
-//                iA--;
-//            }
-//
-//            while (iN > 1) {
-//                cbOcupantesNinos.removeItemAt(textN - 1);
-//                textN--;
-//                iN--;
-//            }
-//
-//        }
-    }
 
     public void CargarDatosprecio() {
         jpHabitaciones hab = new jpHabitaciones();
         int filatbl = cbHabitacion.getSelectedIndex() - 1;
 
-        if (cbHabitacion.getSelectedIndex() != 0 && cbOcupantesAdultos.getSelectedIndex() != 0 && jcFechaInicial.getDate() != null && jcFechaFinal.getDate() != null && (cbOcupantesAdultos.getSelectedIndex() + cbOcupantesNinos.getSelectedIndex()) <= Integer.parseInt((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())) && jcFechaFinal.getDate().after(jcFechaInicial.getDate())) {
+        if (cbHabitacion.getSelectedIndex() != 0 && cbOcupantesAdultos.getSelectedIndex() != 0 && jcFechaInicial.getDate() != null && jcFechaFinal.getDate() != null && (cbOcupantesAdultos.getSelectedIndex() + cbOcupantesNinos.getSelectedIndex()) <= Integer.parseInt((hab.tblHabitaciones.getValueAt(filatbl, 3).toString())) && jcFechaFinal.getDate().after(jcFechaInicial.getDate())&&jcFechaInicial.getDate().after(jcFechaActual.getDate())) {
             CalcularDiasHos(jcFechaInicial, jcFechaFinal);
             txtSubtotal.setText(String.valueOf(CalcularSubTotal()));
             txtTotal.setText(String.valueOf(calcularPrecioTotal()));

@@ -12,6 +12,10 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Gui.Dashboard;
+import Logica.Global;
+import java.util.ArrayList;
+import Logica.Global;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -50,13 +54,13 @@ public class jpConfiguracion extends javax.swing.JPanel {
         txtContrasenna = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnCerrarS = new javax.swing.JPanel();
-        txtbtnCerrarS = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtConfContrasenna = new javax.swing.JTextField();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
         txtAgregar.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        txtAgregar.setText("Configuracion de Usuario");
+        txtAgregar.setText("Configuración de credenciales.");
 
         btnCancelar.setBackground(new java.awt.Color(55, 41, 72));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,7 +110,7 @@ public class jpConfiguracion extends javax.swing.JPanel {
         txtbtnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         txtbtnAgregar.setForeground(new java.awt.Color(247, 236, 222));
         txtbtnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtbtnAgregar.setText("Cambiar");
+        txtbtnAgregar.setText("Aceptar");
 
         javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
         btnAgregar.setLayout(btnAgregarLayout);
@@ -122,90 +126,74 @@ public class jpConfiguracion extends javax.swing.JPanel {
             .addComponent(txtbtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Introdusca el nuevo usuario:");
+        txtUsuario.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
 
-        jLabel2.setText("Introdusca la nueva contaseña:");
+        txtContrasenna.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
 
-        btnCerrarS.setBackground(new java.awt.Color(55, 41, 72));
-        btnCerrarS.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCerrarSMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCerrarSMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnCerrarSMousePressed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel1.setText("Cambiar nombre de usuario:");
 
-        txtbtnCerrarS.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        txtbtnCerrarS.setForeground(new java.awt.Color(247, 236, 222));
-        txtbtnCerrarS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtbtnCerrarS.setText("Cerrar sesión");
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel2.setText("Nueva contaseña:");
 
-        javax.swing.GroupLayout btnCerrarSLayout = new javax.swing.GroupLayout(btnCerrarS);
-        btnCerrarS.setLayout(btnCerrarSLayout);
-        btnCerrarSLayout.setHorizontalGroup(
-            btnCerrarSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarSLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(txtbtnCerrarS, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-        );
-        btnCerrarSLayout.setVerticalGroup(
-            btnCerrarSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnCerrarS, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        );
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setText("Confirmación de contaseña:");
+
+        txtConfContrasenna.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
         bgAgregarLayout.setHorizontalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAgregarLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgAgregarLayout.createSequentialGroup()
-                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(97, 97, 97)
-                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 427, Short.MAX_VALUE))
-                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txtAgregar))
-                            .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addComponent(btnCerrarS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(bgAgregarLayout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtConfContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(bgAgregarLayout.createSequentialGroup()
+                                    .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtContrasenna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtAgregar)))
+                .addContainerGap(395, Short.MAX_VALUE))
         );
         bgAgregarLayout.setVerticalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAgregarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtAgregar)
-                .addGap(28, 28, 28)
+                .addGap(86, 86, 86)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtConfContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrarS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -221,22 +209,25 @@ public class jpConfiguracion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-
-        jpInicio inicio = new jpInicio();
-        inicio.setSize(contenido.getWidth(), contenido.getHeight());
-        inicio.setLocation(0, 0);
-
-        contenido.removeAll();
-        contenido.add(inicio, BorderLayout.CENTER);
-        contenido.revalidate();
-        contenido.repaint();
+        String error = validarEntrada();
+        if (error.equals("")) {
         Usuario usuario = new Usuario();
         usuario.setUsuario(txtUsuario.getText());
         usuario.setContrasena(txtContrasenna.getText());
-        {
+        
             gestorUsuario.guardarUsuario(usuario);
             gestorUsuario.guardarEnArchivo();
-        }
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Cambio de credenciales realizado correctamente.");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+       } else {
+            new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText(validarEntrada());
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+
+        } 
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
@@ -271,19 +262,6 @@ public class jpConfiguracion extends javax.swing.JPanel {
         txtbtnCancelar.setForeground(new Color(255, 202, 202));
     }//GEN-LAST:event_btnCancelarMouseEntered
 
-    private void btnCerrarSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarSMouseEntered
-
-    private void btnCerrarSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarSMouseExited
-
-    private void btnCerrarSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSMousePressed
-        
-         new frmlogin().setVisible(true);
-    }//GEN-LAST:event_btnCerrarSMousePressed
-
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80, 65, 97));
 
@@ -299,15 +277,36 @@ public class jpConfiguracion extends javax.swing.JPanel {
     private javax.swing.JPanel bgAgregar;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnCancelar;
-    private javax.swing.JPanel btnCerrarS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel txtAgregar;
+    private javax.swing.JTextField txtConfContrasenna;
     private javax.swing.JTextField txtContrasenna;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnCancelar;
-    private javax.swing.JLabel txtbtnCerrarS;
     // End of variables declaration//GEN-END:variables
+
+    private String validarEntrada() {
+        
+
+            if (txtUsuario.getText().trim().equals("")) {
+                txtUsuario.requestFocus();
+                return "Ingrese el nuevo nombre de usuario.";
+            }
+            
+            if (txtContrasenna.getText().trim().equals("")) {
+                txtContrasenna.requestFocus();
+                return "Ingrese la nueva contraseña.";
+            }
+            
+                
+            if (!txtContrasenna.getText().equalsIgnoreCase(txtConfContrasenna.getText())) {
+            return "Las contraseñas no coinciden.";
+        }
+            return "";
+
+        }
 
 }

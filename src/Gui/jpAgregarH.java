@@ -468,53 +468,53 @@ public class jpAgregarH extends jpHabitaciones {
     private String validarEntrada() {
         if (txtIdHabitacion.getText().trim().equals("")) {
             txtIdHabitacion.requestFocus();
-            return "Se requiere el id de la habitacion";
+            return "Ingrese el id de la habitacion.";
         } else {
             try {
                 Integer.parseInt(txtIdHabitacion.getText());
             } catch (NumberFormatException e) {
                 txtIdHabitacion.requestFocus();
-                return "El id de la habitacion debe ser numerico";
+                return "El id de la habitacion debe ser numérico.";
             }
 
             if (txtDescripcion.getText().trim().equals("")) {
                 txtDescripcion.requestFocus();
-                return "Ingrese la descripcion de la habitacion";
+                return "Ingrese la descripción de la habitación.";
             }
 
             if (txtNumHues.getText().trim().equals("")) {
                 txtNumHues.requestFocus();
-                return "Ingrese la cantidad de huespedes";
+                return "Ingrese la cantidad de huespedes.";
             } else {
                 try {
                     Integer.parseInt(txtNumHues.getText());
                 } catch (NumberFormatException e) {
                     txtNumHues.requestFocus();
-                    return "La cantidad de Huespedes debe ser numerica";
+                    return "La cantidad de Huespedes debe ser numérica.";
                 }
             }
 
             if (txtPreNinnos.getText().trim().equals("")) {
                 txtPreNinnos.requestFocus();
-                return "Ingrese el precio para niños";
+                return "Ingrese el precio para niños.";
             } else {
                 try {
                     Integer.parseInt(txtPreNinnos.getText());
                 } catch (NumberFormatException e) {
                     txtPreNinnos.requestFocus();
-                    return "Los precio deben ser numericos";
+                    return "Los precio deben ser numéricos.";
                 }
             }
 
             if (txtPreAdultos.getText().trim().equals("")) {
                 txtPreAdultos.requestFocus();
-                return "Ingrese el precio para Adultos";
+                return "Ingrese el precio para Adultos.";
             } else {
                 try {
                     Integer.parseInt(txtPreAdultos.getText());
                 } catch (NumberFormatException e) {
                     txtPreAdultos.requestFocus();
-                    return "Los precios deben ser numericos";
+                    return "Los precios deben ser numéricos.";
                 }
             }
             return "";

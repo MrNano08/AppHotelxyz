@@ -81,7 +81,7 @@
                                                   <Component id="jcFechaActual" max="32767" attributes="0"/>
                                                   <Component id="jcFechaFinal" alignment="1" max="32767" attributes="0"/>
                                                   <Component id="jcFechaInicial" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtFormaPago" max="32767" attributes="0"/>
+                                                  <Component id="cbFormaPago" alignment="0" pref="376" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
@@ -127,9 +127,9 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtFormaPago" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbFormaPago" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbOcupantesAdultos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -192,6 +192,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="btnBack">
           <Properties>
@@ -440,6 +443,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbCliente">
@@ -455,6 +459,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbHabitacion">
@@ -473,6 +478,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbOcupantesAdultos">
@@ -492,6 +498,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbDescuento">
@@ -513,6 +520,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTotal">
@@ -521,6 +529,9 @@
               <Font name="Roboto" size="15" style="1"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDiasHospedaje">
           <Properties>
@@ -528,6 +539,9 @@
               <Font name="Roboto" size="15" style="1"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSubtotal">
           <Properties>
@@ -535,6 +549,9 @@
               <Font name="Roboto" size="15" style="1"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jcFechaActual">
           <Properties>
@@ -543,6 +560,9 @@
               <Font name="Roboto" size="15" style="1"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jcFechaFinal">
           <Properties>
@@ -554,6 +574,9 @@
           <Events>
             <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jcFechaFinalPropertyChange"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jcFechaInicial">
           <Properties>
@@ -565,8 +588,30 @@
           <Events>
             <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jcFechaInicialPropertyChange"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFormaPago">
+        <Component class="javax.swing.JComboBox" name="cbFormaPago">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="15" style="1"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Seleccionar"/>
+                <StringItem index="1" value="Tarjeta"/>
+                <StringItem index="2" value="Efectivo"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbFormaPagoItemStateChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

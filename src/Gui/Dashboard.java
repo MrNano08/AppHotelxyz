@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Label;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import javax.swing.JLabel;
@@ -75,8 +76,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         infoBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JPanel();
-        txtSalir = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JLabel();
+        btnMinimizar = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -294,8 +295,8 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 236, 239));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/engranaje.png"))); // NOI18N
         jLabel2.setText("Configuracion");
 
@@ -305,15 +306,12 @@ public class Dashboard extends javax.swing.JFrame {
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnConfiguracionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnConfiguracionLayout.setVerticalGroup(
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnConfiguracionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout MenuBarLayout = new javax.swing.GroupLayout(MenuBar);
@@ -329,14 +327,10 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(btnReservaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnReportesFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuBarLayout.createSequentialGroup()
-                        .addGroup(MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MenuBarLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(MenuBarLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(txtAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(9, 9, 9)))
+                        .addGap(14, 14, 14)
+                        .addComponent(txtAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(9, 9, 9))
+                    .addComponent(btnConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         MenuBarLayout.setVerticalGroup(
@@ -351,7 +345,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportesFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
                 .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,8 +368,10 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/Images/Hotel_img148x70.png"))); // NOI18N
 
-        btnSalir.setBackground(new java.awt.Color(55, 41, 72));
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalir.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(247, 236, 222));
+        btnSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSalir.setText("x");
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSalirMouseEntered(evt);
@@ -388,25 +384,21 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        txtSalir.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        txtSalir.setForeground(new java.awt.Color(247, 236, 222));
-        txtSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtSalir.setText("x");
-
-        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
-        btnSalir.setLayout(btnSalirLayout);
-        btnSalirLayout.setHorizontalGroup(
-            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(txtSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        btnSalirLayout.setVerticalGroup(
-            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(txtSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-        );
+        btnMinimizar.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnMinimizar.setForeground(new java.awt.Color(247, 236, 222));
+        btnMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMinimizar.setText("—");
+        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnMinimizarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout infoBarLayout = new javax.swing.GroupLayout(infoBar);
         infoBar.setLayout(infoBarLayout);
@@ -414,15 +406,21 @@ public class Dashboard extends javax.swing.JFrame {
             infoBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoBarLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 847, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(836, 836, 836)
+                .addComponent(btnMinimizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addContainerGap())
         );
         infoBarLayout.setVerticalGroup(
             infoBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoBarLayout.createSequentialGroup()
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(infoBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(infoBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalir)
+                    .addComponent(btnMinimizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         background.add(infoBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 70));
@@ -457,25 +455,6 @@ public class Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
-
-        if (abierto == false ) {
-        new frmSalir().setVisible(true);    
-        abierto = true;
-        }
-        
-        
-        
-    }//GEN-LAST:event_btnSalirMousePressed
-
-    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
-        txtSalir.setForeground(Color.red);
-    }//GEN-LAST:event_btnSalirMouseEntered
-
-    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        txtSalir.setForeground(Color.white);
-    }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseEntered
         if (btnInicio.getBackground().getRGB() == -13162168 && txtInicio.getForeground().getRGB() == -4881) {
@@ -683,14 +662,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_infoBarMouseDragged
 
     private void btnConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMouseClicked
-    panel = "Configuracion de usuario";
-        resetColor(btnInicio);
-        resetColor(btnReservaciones);
-        resetColor(btnHabitaciones);
-        resetColor(btnClientes);
-        resetColor(btnReportesFacturacion);
-        setColor(btnConfiguracion);
-
+        panel = "Configuracion de usuario";
         jpConfiguracion configuracion = new jpConfiguracion();
         configuracion.setSize(contenido.getWidth(), contenido.getHeight());
         configuracion.setLocation(0, 0);
@@ -709,6 +681,34 @@ public class Dashboard extends javax.swing.JFrame {
     private void txtAyudaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAyudaMouseExited
        textresetColor(txtAyuda);
     }//GEN-LAST:event_txtAyudaMouseExited
+
+    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
+        if (abierto == false ) {
+        new frmSalir().setVisible(true);    
+        abierto = true;
+        }
+    }//GEN-LAST:event_btnSalirMousePressed
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setForeground(Color.red);
+        
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        btnSalir.setForeground(new Color(247,236,222));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnMinimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMousePressed
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_btnMinimizarMousePressed
+
+    private void btnMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseEntered
+        btnMinimizar.setForeground(new Color(37, 27, 55));
+    }//GEN-LAST:event_btnMinimizarMouseEntered
+
+    private void btnMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseExited
+        btnMinimizar.setForeground(new Color(247,236,222));
+    }//GEN-LAST:event_btnMinimizarMouseExited
 
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(37, 27, 55));
@@ -774,9 +774,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel btnConfiguracion;
     private javax.swing.JPanel btnHabitaciones;
     private javax.swing.JPanel btnInicio;
+    private javax.swing.JLabel btnMinimizar;
     private javax.swing.JPanel btnReportesFacturacion;
     private javax.swing.JPanel btnReservaciones;
-    private javax.swing.JPanel btnSalir;
+    private javax.swing.JLabel btnSalir;
+    private javax.swing.JPanel btnSalir1;
     public static javax.swing.JPanel contenido;
     private javax.swing.JPanel infoBar;
     private javax.swing.JDialog jDialog1;
@@ -789,7 +791,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel txtInicio;
     private javax.swing.JLabel txtReportesFacturacion;
     private javax.swing.JLabel txtReservaciones;
-    private javax.swing.JLabel txtSalir;
+    private javax.swing.JLabel txtSalir1;
     // End of variables declaration//GEN-END:variables
 
     private void setSize(double pantallaAn, double pantallaAl) {

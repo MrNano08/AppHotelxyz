@@ -1,17 +1,30 @@
 
 package Gui;
 
+import Logica.GestorUsuario;
+import Logica.Global;
+import Logica.Usuario;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class frmlogin extends javax.swing.JFrame {
+
+public class frmlogin extends javax.swing.JFrame implements Global{
 
     int xMouse, yMouse;
     int intentos = 2;
+    private String usr;
+    private String contrasena;
     public frmlogin() {
         initComponents();
+        GestorUsuario gestor = new GestorUsuario();
+        gestor.recuperarDeArchivo(); 
+        Usuario callUserClass = new Usuario();
+        for (Usuario usuario : listaUsuario) {
+           usr = usuario.getUsuario(); 
+           contrasena = usuario.getContrasena();
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -96,7 +109,7 @@ public class frmlogin extends javax.swing.JFrame {
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtUsuario.setForeground(java.awt.Color.gray);
-        txtUsuario.setText("Ingrese su nombre de usuario");
+        txtUsuario.setText("Ingrese su nombre de usuario.");
         txtUsuario.setBorder(null);
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -274,7 +287,7 @@ public class frmlogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarbtntxtMouseExited
 
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
-        if (txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
+        if (txtUsuario.getText().equals("Ingrese su nombre de usuario.")) {
         txtUsuario.setText("");
         txtUsuario.setForeground(Color.BLACK);
     }
@@ -290,7 +303,7 @@ public class frmlogin extends javax.swing.JFrame {
         pfContrasena.setForeground(Color.BLACK);
        }
        if (txtUsuario.getText().isEmpty()) {
-        txtUsuario.setText("Ingrese su nombre de usuario");
+        txtUsuario.setText("Ingrese su nombre de usuario.");
         txtUsuario.setForeground(Color.GRAY);
        }
     }//GEN-LAST:event_pfContrasenaMousePressed
@@ -298,7 +311,7 @@ public class frmlogin extends javax.swing.JFrame {
     private void loginbtntxt1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtntxt1MousePressed
 
 
-        if (String.valueOf(pfContrasena.getPassword()).equals("1234") && txtUsuario.getText().equals("admin")) {
+        if (String.valueOf(pfContrasena.getPassword()).equals(contrasena) && txtUsuario.getText().equals(usr)) {
             this.dispose();
             new Dashboard().setVisible(true);
  
@@ -328,7 +341,7 @@ public class frmlogin extends javax.swing.JFrame {
             if (intentos<0) {
                 System.exit(0);
             } else {
-            txtmsgError.setText("Usuario o contraseña incorrectos   Intentos restantes: "+ (intentos+1));
+            txtmsgError.setText("Usuario o contraseña incorrectos   Intentos restantes: "+ (intentos+1)+".");
             }
     }//GEN-LAST:event_loginbtntxt1MouseClicked
 
@@ -412,4 +425,17 @@ public class frmlogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel txtmsgError;
     // End of variables declaration//GEN-END:variables
-}
+
+    @Override
+    public void guardarEnArchivo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void recuperarDeArchivo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    }
+    
+

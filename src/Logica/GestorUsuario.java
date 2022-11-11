@@ -30,13 +30,14 @@ public class GestorUsuario implements Global, Serializable {
     }
     
     public void guardarUsuario(Usuario usuario) {
-        if (!existeUsuario(usuario.getUsuario())) {
+            listaUsuario.clear();
             listaUsuario.add(usuario);
-        }
+   
     }
     
      public boolean existeClave(String clave) {
         for (Usuario usuario : listaUsuario) {
+            
             if (usuario.getContrasena().equals(clave)) {
                 return true;
             }
@@ -46,13 +47,14 @@ public class GestorUsuario implements Global, Serializable {
     
     public void guardarClave(Usuario usuario) {
          if (!existeClave(usuario.getContrasena())) {
+             
             listaUsuario.add(usuario);
         }
     }
 
     @Override
     public void guardarEnArchivo() {
-        String archivo = "usuario.txt";
+        String archivo = "Usuario.txt";
         if (!listaUsuario.isEmpty()) {
             try {
                 ObjectOutputStream ficheroSalida = new ObjectOutputStream(
@@ -74,7 +76,7 @@ public class GestorUsuario implements Global, Serializable {
     @Override
     public void recuperarDeArchivo() {
         try {
-            File fichero = new File("usuario.txt");
+            File fichero = new File("Usuario.txt");
             if (fichero.exists()) {
                 ObjectInputStream ficheroEntrada = new ObjectInputStream(new FileInputStream(fichero));
                 ArrayList<Usuario> temporal = (ArrayList) ficheroEntrada.readObject();

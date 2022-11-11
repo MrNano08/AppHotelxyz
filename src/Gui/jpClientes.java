@@ -6,9 +6,11 @@ package Gui;
 
 import Logica.GestorClientes;
 import Logica.GestorHabitaciones;
+import Logica.Global;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.print.PrinterException;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -355,6 +357,9 @@ public class jpClientes extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione el cliente a eliminar",
                     "Eliminar", JOptionPane.ERROR_MESSAGE);
+        }
+        if (Global.listaReservaciones.isEmpty()) {
+            File Reservaciones = new File("path/Reservaciones1.txt");
         }
     }//GEN-LAST:event_btnEliminarMousePressed
 

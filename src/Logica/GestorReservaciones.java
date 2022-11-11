@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Logica;
 
 import static Logica.Global.listaClientes;
@@ -49,7 +46,15 @@ public class GestorReservaciones implements Global, Serializable {
         return listaDeIdH;
     }
     
-
+    public ArrayList<String> obtenerDatosReserva() {
+        ArrayList<String> datosR = new ArrayList<>();
+        for (Reservaciones reservaciones: listaReservaciones) {
+            datosR.add(reservaciones.getFecha().toString());
+            datosR.add(String.valueOf(reservaciones.getIdCliente()));
+            
+        }
+        return datosR;
+    }
 
     public boolean existe(String idRentaHabi) {
         for (Reservaciones reservaciones : listaReservaciones) {
@@ -93,10 +98,20 @@ public class GestorReservaciones implements Global, Serializable {
         String fila[] = new String[6];
         for (Reservaciones reservaciones : listaReservaciones) {
             fila[0] = reservaciones.getIdRentaHabi();
-            fila[1] = "" + reservaciones.getFecha();
+            
+            String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+            
+            fila[1] = fecha;
             fila[2] = "" + reservaciones.getIdHabi();
             fila[3] = "" + reservaciones.getIdCliente();
-            fila[4] = reservaciones.getFormaPago().toUpperCase();
+            String fP="";
+            if (reservaciones.getFormaPago().equals("1")) {
+                fP = "Tarjeta";
+            }
+            if (reservaciones.getFormaPago().equals("2")) {
+                fP = "Efectivo";
+            }
+            fila[4] = fP;
             fila[5] = String.valueOf(reservaciones.getTotal());
             modelo.addRow(fila);
         }

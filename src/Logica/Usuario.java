@@ -6,10 +6,6 @@ package Logica;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Usuario
- */
 public class Usuario implements Serializable {
     private String usuario;
     private String contrasena;

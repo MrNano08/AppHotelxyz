@@ -494,49 +494,49 @@ private String validarEntrada() {
 
             if (txtNombre.getText().trim().equals("")) {
                 txtNombre.requestFocus();
-                return "Ingrese el Nombre del cliente";
+                return "Ingrese el Nombre del cliente.";
             }
             
              if (txtApellidos.getText().trim().equals("")) {
                 txtApellidos.requestFocus();
-                return "Digite los apellidos del cliente";
+                return "Digite los apellidos del cliente.";
             }
             
             if (txtIdHuesped.getText().trim().equals("")) {
             txtIdHuesped.requestFocus();
-            return "Se requiere el id del cliente";
+            return "Se requiere el id del cliente.";
         } else {
             try {
                 Integer.parseInt(txtIdHuesped.getText());
             } catch (NumberFormatException e) {
                 txtIdHuesped.requestFocus();
-                return "El id del cliente debe ser numerico";
+                return "El id del cliente debe ser numérico.";
             }
 
             if (txtDireccion.getText().trim().equals("")) {
                 txtDireccion.requestFocus();
-                return "Ingrese la dirección";
+                return "Ingrese la dirección.";
             }
 
             if (txtEmpresa.getText().trim().equals("")) {
                 txtEmpresa.requestFocus();
-                return "Ingrese la empresa del cliente";
+                return "Ingrese la empresa del cliente.";
             }
 
             if (txtCorreo.getText().trim().equals("")) {
                 txtCorreo.requestFocus();
-                return "Ingrese el correo del cliente";
+                return "Ingrese el correo del cliente.";
             }
             
             if (txtTelefono.getText().trim().equals("")) {
             txtTelefono.requestFocus();
-            return "Se requiere el número de teléfono del cliente";
+            return "Se requiere el número de teléfono del cliente.";
         } else {
             try {
                     Integer.parseInt(txtTelefono.getText());
             } catch (NumberFormatException e) {
                 txtTelefono.requestFocus();
-                return "número de teléfono cliente debe ser numerico";
+                return "El número de teléfono del cliente debe ser numérico.";
             }
                 
             }
