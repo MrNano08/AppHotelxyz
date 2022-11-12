@@ -577,7 +577,6 @@ public class jpAgregarH extends jpHabitaciones {
                 }
             }
             return "";
-
         }
     }
 
