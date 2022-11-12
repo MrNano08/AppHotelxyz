@@ -108,7 +108,7 @@
                   <Table columnCount="8" rowCount="0">
                     <Column editable="true" title="Id" type="java.lang.Object"/>
                     <Column editable="true" title="Descripci&#xf3;n" type="java.lang.Object"/>
-                    <Column editable="true" title="Imagen" type="java.lang.Object"/>
+                    <Column editable="false" title="Imagen" type="java.lang.Object"/>
                     <Column editable="true" title="N&#xfa;mero m&#xe1;ximo de Huespedes" type="java.lang.Object"/>
                     <Column editable="true" title="Precio por d&#xed;a adulto" type="java.lang.Object"/>
                     <Column editable="true" title="Precio por d&#xed;a ni&#xf1;o" type="java.lang.Object"/>
@@ -128,7 +128,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="45" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="45" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>

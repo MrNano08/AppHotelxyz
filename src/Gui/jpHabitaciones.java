@@ -5,6 +5,7 @@
 package Gui;
 
 import Logica.GestorHabitaciones;
+import Logica.imgTabla;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -22,6 +23,8 @@ public class jpHabitaciones extends javax.swing.JPanel {
 
     public jpHabitaciones() {
         initComponents();
+        tblHabitaciones.setDefaultRenderer(Object.class, new imgTabla());
+        tblHabitaciones.setRowHeight(65);
         gestorHabitaciones = new GestorHabitaciones();
         gestorHabitaciones.recuperarDeArchivo();
         tblHabitaciones.setModel(gestorHabitaciones.obtenerModeloTabla());
@@ -66,13 +69,22 @@ public class jpHabitaciones extends javax.swing.JPanel {
             new String [] {
                 "Id", "Descripción", "Imagen", "Número máximo de Huespedes", "Precio por día adulto", "Precio por día niño", "Estado", "Activa"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblHabitaciones.setOpaque(false);
         tblHabitaciones.setSelectionBackground(new java.awt.Color(66, 28, 86));
         tblHabitaciones.setShowGrid(true);
         jScrollPane1.setViewportView(tblHabitaciones);
         if (tblHabitaciones.getColumnModel().getColumnCount() > 0) {
             tblHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblHabitaciones.getColumnModel().getColumn(2).setResizable(false);
             tblHabitaciones.getColumnModel().getColumn(2).setPreferredWidth(45);
             tblHabitaciones.getColumnModel().getColumn(3).setPreferredWidth(140);
             tblHabitaciones.getColumnModel().getColumn(4).setPreferredWidth(80);
@@ -335,7 +347,7 @@ public class jpHabitaciones extends javax.swing.JPanel {
             jpAgregarH.txtIdHabitacion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 0).toString());
             jpAgregarH.txtIdHabitacion.setEditable(false);
             jpAgregarH.txtDescripcion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 1).toString());
-            jpAgregarH.txtImagen.setText(tblHabitaciones.getValueAt(gestor.getFila(), 2).toString());
+//            jpAgregarH.txtImagen.setText(tblHabitaciones.getValueAt(gestor.getFila(), 2).toString());
             jpAgregarH.txtNumHues.setText(tblHabitaciones.getValueAt(gestor.getFila(), 3).toString());
             jpAgregarH.txtPreAdultos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 4).toString());
             jpAgregarH.txtPreNinnos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 5).toString());

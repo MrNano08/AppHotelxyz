@@ -5,6 +5,7 @@
 package Gui;
 
 import java.awt.Color;
+import javax.swing.Icon;
 
 /**
  *
@@ -16,6 +17,7 @@ public class frmSalir extends javax.swing.JFrame {
     
     public frmSalir() {
         initComponents();
+        
         
     }
 

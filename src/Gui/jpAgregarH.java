@@ -10,7 +10,13 @@ import Logica.Global;
 import Logica.Habitaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -21,6 +27,8 @@ import javax.swing.JPanel;
 public class jpAgregarH extends jpHabitaciones {
 
     GestorHabitaciones gestorHabitaciones;
+    private FileInputStream fis;
+    private int longitudBytes;
 
     public jpAgregarH() {
         gestorHabitaciones = new GestorHabitaciones();
@@ -54,8 +62,6 @@ public class jpAgregarH extends jpHabitaciones {
         txtIdHabitacion = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtImagen = new javax.swing.JTextPane();
         txtNumHues = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtPreAdultos = new javax.swing.JTextField();
@@ -65,6 +71,7 @@ public class jpAgregarH extends jpHabitaciones {
         jLabel9 = new javax.swing.JLabel();
         cboOcupado = new javax.swing.JCheckBox();
         cboActivo = new javax.swing.JCheckBox();
+        lblImageH = new javax.swing.JLabel();
 
         bgAgregar.setBackground(new java.awt.Color(255, 236, 239));
 
@@ -130,7 +137,7 @@ public class jpAgregarH extends jpHabitaciones {
         );
         btnCancelarLayout.setVerticalGroup(
             btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(txtbtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         btnGuardar.setBackground(new java.awt.Color(55, 41, 72));
@@ -162,7 +169,7 @@ public class jpAgregarH extends jpHabitaciones {
         );
         btnGuardarLayout.setVerticalGroup(
             btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(txtbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
@@ -184,9 +191,6 @@ public class jpAgregarH extends jpHabitaciones {
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setText("Numero de Huespedes:");
 
-        txtImagen.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
-        jScrollPane1.setViewportView(txtImagen);
-
         txtNumHues.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -200,10 +204,20 @@ public class jpAgregarH extends jpHabitaciones {
         txtPreNinnos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel8.setText("Ocupado");
+        jLabel8.setText("Ocupado:");
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel9.setText("Activo");
+        jLabel9.setText("Activo:");
+
+        lblImageH.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblImageH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImageH.setText("Seleccionar");
+        lblImageH.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblImageH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblImageHMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgAgregarLayout = new javax.swing.GroupLayout(bgAgregar);
         bgAgregar.setLayout(bgAgregarLayout);
@@ -211,62 +225,58 @@ public class jpAgregarH extends jpHabitaciones {
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAgregarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtAgregar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtAgregar)
                 .addContainerGap())
             .addGroup(bgAgregarLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgAgregarLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtIdHabitacion))
-                            .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNumHues))
-                            .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(bgAgregarLayout.createSequentialGroup()
-                                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(bgAgregarLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bgAgregarLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtPreNinnos, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                .addComponent(txtPreNinnos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboOcupado)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboActivo)))
                                 .addGap(18, 18, 18)
-                                .addComponent(txtPreAdultos))
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPreAdultos, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                    .addComponent(txtNumHues))))
+                        .addGap(206, 206, 206)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(bgAgregarLayout.createSequentialGroup()
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bgAgregarLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboOcupado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboActivo)
-                .addGap(291, 291, 291))
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtIdHabitacion))
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblImageH, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDescripcion))))
+                        .addGap(316, 316, 316))))
         );
         bgAgregarLayout.setVerticalGroup(
             bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,22 +286,21 @@ public class jpAgregarH extends jpHabitaciones {
                     .addComponent(txtAgregar)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(bgAgregarLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(txtIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImageH, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgAgregarLayout.createSequentialGroup()
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -304,17 +313,22 @@ public class jpAgregarH extends jpHabitaciones {
                         .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPreNinnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(37, 37, 37)
-                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)))
-                    .addComponent(cboOcupado)
-                    .addComponent(cboActivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgAgregarLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel8))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cboActivo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cboOcupado, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(148, 148, 148))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAgregarLayout.createSequentialGroup()
+                        .addGroup(bgAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(133, 133, 133))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -325,7 +339,7 @@ public class jpAgregarH extends jpHabitaciones {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 633, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -388,7 +402,7 @@ public class jpAgregarH extends jpHabitaciones {
             Habitaciones habitaciones = new Habitaciones();
             habitaciones.setId(Integer.parseInt(txtIdHabitacion.getText()));
             habitaciones.setDescripcion(txtDescripcion.getText());
-            habitaciones.setImagen(txtImagen.getText());
+            habitaciones.setImagen(lblImageH);
             habitaciones.setNumMaxHus(Integer.parseInt(txtNumHues.getText()));
             habitaciones.setPreNinno(Double.parseDouble(txtPreNinnos.getText()));
             habitaciones.setPreAdultos(Double.parseDouble(txtPreAdultos.getText()));
@@ -425,6 +439,38 @@ public class jpAgregarH extends jpHabitaciones {
 
     }//GEN-LAST:event_btnGuardarMousePressed
 
+    private void lblImageHMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageHMousePressed
+        JFileChooser se = new JFileChooser();
+        se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int estado = se.showOpenDialog(null);
+        if (estado == JFileChooser.APPROVE_OPTION) {
+            try {
+
+                fis = new FileInputStream(se.getSelectedFile());
+                this.longitudBytes = (int) se.getSelectedFile().length();
+                Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(lblImageH.getWidth(), lblImageH.getHeight(), Image.SCALE_DEFAULT);
+                lblImageH.setIcon(new ImageIcon(icono));
+                lblImageH.updateUI();
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("Error en el primer catch");
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error en el segundo catch");
+            }  catch (java.lang.NullPointerException e) {
+                e.printStackTrace();
+                new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText("Tipo de archivo no compatible.");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
+
+            } 
+                
+            
+        }
+    }//GEN-LAST:event_lblImageHMousePressed
+
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80, 65, 97));
 
@@ -452,11 +498,10 @@ public class jpAgregarH extends jpHabitaciones {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblImageH;
     public javax.swing.JLabel txtAgregar;
     protected static javax.swing.JTextField txtDescripcion;
     protected static javax.swing.JTextField txtIdHabitacion;
-    protected static javax.swing.JTextPane txtImagen;
     protected static javax.swing.JTextField txtNumHues;
     protected static javax.swing.JTextField txtPreAdultos;
     protected static javax.swing.JTextField txtPreNinnos;

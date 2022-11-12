@@ -72,11 +72,11 @@ public class GestorHabitaciones implements Global, Serializable {
                 new Object[][]{},
                 new String[]{"ID","DESCRIPCION", "IMAGEN", "NUMERO MAXIMO DE HUESPEDES", "PRECIO POR DIA ADULTOS", "PRECIO POR DIA NIÑOS", "ESTADO", "ACTIVA" }
         );
-        String fila[] = new String[8];
+        Object fila[] = new Object[8];
         for (Habitaciones habitaciones : listaHabitaciones) {
             fila[0] = "" + habitaciones.getId();
             fila[1] = habitaciones.getDescripcion().toUpperCase();
-            fila[2] = habitaciones.getImagen().toUpperCase();
+            fila[2] = habitaciones.getImagen();
             fila[3] = "" + habitaciones.getNumMaxHus();
             fila[4] = String.valueOf(habitaciones.getPreAdultos());
             fila[5] = String.valueOf(habitaciones.getPreNinno());

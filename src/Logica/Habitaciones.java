@@ -5,6 +5,8 @@
 package Logica;
 
 import java.io.Serializable;
+import javax.swing.Icon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.io.Serializable;
 public class Habitaciones implements Serializable {
    private int id;
    private String descripcion;
-   private String imagen;
+   private JLabel imagen;
    private int numMaxHus;
    private double preAdultos;
    private double preNinno;
@@ -23,7 +25,7 @@ public class Habitaciones implements Serializable {
     public Habitaciones() {
     }
 
-    public Habitaciones(int id, String descripcion, String imagen, int numMaxHus, double preAdultos, double preNinno, boolean estado, boolean activa) {
+    public Habitaciones(int id, String descripcion, JLabel imagen, int numMaxHus, double preAdultos, double preNinno, boolean estado, boolean activa) {
         this.id = id;
         this.descripcion = descripcion;
         this.imagen = imagen;
@@ -50,11 +52,11 @@ public class Habitaciones implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getImagen() {
+    public JLabel getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(JLabel imagen) {
         this.imagen = imagen;
     }
 
@@ -104,7 +106,6 @@ public class Habitaciones implements Serializable {
     }
 
     
-
-    
+   
 
 }
