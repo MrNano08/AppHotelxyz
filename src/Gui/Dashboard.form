@@ -89,7 +89,7 @@
               <Color blue="48" green="29" red="37" type="rgb"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Constraints>
@@ -110,12 +110,11 @@
                               <Component id="btnReservaciones" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="btnReportesFacturacion" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="txtAyuda" max="32767" attributes="0"/>
-                              <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="btnConfiguracion" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtAyuda" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -328,7 +327,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ayuda"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
               </Properties>
               <Events>
@@ -394,7 +393,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="122" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>

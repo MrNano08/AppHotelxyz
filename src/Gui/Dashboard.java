@@ -306,7 +306,7 @@ public class Dashboard extends javax.swing.JFrame {
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnConfiguracionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnConfiguracionLayout.setVerticalGroup(
@@ -326,11 +326,10 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(btnInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnReservaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnReportesFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuBarLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(txtAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(9, 9, 9))
-                    .addComponent(btnConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(MenuBarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         MenuBarLayout.setVerticalGroup(
@@ -778,7 +777,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel btnReportesFacturacion;
     private javax.swing.JPanel btnReservaciones;
     private javax.swing.JLabel btnSalir;
-    private javax.swing.JPanel btnSalir1;
     public static javax.swing.JPanel contenido;
     private javax.swing.JPanel infoBar;
     private javax.swing.JDialog jDialog1;
@@ -791,7 +789,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel txtInicio;
     private javax.swing.JLabel txtReportesFacturacion;
     private javax.swing.JLabel txtReservaciones;
-    private javax.swing.JLabel txtSalir1;
     // End of variables declaration//GEN-END:variables
 
     private void setSize(double pantallaAn, double pantallaAl) {

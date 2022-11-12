@@ -214,6 +214,12 @@ public class jpAgregarH extends jpHabitaciones {
         lblImageH.setText("Seleccionar");
         lblImageH.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImageH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblImageHMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblImageHMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblImageHMousePressed(evt);
             }
@@ -470,6 +476,14 @@ public class jpAgregarH extends jpHabitaciones {
             
         }
     }//GEN-LAST:event_lblImageHMousePressed
+
+    private void lblImageHMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageHMouseEntered
+        lblImageH.setForeground(new Color(90, 93,95));
+    }//GEN-LAST:event_lblImageHMouseEntered
+
+    private void lblImageHMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageHMouseExited
+        lblImageH.setForeground(new Color(60,63,65));
+    }//GEN-LAST:event_lblImageHMouseExited
 
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(80, 65, 97));
