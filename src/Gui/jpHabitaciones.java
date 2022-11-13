@@ -347,7 +347,6 @@ public class jpHabitaciones extends javax.swing.JPanel {
             jpAgregarH.txtIdHabitacion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 0).toString());
             jpAgregarH.txtIdHabitacion.setEditable(false);
             jpAgregarH.txtDescripcion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 1).toString());
-//            jpAgregarH.txtImagen.setText(tblHabitaciones.getValueAt(gestor.getFila(), 2).toString());
             jpAgregarH.txtNumHues.setText(tblHabitaciones.getValueAt(gestor.getFila(), 3).toString());
             jpAgregarH.txtPreAdultos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 4).toString());
             jpAgregarH.txtPreNinnos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 5).toString());

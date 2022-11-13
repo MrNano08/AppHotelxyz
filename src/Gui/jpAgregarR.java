@@ -485,7 +485,7 @@ public class jpAgregarR extends javax.swing.JPanel {
             Reservaciones reservaciones = new Reservaciones();
             reservaciones.setFecha(jcFechaActual.getDate());
             reservaciones.setIdCliente(Integer.parseInt(cbCliente.getSelectedItem().toString()));
-            reservaciones.setIdHabi(cbHabitacion.getSelectedIndex());
+            reservaciones.setIdHabi(Integer.parseInt(cbHabitacion.getSelectedItem().toString()));
             reservaciones.setFormaPago(String.valueOf(cbFormaPago.getSelectedIndex()).toUpperCase() );
             reservaciones.setAdultos(cbOcupantesAdultos.getSelectedIndex());
             reservaciones.setNinnos(cbOcupantesNinos.getSelectedIndex());

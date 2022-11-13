@@ -408,6 +408,7 @@ public class jpAgregarH extends jpHabitaciones {
             Habitaciones habitaciones = new Habitaciones();
             habitaciones.setId(Integer.parseInt(txtIdHabitacion.getText()));
             habitaciones.setDescripcion(txtDescripcion.getText());
+            lblImageH.setText("");
             habitaciones.setImagen(lblImageH);
             habitaciones.setNumMaxHus(Integer.parseInt(txtNumHues.getText()));
             habitaciones.setPreNinno(Double.parseDouble(txtPreNinnos.getText()));
@@ -512,7 +513,7 @@ public class jpAgregarH extends jpHabitaciones {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel lblImageH;
+    protected static javax.swing.JLabel lblImageH;
     public javax.swing.JLabel txtAgregar;
     protected static javax.swing.JTextField txtDescripcion;
     protected static javax.swing.JTextField txtIdHabitacion;
@@ -558,7 +559,7 @@ public class jpAgregarH extends jpHabitaciones {
                 return "Ingrese el precio para niños.";
             } else {
                 try {
-                    Integer.parseInt(txtPreNinnos.getText());
+                    Double.parseDouble(txtPreNinnos.getText());
                 } catch (NumberFormatException e) {
                     txtPreNinnos.requestFocus();
                     return "Los precio deben ser numéricos.";
@@ -570,7 +571,7 @@ public class jpAgregarH extends jpHabitaciones {
                 return "Ingrese el precio para Adultos.";
             } else {
                 try {
-                    Integer.parseInt(txtPreAdultos.getText());
+                    Double.parseDouble(txtPreAdultos.getText());
                 } catch (NumberFormatException e) {
                     txtPreAdultos.requestFocus();
                     return "Los precios deben ser numéricos.";
