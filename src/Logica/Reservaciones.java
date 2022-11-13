@@ -23,8 +23,8 @@ public class Reservaciones implements Serializable {
     
     
     public Reservaciones() {
-        autogenerarId();
-        idRentaHabi = autogenerarId();
+//        autogenerarId();
+//        idRentaHabi = autogenerarId();
     }
 
     public Reservaciones(Date fecha, String idRentaHabi, int idHabi, int idCliente, String formaPago, int Adultos, int ninnos, Date fechaIni, Date fechaFin, int diasHos, double SubTotal, int descuento, double total, boolean estado) {

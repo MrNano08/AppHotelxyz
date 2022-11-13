@@ -15,13 +15,14 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import Logica.Global;
 
 
 /**
  *
  * @author UNA
  */
-public class jpAgregarR extends javax.swing.JPanel {
+public class jpAgregarR extends javax.swing.JPanel implements Global{
 
     Calendar fecha_actual = new GregorianCalendar();
     GestorReservaciones gestorReservaciones;
@@ -30,6 +31,7 @@ public class jpAgregarR extends javax.swing.JPanel {
     private int iA = 1;
     private int iN = 1;
     int seleccionado;
+    private static int pos;
 
     public jpAgregarR() {
         initComponents();
@@ -56,8 +58,8 @@ public class jpAgregarR extends javax.swing.JPanel {
         txtbtnBack = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JPanel();
         txtbtnCancelar = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JPanel();
-        txtbtnAgregar = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JPanel();
+        txtbtnGuardar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -151,36 +153,36 @@ public class jpAgregarR extends javax.swing.JPanel {
             .addComponent(txtbtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        btnAgregar.setBackground(new java.awt.Color(55, 41, 72));
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGuardar.setBackground(new java.awt.Color(55, 41, 72));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseEntered(evt);
+                btnGuardarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseExited(evt);
+                btnGuardarMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAgregarMousePressed(evt);
+                btnGuardarMousePressed(evt);
             }
         });
 
-        txtbtnAgregar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        txtbtnAgregar.setForeground(new java.awt.Color(247, 236, 222));
-        txtbtnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtbtnAgregar.setText("Agregar");
+        txtbtnGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        txtbtnGuardar.setForeground(new java.awt.Color(247, 236, 222));
+        txtbtnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtbtnGuardar.setText("Guardar");
 
-        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
-        btnAgregar.setLayout(btnAgregarLayout);
-        btnAgregarLayout.setHorizontalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAgregarLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnGuardarLayout = new javax.swing.GroupLayout(btnGuardar);
+        btnGuardar.setLayout(btnGuardarLayout);
+        btnGuardarLayout.setHorizontalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGuardarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(txtbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtbtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-        btnAgregarLayout.setVerticalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtbtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        btnGuardarLayout.setVerticalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtbtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -220,7 +222,7 @@ public class jpAgregarR extends javax.swing.JPanel {
         jLabel12.setText("Total:");
 
         jLabel13.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
-        jLabel13.setText("Datos de la renta");
+        jLabel13.setText("Datos de la reservación");
 
         cbOcupantesNinos.setFont(new java.awt.Font("Roboto", 1, 15)); // NOI18N
         cbOcupantesNinos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
@@ -344,7 +346,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bgAgregarLayout.setVerticalGroup(
@@ -405,7 +407,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                                 .addComponent(jLabel12)
                                 .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(bgAgregarLayout.createSequentialGroup()
                         .addComponent(jcFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -469,20 +471,21 @@ public class jpAgregarR extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnCancelarMousePressed
 
-    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        btnAgregar.setBackground(new Color(37, 27, 55));
-        txtbtnAgregar.setForeground(new Color(255, 202, 202));
-    }//GEN-LAST:event_btnAgregarMouseEntered
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        btnGuardar.setBackground(new Color(37, 27, 55));
+        txtbtnGuardar.setForeground(new Color(255, 202, 202));
+    }//GEN-LAST:event_btnGuardarMouseEntered
 
-    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        btnAgregar.setBackground(new Color(55, 41, 72));
-        txtbtnAgregar.setForeground(new Color(255, 236, 239));
-    }//GEN-LAST:event_btnAgregarMouseExited
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        btnGuardar.setBackground(new Color(55, 41, 72));
+        txtbtnGuardar.setForeground(new Color(255, 236, 239));
+    }//GEN-LAST:event_btnGuardarMouseExited
 
-    private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
+    private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
         String error = validarEntrada();
         if (error.equals("")) {//no hay errores
             Reservaciones reservaciones = new Reservaciones();
+
             reservaciones.setFecha(jcFechaActual.getDate());
             reservaciones.setIdCliente(Integer.parseInt(cbCliente.getSelectedItem().toString()));
             reservaciones.setIdHabi(Integer.parseInt(cbHabitacion.getSelectedItem().toString()));
@@ -503,6 +506,7 @@ public class jpAgregarR extends javax.swing.JPanel {
                     frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
                 } else {
+                    reservaciones.setIdRentaHabi(reservaciones.autogenerarId());
                     gestorReservaciones.guardar(reservaciones);
 
                     new frmMessagep().setVisible(true);
@@ -512,8 +516,14 @@ public class jpAgregarR extends javax.swing.JPanel {
 
                 }
             } else {
+                
+                reservaciones.setIdRentaHabi(listaReservaciones.get(pos).getIdRentaHabi());
                 gestorReservaciones.editar(reservaciones);
                 gestorReservaciones.guardarEnArchivo();
+                new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Datos guardados correctamente.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+                    
             }
 
         } else {
@@ -524,7 +534,7 @@ public class jpAgregarR extends javax.swing.JPanel {
 
         }
 
-    }//GEN-LAST:event_btnAgregarMousePressed
+    }//GEN-LAST:event_btnGuardarMousePressed
 
     private void cbHabitacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHabitacionItemStateChanged
 
@@ -580,12 +590,25 @@ public class jpAgregarR extends javax.swing.JPanel {
 
     }
 
+    public static int getPos() {
+        return pos;
+    }
+
+    public static void setPos(int pos) {
+        jpAgregarR.pos = pos;
+    }
+
+
+
+
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAgregar;
-    private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBack;
     private javax.swing.JPanel btnCancelar;
+    private javax.swing.JPanel btnGuardar;
     protected static javax.swing.JComboBox<String> cbCliente;
     protected static javax.swing.JComboBox<String> cbDescuento;
     protected static javax.swing.JComboBox<String> cbFormaPago;
@@ -612,9 +635,9 @@ public class jpAgregarR extends javax.swing.JPanel {
     protected static javax.swing.JTextField txtDiasHospedaje;
     protected static javax.swing.JTextField txtSubtotal;
     protected static javax.swing.JTextField txtTotal;
-    private javax.swing.JLabel txtbtnAgregar;
     private javax.swing.JLabel txtbtnBack;
     private javax.swing.JLabel txtbtnCancelar;
+    private javax.swing.JLabel txtbtnGuardar;
     // End of variables declaration//GEN-END:variables
 
     public void CalcularDiasHos(JDateChooser jcFechaInicial, JDateChooser jcFechaFinal) {
@@ -819,6 +842,16 @@ public class jpAgregarR extends javax.swing.JPanel {
         }
         return 0;
 
+    }
+
+    @Override
+    public void guardarEnArchivo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void recuperarDeArchivo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

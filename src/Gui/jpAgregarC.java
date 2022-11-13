@@ -400,6 +400,10 @@ public class jpAgregarC extends jpClientes {
             } else {
                 gestorClientes.editar(clientes);
                 gestorClientes.guardarEnArchivo();
+                new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Datos guardados correctamente.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
+                    
             }
 
         } else {

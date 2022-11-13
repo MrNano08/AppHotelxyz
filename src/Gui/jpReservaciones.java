@@ -297,7 +297,33 @@ public class jpReservaciones extends javax.swing.JPanel {
             Dashboard.contenido.add(editar, BorderLayout.CENTER);
             Dashboard.contenido.revalidate();
             Dashboard.contenido.repaint();
-            jpAgregarR.cbCliente.setSelectedItem(listaReservaciones.get(gestor.getFila()).getIdCliente());
+            
+            int pos = 0;
+        for (Reservaciones reservaciones : listaReservaciones) {
+
+            while (pos == tblReservaciones.getSelectedRow()) {                
+                jpAgregarR.jcFechaActual.setDate(listaReservaciones.get(pos).getFecha());
+                jpAgregarR.cbCliente.setSelectedItem(String.valueOf(listaReservaciones.get(pos).getIdCliente()));
+                jpAgregarR.cbHabitacion.setSelectedItem(String.valueOf(listaReservaciones.get(pos).getIdHabi()));
+                jpAgregarR.cbFormaPago.setSelectedIndex(Integer.parseInt(listaReservaciones.get(pos).getFormaPago()));
+                jpAgregarR.cbOcupantesAdultos.setSelectedIndex( listaReservaciones.get(pos).getAdultos());
+                jpAgregarR.cbOcupantesNinos.setSelectedIndex( listaReservaciones.get(pos).getNinnos());
+                jpAgregarR.jcFechaInicial.setDate(listaReservaciones.get(pos).getFechaIni());
+                jpAgregarR.jcFechaFinal.setDate(listaReservaciones.get(pos).getFechaFin());
+                jpAgregarR.txtDiasHospedaje.setText(String.valueOf(listaReservaciones.get(pos).getDiasHos()));
+                jpAgregarR.txtSubtotal.setText(String.valueOf(listaReservaciones.get(pos).getSubTotal()));
+                jpAgregarR.cbDescuento.setSelectedIndex(listaReservaciones.get(pos).getDescuento());
+                jpAgregarR.txtTotal.setText(String.valueOf(listaReservaciones.get(pos).getTotal()));
+                jpAgregarR.setPos(pos);
+                pos ++;
+            }
+   
+            pos ++;
+            
+            
+        }
+        pos = 0;
+     
             
             
         }else {
