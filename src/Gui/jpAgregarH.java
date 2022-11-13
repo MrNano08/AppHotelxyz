@@ -17,6 +17,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -29,6 +30,7 @@ public class jpAgregarH extends jpHabitaciones {
     GestorHabitaciones gestorHabitaciones;
     private FileInputStream fis;
     private int longitudBytes;
+    private static int pos;
 
     public jpAgregarH() {
         gestorHabitaciones = new GestorHabitaciones();
@@ -462,7 +464,7 @@ public class jpAgregarH extends jpHabitaciones {
                 Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(lblImageH.getWidth(), lblImageH.getHeight(), Image.SCALE_DEFAULT);
                 lblImageH.setIcon(new ImageIcon(icono));
                 lblImageH.updateUI();
-
+                lblImageH.setText("");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 System.out.println("Error en el primer catch");
@@ -500,6 +502,23 @@ public class jpAgregarH extends jpHabitaciones {
 
     }
 
+    public static JLabel getLblImageH() {
+        return lblImageH;
+    }
+
+    public static void setLblImageH(JLabel lblImageH) {
+        jpAgregarH.lblImageH = lblImageH;
+    }
+
+    public static int getPos() {
+        return pos;
+    }
+
+    public static void setPos(int pos) {
+        jpAgregarH.pos = pos;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAgregar;

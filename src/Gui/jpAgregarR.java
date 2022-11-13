@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import Logica.Global;
+import Logica.Habitaciones;
 
 
 /**
@@ -32,6 +33,7 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
     private int iN = 1;
     int seleccionado;
     private static int pos;
+    private static int validarEH;
 
     public jpAgregarR() {
         initComponents();
@@ -343,7 +345,7 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
                                                 .addComponent(cbFormaPago, 0, 376, Short.MAX_VALUE))
                                             .addGap(0, 0, Short.MAX_VALUE)))))
                             .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -482,6 +484,8 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
     }//GEN-LAST:event_btnGuardarMouseExited
 
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
+        Habitaciones habitaciones = new Habitaciones();
+        jpHabitaciones habitacionesP = new jpHabitaciones();
         String error = validarEntrada();
         if (error.equals("")) {//no hay errores
             Reservaciones reservaciones = new Reservaciones();
@@ -507,6 +511,7 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
 
                 } else {
                     reservaciones.setIdRentaHabi(reservaciones.autogenerarId());
+                    listaHabitaciones.set(cbHabitacion.getSelectedIndex()-1, habitaciones).setEstado(true);
                     gestorReservaciones.guardar(reservaciones);
 
                     new frmMessagep().setVisible(true);
@@ -533,7 +538,8 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
             frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
         }
-
+      
+        habitacionesP.cambiarEstado();
     }//GEN-LAST:event_btnGuardarMousePressed
 
     private void cbHabitacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHabitacionItemStateChanged
@@ -596,6 +602,14 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
 
     public static void setPos(int pos) {
         jpAgregarR.pos = pos;
+    }
+
+    public static int getValidarEH() {
+        return validarEH;
+    }
+
+    public static void setValidarEH(int validarEH) {
+        jpAgregarR.validarEH = validarEH;
     }
 
 
@@ -748,6 +762,19 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
         if (jcFechaActual.getDate().after(jcFechaFinal.getDate())) {
 
             return "La fecha final debe ser posterior a la fecha actual.";
+        }
+        if (validarEH == Integer.parseInt(cbHabitacion.getSelectedItem().toString()) && txtAgregar.getText().equals("Editar")) {
+            
+        } else {
+            if (listaHabitaciones.get(cbHabitacion.getSelectedIndex()-1).isEstado() == true) {
+
+            return "La habitación seleccionada está ocupada.";
+        }
+        }
+        
+        if (listaHabitaciones.get(cbHabitacion.getSelectedIndex()-1).isActiva()== false) {
+
+            return "La habitación seleccionada está inactiva.";
         }
 
         return "";

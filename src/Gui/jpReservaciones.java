@@ -315,6 +315,7 @@ public class jpReservaciones extends javax.swing.JPanel {
                 jpAgregarR.cbDescuento.setSelectedIndex(listaReservaciones.get(pos).getDescuento());
                 jpAgregarR.txtTotal.setText(String.valueOf(listaReservaciones.get(pos).getTotal()));
                 jpAgregarR.setPos(pos);
+                jpAgregarR.setValidarEH(listaReservaciones.get(pos).getIdHabi());
                 pos ++;
             }
    

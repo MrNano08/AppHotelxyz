@@ -4,11 +4,25 @@
  */
 package Gui;
 
+import static Gui.jpAgregarH.cboActivo;
+import static Gui.jpAgregarH.cboOcupado;
+import static Gui.jpAgregarH.lblImageH;
+import static Gui.jpAgregarH.txtDescripcion;
+import static Gui.jpAgregarH.txtIdHabitacion;
+import static Gui.jpAgregarH.txtNumHues;
+import static Gui.jpAgregarH.txtPreAdultos;
+import static Gui.jpAgregarH.txtPreNinnos;
+import static Gui.jpAgregarR.cbHabitacion;
 import Logica.GestorHabitaciones;
+import Logica.Global;
+import Logica.Habitaciones;
 import Logica.imgTabla;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.HashSet;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -19,7 +33,6 @@ import javax.swing.JTable;
 public class jpHabitaciones extends javax.swing.JPanel {
 
     GestorHabitaciones gestorHabitaciones;
-
 
     public jpHabitaciones() {
         initComponents();
@@ -351,6 +364,26 @@ public class jpHabitaciones extends javax.swing.JPanel {
             jpAgregarH.txtPreAdultos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 4).toString());
             jpAgregarH.txtPreNinnos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 5).toString());
 
+            int pos = 0;
+            for (Habitaciones habitaciones : Global.listaHabitaciones) {
+
+                while (pos == tblHabitaciones.getSelectedRow()) {
+                    JLabel temp;
+                    temp = Global.listaHabitaciones.get(pos).getImagen();
+                    jpAgregarH.lblImageH.setText("");
+                    jpAgregarH.lblImageH.setIcon(temp.getIcon());
+                    jpAgregarH.lblImageH.updateUI();
+                    jpAgregarH.setPos(pos);
+
+                    pos++;
+
+                }
+
+                pos++;
+
+            }
+            pos = 0;
+
             if (tblHabitaciones.getValueAt(gestor.getFila(), 6).toString().equals("Ocupada")) {
                 jpAgregarH.cboOcupado.setSelected(true);
             } else {
@@ -422,5 +455,64 @@ public class jpHabitaciones extends javax.swing.JPanel {
 private void cargarDatos() {
         tblHabitaciones.setModel(gestorHabitaciones.obtenerModeloTabla());
         lblTotal.setText("Total: " + tblHabitaciones.getRowCount());
+    }
+
+    public void cambiarEstado() {
+        jpHabitaciones habitPane = new jpHabitaciones();
+        jpAgregarH editar = new jpAgregarH();
+        GestorHabitaciones gestor = new GestorHabitaciones();
+
+        gestor.setFila(cbHabitacion.getSelectedIndex() - 1);
+
+        if (gestor.getFila() != -1) {
+            editar.txtAgregar.setText("Editar");
+
+            jpAgregarH.txtIdHabitacion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 0).toString());
+            jpAgregarH.txtIdHabitacion.setEditable(false);
+            jpAgregarH.txtDescripcion.setText(tblHabitaciones.getValueAt(gestor.getFila(), 1).toString());
+            jpAgregarH.txtNumHues.setText(tblHabitaciones.getValueAt(gestor.getFila(), 3).toString());
+            jpAgregarH.txtPreAdultos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 4).toString());
+            jpAgregarH.txtPreNinnos.setText(tblHabitaciones.getValueAt(gestor.getFila(), 5).toString());
+            jpAgregarH.cboOcupado.setSelected(true);
+            if (tblHabitaciones.getValueAt(gestor.getFila(), 7).toString().equals("Si")) {
+                jpAgregarH.cboActivo.setSelected(true);
+            } else {
+                jpAgregarH.cboActivo.setSelected(false);
+            }
+            Habitaciones callClassHabitaciones = new Habitaciones();
+            callClassHabitaciones.setId(Integer.parseInt(txtIdHabitacion.getText()));
+            callClassHabitaciones.setDescripcion(txtDescripcion.getText());
+            lblImageH.setText("");
+            callClassHabitaciones.setImagen(lblImageH);
+            callClassHabitaciones.setNumMaxHus(Integer.parseInt(txtNumHues.getText()));
+            callClassHabitaciones.setPreNinno(Double.parseDouble(txtPreNinnos.getText()));
+            callClassHabitaciones.setPreAdultos(Double.parseDouble(txtPreAdultos.getText()));
+            callClassHabitaciones.setEstado(cboOcupado.isSelected());
+            callClassHabitaciones.setActiva(cboActivo.isSelected());
+
+            int pos = 0;
+            for (Habitaciones habitaciones : Global.listaHabitaciones) {
+
+                while (pos == cbHabitacion.getSelectedIndex()) {
+                    System.out.println(pos);
+                    JLabel temp;
+                    temp = Global.listaHabitaciones.get(pos - 1).getImagen();
+                    jpAgregarH.lblImageH.setIcon(temp.getIcon());
+                    jpAgregarH.lblImageH.updateUI();;
+                    jpAgregarH.setPos(pos);
+                    pos++;
+
+                }
+
+                pos++;
+
+            }
+            pos = 0;
+
+            gestor.editar(callClassHabitaciones);
+            gestor.guardarEnArchivo();
+
+        }
+
     }
 }
