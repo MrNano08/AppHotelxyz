@@ -364,7 +364,11 @@ public class jpClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarMousePressed
 
     private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
-        gestorClientes.cargarReporte();
+     try {
+        tblClientes.print();
+        } catch (PrinterException ex) {
+     
+        }
     }//GEN-LAST:event_btnImprimirMousePressed
 
     public JTable getTblClientes() {

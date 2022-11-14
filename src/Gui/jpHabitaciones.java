@@ -19,6 +19,7 @@ import Logica.Habitaciones;
 import Logica.imgTabla;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.print.PrinterException;
 import java.util.HashSet;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -425,7 +426,11 @@ public class jpHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarMousePressed
 
     private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
-        gestorHabitaciones.cargarReporte();
+     try {
+        tblHabitaciones.print();
+        } catch (PrinterException ex) {
+     
+        }
     }//GEN-LAST:event_btnImprimirMousePressed
 
     public JTable getTblHabitaciones() {

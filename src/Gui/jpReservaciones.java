@@ -11,6 +11,7 @@ import static Logica.Global.listaReservaciones;
 import Logica.Reservaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -188,6 +189,9 @@ public class jpReservaciones extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnImprimirMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnImprimirMousePressed(evt);
+            }
         });
 
         txtbtnImprimir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -227,7 +231,7 @@ public class jpReservaciones extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -357,6 +361,14 @@ public class jpReservaciones extends javax.swing.JPanel {
         }
         System.out.println("adios");
     }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
+     try {
+        tblReservaciones.print();
+        } catch (PrinterException ex) {
+     
+        }
+    }//GEN-LAST:event_btnImprimirMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
