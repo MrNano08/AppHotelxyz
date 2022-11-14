@@ -5,6 +5,12 @@ import Logica.GestorUsuario;
 import Logica.Global;
 import Logica.Usuario;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -45,6 +51,7 @@ public class frmlogin extends javax.swing.JFrame implements Global{
         cancelarbtn = new javax.swing.JPanel();
         cancelarbtntxt = new javax.swing.JLabel();
         txtmsgError = new javax.swing.JLabel();
+        btnAyuda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -232,6 +239,24 @@ public class frmlogin extends javax.swing.JFrame implements Global{
         txtmsgError.setText("Usuario o contraseña incorrectos   Intentos restantes:");
         bg.add(txtmsgError, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
+        btnAyuda.setBackground(new java.awt.Color(242, 242, 242));
+        btnAyuda.setFont(new java.awt.Font("Roboto Light", 3, 14)); // NOI18N
+        btnAyuda.setForeground(new java.awt.Color(102, 102, 102));
+        btnAyuda.setText(" Ayuda ");
+        btnAyuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAyudaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAyudaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAyudaMousePressed(evt);
+            }
+        });
+        bg.add(btnAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -345,6 +370,42 @@ public class frmlogin extends javax.swing.JFrame implements Global{
             }
     }//GEN-LAST:event_loginbtntxt1MouseClicked
 
+    private void btnAyudaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAyudaMouseEntered
+        btnAyuda.setBackground(new Color (242,242,242));
+        btnAyuda.setForeground(new Color (0,0,0));
+
+    Font font = btnAyuda.getFont();
+    Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
+    attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+    btnAyuda.setFont(font.deriveFont(attributes));
+
+    }//GEN-LAST:event_btnAyudaMouseEntered
+
+    private void btnAyudaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAyudaMouseExited
+        btnAyuda.setBackground(new Color (242,242,242));
+        btnAyuda.setForeground(new Color (102,102,102));
+
+    Font font = btnAyuda.getFont();
+    Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
+    attributes.put(TextAttribute.UNDERLINE, -1);
+    btnAyuda.setFont(font.deriveFont(attributes));
+    }//GEN-LAST:event_btnAyudaMouseExited
+
+    private void btnAyudaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAyudaMousePressed
+        if (java.awt.Desktop.isDesktopSupported()) {
+            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+
+            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+
+                try {
+                    java.net.URI uri = new java.net.URI("https://proyectoazul323.wixsite.com/hotel");
+                    desktop.browse(uri);
+                } catch (URISyntaxException | IOException ex) {
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAyudaMousePressed
+
      void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(37, 27, 55));
 
@@ -411,6 +472,7 @@ public class frmlogin extends javax.swing.JFrame implements Global{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barrasuperior;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel btnAyuda;
     private javax.swing.JPanel cancelarbtn;
     private javax.swing.JLabel cancelarbtntxt;
     private javax.swing.JPanel closebtn;
