@@ -73,7 +73,7 @@ public class jpReservaciones extends javax.swing.JPanel {
             }
         ));
         tblReservaciones.setOpaque(false);
-        tblReservaciones.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        tblReservaciones.setSelectionBackground(new java.awt.Color(66, 28, 86));
         tblReservaciones.setShowGrid(true);
         jScrollPane1.setViewportView(tblReservaciones);
 
