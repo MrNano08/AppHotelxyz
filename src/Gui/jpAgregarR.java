@@ -538,8 +538,11 @@ public class jpAgregarR extends javax.swing.JPanel implements Global{
             frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
         }
-      
+
+        if (error.equals("")) {
         habitacionesP.cambiarEstado();
+        
+        }
     }//GEN-LAST:event_btnGuardarMousePressed
 
     private void cbHabitacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHabitacionItemStateChanged

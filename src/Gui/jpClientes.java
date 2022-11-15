@@ -56,7 +56,6 @@ public class jpClientes extends javax.swing.JPanel {
         bgClientes.setBackground(new java.awt.Color(255, 236, 239));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Clientes");
 
         tblClientes.setBackground(new java.awt.Color(255, 236, 239));
@@ -367,7 +366,8 @@ public class jpClientes extends javax.swing.JPanel {
      try {
         tblClientes.print();
         } catch (PrinterException ex) {
-     
+            Logger.getLogger(jpClientes.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }//GEN-LAST:event_btnImprimirMousePressed
 
