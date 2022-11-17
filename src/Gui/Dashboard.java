@@ -11,6 +11,7 @@ import java.awt.Label;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -46,6 +47,8 @@ public class Dashboard extends javax.swing.JFrame {
         resetColor(btnHabitaciones);
         resetColor(btnClientes);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logo.png"));
+       this.setIconImage(icon.getImage());
     }
 
     /**

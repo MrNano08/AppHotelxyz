@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -31,6 +32,8 @@ public class frmlogin extends javax.swing.JFrame implements Global{
            usr = usuario.getUsuario(); 
            contrasena = usuario.getContrasena();
         }
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/logo.png"));
+       this.setIconImage(icon.getImage());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
