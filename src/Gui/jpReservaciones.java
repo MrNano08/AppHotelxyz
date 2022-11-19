@@ -231,7 +231,7 @@ public class jpReservaciones extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -365,9 +365,11 @@ public class jpReservaciones extends javax.swing.JPanel {
     private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
      try {
         tblReservaciones.print();
-        } catch (PrinterException ex) {
-     
-        }
+        } catch (PrinterException ex){
+           new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Instale una impresora antes de continuar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
+        }  
     }//GEN-LAST:event_btnImprimirMousePressed
 
 

@@ -365,10 +365,11 @@ public class jpClientes extends javax.swing.JPanel {
     private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
      try {
         tblClientes.print();
-        } catch (PrinterException ex) {
-            Logger.getLogger(jpClientes.class.getName()).log(Level.SEVERE, null, ex);
-            
-        }
+        } catch (PrinterException ex){
+           new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Instale una impresora antes de continuar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
+        }  
     }//GEN-LAST:event_btnImprimirMousePressed
 
     public JTable getTblClientes() {
