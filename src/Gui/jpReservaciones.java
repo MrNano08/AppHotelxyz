@@ -227,7 +227,7 @@ public class jpReservaciones extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,8 +356,9 @@ public class jpReservaciones extends javax.swing.JPanel {
                 cargarDatos();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione el cliente a eliminar",
-                    "Eliminar", JOptionPane.ERROR_MESSAGE);
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Seleccione la reservación que desea eliminar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
         }
         System.out.println("adios");
     }//GEN-LAST:event_btnEliminarMousePressed

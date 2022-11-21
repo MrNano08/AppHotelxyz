@@ -420,8 +420,9 @@ public class jpHabitaciones extends javax.swing.JPanel {
                 cargarDatos();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione la habitacón a eliminar",
-                    "Eliminar", JOptionPane.ERROR_MESSAGE);
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Seleccione la habitación que desea eliminar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
         }
     }//GEN-LAST:event_btnEliminarMousePressed
 

@@ -354,8 +354,9 @@ public class jpClientes extends javax.swing.JPanel {
                 cargarDatos();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione el cliente a eliminar",
-                    "Eliminar", JOptionPane.ERROR_MESSAGE);
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Seleccione el cliente que desea eliminar");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/error_iconx64.gif")));
         }
         if (Global.listaReservaciones.isEmpty()) {
             File Reservaciones = new File("path/Reservaciones1.txt");
