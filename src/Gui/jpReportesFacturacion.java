@@ -379,7 +379,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHabitacionesOMouseExited
 
     private void btnHabitacionesOMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesOMousePressed
-
+new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnHabitacionesOMousePressed
 
     private void btnGenerarReporte1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MouseEntered
@@ -395,9 +397,10 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private void btnGenerarReporte1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MousePressed
     String error = validarEntrada();
         if (error.equals("")) {
-        
-            System.out.println("Si funca");
-        
+            System.out.println("No se encuentran errores");
+         new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
         
         } else {
             new frmMessagep().setVisible(true);
@@ -422,7 +425,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHabitacionesMeRMouseExited
 
     private void btnHabitacionesMeRMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesMeRMousePressed
-        // TODO add your handling code here:
+    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnHabitacionesMeRMousePressed
 
     private void btnIngresosHabitacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosHabitacionMouseEntered
@@ -436,7 +441,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnIngresosHabitacionMouseExited
 
     private void btnIngresosHabitacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosHabitacionMousePressed
-        // TODO add your handling code here:
+    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnIngresosHabitacionMousePressed
 
     private void btnHabitacionesDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesDMouseEntered
@@ -450,7 +457,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHabitacionesDMouseExited
 
     private void btnHabitacionesDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesDMousePressed
-        // TODO add your handling code here:
+    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnHabitacionesDMousePressed
 
     private void btnHabitacionMaRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionMaRMouseEntered
@@ -464,7 +473,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHabitacionMaRMouseExited
 
     private void btnHabitacionMaRMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionMaRMousePressed
-        // TODO add your handling code here:
+    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnHabitacionMaRMousePressed
 
     private void btnIngresosClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosClienteMouseEntered
@@ -478,7 +489,9 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnIngresosClienteMouseExited
 
     private void btnIngresosClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosClienteMousePressed
-        // TODO add your handling code here:
+    new frmMessagep().setVisible(true);
+                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnIngresosClienteMousePressed
 
     private void btnGenerarReporte1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MouseClicked
