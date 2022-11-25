@@ -356,7 +356,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -500,9 +500,15 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnIngresosClienteMouseExited
 
     private void btnIngresosClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosClienteMousePressed
-        new frmMessagep().setVisible(true);
-        frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+        jpIngresosCliente ingresosCliente = new jpIngresosCliente();
+
+        ingresosCliente.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+        ingresosCliente.setLocation(0, 0);
+
+        Dashboard.contenido.removeAll();
+        Dashboard.contenido.add(ingresosCliente, BorderLayout.CENTER);
+        Dashboard.contenido.revalidate();
+        Dashboard.contenido.repaint();
     }//GEN-LAST:event_btnIngresosClienteMousePressed
 
     private void btnGenerarReporte1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MouseClicked
