@@ -25,14 +25,14 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-
 /**
  *
  * @author UNA
  */
-
 public class GestorHabitaciones implements Global, Serializable {
+
     private int fila = 0;
+
     public boolean existe(int idHabitacion) {
         for (Habitaciones habitaciones : listaHabitaciones) {
             if (habitaciones.getId() == idHabitacion) {
@@ -42,13 +42,11 @@ public class GestorHabitaciones implements Global, Serializable {
         return false;
     }
 
-
     public void guardar(Habitaciones habitaciones) {
         if (!existe(habitaciones.getId())) {
             listaHabitaciones.add(habitaciones);
         }
     }
- 
 
     public void editar(Habitaciones habitaciones) {
         if (existe(habitaciones.getId())) {
@@ -56,10 +54,9 @@ public class GestorHabitaciones implements Global, Serializable {
             listaHabitaciones.set(pos, habitaciones);
         }
     }
-      
 
     public int obtenerPosicionDe(int idhabitacion) {
-        for (Habitaciones habitaciones: listaHabitaciones) {
+        for (Habitaciones habitaciones : listaHabitaciones) {
             if (habitaciones.getId() == idhabitacion) {
                 return listaHabitaciones.indexOf(habitaciones);
             }
@@ -70,7 +67,7 @@ public class GestorHabitaciones implements Global, Serializable {
     public DefaultTableModel obtenerModeloTabla() {
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"ID","DESCRIPCION", "IMAGEN", "NUMERO MAXIMO DE HUESPEDES", "PRECIO POR DIA ADULTOS", "PRECIO POR DIA NIÑOS", "ESTADO", "ACTIVA" }
+                new String[]{"ID", "DESCRIPCION", "IMAGEN", "NUMERO MAXIMO DE HUESPEDES", "PRECIO POR DIA ADULTOS", "PRECIO POR DIA NIÑOS", "ESTADO", "ACTIVA"}
         );
         Object fila[] = new Object[8];
         for (Habitaciones habitaciones : listaHabitaciones) {
@@ -87,6 +84,47 @@ public class GestorHabitaciones implements Global, Serializable {
         return modelo;
     }
 
+    public DefaultTableModel obtenerModeloTablaOcupado() {
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID", "DESCRIPCION", "NUMERO MAXIMO DE HUESPEDES", "PRECIO POR DIA ADULTOS", "PRECIO POR DIA NIÑOS", "ESTADO", "ACTIVA"}
+        );
+        String fila[] = new String[7];
+        for (Habitaciones habitaciones : listaHabitaciones) {
+            if (habitaciones.isEstado()) {
+                fila[0] = "" + habitaciones.getId();
+                fila[1] = habitaciones.getDescripcion().toUpperCase();
+                fila[2] = "" + habitaciones.getNumMaxHus();
+                fila[3] = String.valueOf(habitaciones.getPreAdultos());
+                fila[4] = String.valueOf(habitaciones.getPreNinno());
+                fila[5] = habitaciones.isEstado() == true ? "Ocupada" : "Desocupada";
+                fila[6] = habitaciones.isActiva() == true ? "Si" : "No";
+                modelo.addRow(fila);
+            }
+        }
+        return modelo;
+    }
+
+    public DefaultTableModel obtenerModeloTablaDesocupado() {
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID", "DESCRIPCION", "NUMERO MAXIMO DE HUESPEDES", "PRECIO POR DIA ADULTOS", "PRECIO POR DIA NIÑOS", "ESTADO", "ACTIVA"}
+        );
+        String fila[] = new String[7];
+        for (Habitaciones habitaciones : listaHabitaciones) {
+            if (habitaciones.isEstado() == false) {
+                fila[0] = "" + habitaciones.getId();
+                fila[1] = habitaciones.getDescripcion().toUpperCase();
+                fila[2] = "" + habitaciones.getNumMaxHus();
+                fila[3] = String.valueOf(habitaciones.getPreAdultos());
+                fila[4] = String.valueOf(habitaciones.getPreNinno());
+                fila[5] = habitaciones.isEstado() == true ? "Ocupada" : "Desocupada";
+                fila[6] = habitaciones.isActiva() == true ? "Si" : "No";
+                modelo.addRow(fila);
+            }
+        }
+        return modelo;
+    }
     public void eliminar(int id) {
         int pos = obtenerPosicionDe(id);
         listaHabitaciones.remove(pos);
@@ -133,7 +171,7 @@ public class GestorHabitaciones implements Global, Serializable {
         }
 
     }
-    
+
     public void cargarReporte() {
         String logotipo = "/Reporte/logo.png";
         JasperReport reporte;
@@ -163,8 +201,7 @@ public class GestorHabitaciones implements Global, Serializable {
             System.out.println(ex.getMessage());
         }
     }
-    
-    
+
     public int getFila() {
         return fila;
     }
@@ -178,5 +215,4 @@ public class GestorHabitaciones implements Global, Serializable {
         return "GestorHabitaciones{" + "fila=" + fila + '}';
     }
 
-    
 }

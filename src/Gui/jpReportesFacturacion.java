@@ -379,9 +379,15 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHabitacionesOMouseExited
 
     private void btnHabitacionesOMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesOMousePressed
-new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+        jpHabitacionesOcupadas habitacionesOcupadas = new jpHabitacionesOcupadas();
+
+        habitacionesOcupadas.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+        habitacionesOcupadas.setLocation(0, 0);
+
+        Dashboard.contenido.removeAll();
+        Dashboard.contenido.add(habitacionesOcupadas, BorderLayout.CENTER);
+        Dashboard.contenido.revalidate();
+        Dashboard.contenido.repaint();
     }//GEN-LAST:event_btnHabitacionesOMousePressed
 
     private void btnGenerarReporte1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MouseEntered
@@ -395,13 +401,13 @@ new frmMessagep().setVisible(true);
     }//GEN-LAST:event_btnGenerarReporte1MouseExited
 
     private void btnGenerarReporte1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MousePressed
-    String error = validarEntrada();
+        String error = validarEntrada();
         if (error.equals("")) {
             System.out.println("No se encuentran errores");
-         new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
-        
+            new frmMessagep().setVisible(true);
+            frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+
         } else {
             new frmMessagep().setVisible(true);
 
@@ -409,8 +415,7 @@ new frmMessagep().setVisible(true);
             frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
 
         }
-     
-      
+
 
     }//GEN-LAST:event_btnGenerarReporte1MousePressed
 
@@ -425,9 +430,9 @@ new frmMessagep().setVisible(true);
     }//GEN-LAST:event_btnHabitacionesMeRMouseExited
 
     private void btnHabitacionesMeRMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesMeRMousePressed
-    new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+        new frmMessagep().setVisible(true);
+        frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnHabitacionesMeRMousePressed
 
     private void btnIngresosHabitacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosHabitacionMouseEntered
@@ -441,9 +446,9 @@ new frmMessagep().setVisible(true);
     }//GEN-LAST:event_btnIngresosHabitacionMouseExited
 
     private void btnIngresosHabitacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosHabitacionMousePressed
-    new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+        new frmMessagep().setVisible(true);
+        frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnIngresosHabitacionMousePressed
 
     private void btnHabitacionesDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesDMouseEntered
@@ -457,9 +462,15 @@ new frmMessagep().setVisible(true);
     }//GEN-LAST:event_btnHabitacionesDMouseExited
 
     private void btnHabitacionesDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesDMousePressed
-    new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+       jpHabitacionesDesocupadas habitacionesDesocupadas = new jpHabitacionesDesocupadas();
+
+        habitacionesDesocupadas.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+        habitacionesDesocupadas.setLocation(0, 0);
+
+        Dashboard.contenido.removeAll();
+        Dashboard.contenido.add(habitacionesDesocupadas, BorderLayout.CENTER);
+        Dashboard.contenido.revalidate();
+        Dashboard.contenido.repaint();
     }//GEN-LAST:event_btnHabitacionesDMousePressed
 
     private void btnHabitacionMaRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionMaRMouseEntered
@@ -473,9 +484,9 @@ new frmMessagep().setVisible(true);
     }//GEN-LAST:event_btnHabitacionMaRMouseExited
 
     private void btnHabitacionMaRMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionMaRMousePressed
-    new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+        new frmMessagep().setVisible(true);
+        frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnHabitacionMaRMousePressed
 
     private void btnIngresosClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosClienteMouseEntered
@@ -489,9 +500,9 @@ new frmMessagep().setVisible(true);
     }//GEN-LAST:event_btnIngresosClienteMouseExited
 
     private void btnIngresosClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosClienteMousePressed
-    new frmMessagep().setVisible(true);
-                    frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-                    frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+        new frmMessagep().setVisible(true);
+        frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
+        frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
     }//GEN-LAST:event_btnIngresosClienteMousePressed
 
     private void btnGenerarReporte1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MouseClicked
@@ -529,7 +540,7 @@ new frmMessagep().setVisible(true);
     // End of variables declaration//GEN-END:variables
  private void cargarIdsHabitaciones() {
         ArrayList<String> lista = gestorFactura.obtenerIdHabitaciones();
-      
+
         for (String hab : lista) {
             cbHabitacion.addItem(hab);
         }
@@ -538,46 +549,45 @@ new frmMessagep().setVisible(true);
 
     private void cargarIdsClientes() {
         ArrayList<String> lista = gestorFactura.obtenerIdClientes();
-        
+
         for (String cli : lista) {
             cbCliente.addItem(cli);
         }
 
     }
 
- private String validarEntrada() {
-        
-     
-     if (jcInicial.getDate()==null) {
-           jcInicial.requestFocus();
+    private String validarEntrada() {
+
+        if (jcInicial.getDate() == null) {
+            jcInicial.requestFocus();
             return "Se requiere la fecha de inicial";
-         }
-        
-        if (jcFinal.getDate()==null) {
+        }
+
+        if (jcFinal.getDate() == null) {
             jcFinal.requestFocus();
             return "Se requiere la fecha de final";
         }
-        
-        if(jcInicial.getDate().after(jcFinal.getDate())){
-     
-     return "La fecha inicial debe ser anterior a la fecha final";
-     }
-        
-        if (chxCliente.isSelected()){
-        if (cbCliente.getSelectedIndex()==0) {
-            cbCliente.requestFocus();
-            return "Elija el id del cliente";
+
+        if (jcInicial.getDate().after(jcFinal.getDate())) {
+
+            return "La fecha inicial debe ser anterior a la fecha final";
         }
+
+        if (chxCliente.isSelected()) {
+            if (cbCliente.getSelectedIndex() == 0) {
+                cbCliente.requestFocus();
+                return "Elija el id del cliente";
+            }
         }
-        
-        if (chxHabitacion.isSelected()){
-        if (cbHabitacion.getSelectedIndex()==0) {
-            cbHabitacion.requestFocus();
-            return "Elija el id de la habitacion";
+
+        if (chxHabitacion.isSelected()) {
+            if (cbHabitacion.getSelectedIndex() == 0) {
+                cbHabitacion.requestFocus();
+                return "Elija el id de la habitacion";
+            }
         }
-        }
-        
+
         return "";
-    
-}
+
+    }
 }
