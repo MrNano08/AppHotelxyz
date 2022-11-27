@@ -178,7 +178,7 @@ public class GestorReservaciones implements Global, Serializable {
         return modelo;
     }
 
-    public DefaultTableModel obtenerModeloTablaIngresosC(int id) {
+        public DefaultTableModel obtenerModeloTablaIngresosC(int id) {
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{"Fecha", "Ingresos"}

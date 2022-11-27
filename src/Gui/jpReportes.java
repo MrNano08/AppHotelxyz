@@ -6,12 +6,15 @@ package Gui;
 
 import Logica.GestorHabitaciones;
 import Logica.GestorReservaciones;
+import static Logica.Global.listaReservaciones;
+import Logica.Reservaciones;
 import Logica.imgTabla;
 import java.awt.Color;
 import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -181,8 +184,11 @@ public class jpReportes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JTable tblReporte;
+    protected static javax.swing.JTable tblReporte;
     private javax.swing.JLabel txtbtnImprimir;
     // End of variables declaration//GEN-END:variables
 
+
+    
+    
 }

@@ -4,23 +4,13 @@
  */
 package Gui;
 
-import static Gui.jpAgregarH.cboActivo;
-import static Gui.jpAgregarH.cboOcupado;
-import static Gui.jpAgregarH.lblImageH;
-import static Gui.jpAgregarH.txtDescripcion;
-import static Gui.jpAgregarH.txtIdHabitacion;
-import static Gui.jpAgregarH.txtNumHues;
-import static Gui.jpAgregarH.txtPreAdultos;
-import static Gui.jpAgregarH.txtPreNinnos;
-import static Gui.jpAgregarR.cbHabitacion;
+
 import Logica.GestorHabitaciones;
-import Logica.Global;
-import Logica.Habitaciones;
+
 import Logica.imgTabla;
 import java.awt.Color;
 import java.awt.print.PrinterException;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 
 /**

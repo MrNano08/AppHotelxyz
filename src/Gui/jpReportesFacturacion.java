@@ -6,11 +6,16 @@ package Gui;
 
 import static Gui.Dashboard.contenido;
 import Logica.GestorFactura;
+import Logica.GestorReservaciones;
+import static Logica.Global.listaReservaciones;
+import Logica.Reservaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,14 +25,15 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
 
     GestorFactura gestorFactura;
 
-    /**
-     * Creates new form jpReservaciones
-     */
     public jpReportesFacturacion() {
         initComponents();
+        jpReservaciones reservaciones = new jpReservaciones();
+        jpHabitaciones habitaciones = new jpHabitaciones();
+        jpClientes clientes = new jpClientes();
         gestorFactura = new GestorFactura();
         cargarIdsHabitaciones();
         cargarIdsClientes();
+
     }
 
     /**
@@ -360,7 +366,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -401,12 +407,62 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGenerarReporte1MouseExited
 
     private void btnGenerarReporte1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporte1MousePressed
+        GestorReservaciones gestorReservaciones = new GestorReservaciones();
         String error = validarEntrada();
         if (error.equals("")) {
-            System.out.println("No se encuentran errores");
-            new frmMessagep().setVisible(true);
-            frmMessagep.txtMessage.setText("Opcion disponible en proximas actualizaciones.");
-            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/LoSentimos.gif")));
+            if (!chxCliente.isSelected() && !chxHabitacion.isSelected()) {
+                jpReportes reporte = new jpReportes();
+
+                reporte.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+                reporte.setLocation(0, 0);
+
+                Dashboard.contenido.removeAll();
+                Dashboard.contenido.add(reporte, BorderLayout.CENTER);
+                Dashboard.contenido.revalidate();
+                Dashboard.contenido.repaint();
+
+                reporte.tblReporte.setModel(obtenerModeloTablaTodo());
+            }
+
+            if (chxCliente.isSelected()) {
+                jpReportes reporte = new jpReportes();
+
+                reporte.tblReporte.setModel(obtenerModeloTablaClientes(Integer.parseInt(cbCliente.getSelectedItem().toString())));
+
+                reporte.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+                reporte.setLocation(0, 0);
+
+                Dashboard.contenido.removeAll();
+                Dashboard.contenido.add(reporte, BorderLayout.CENTER);
+                Dashboard.contenido.revalidate();
+                Dashboard.contenido.repaint();
+            }
+
+            if (chxHabitacion.isSelected()) {
+                jpReportes reporte = new jpReportes();
+                reporte.tblReporte.setModel(obtenerModeloTablaHabi(Integer.parseInt(cbHabitacion.getSelectedItem().toString())));
+
+                reporte.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+                reporte.setLocation(0, 0);
+
+                Dashboard.contenido.removeAll();
+                Dashboard.contenido.add(reporte, BorderLayout.CENTER);
+                Dashboard.contenido.revalidate();
+                Dashboard.contenido.repaint();
+            }
+            
+            if (chxCliente.isSelected() && chxHabitacion.isSelected()) {
+                jpReportes reporte = new jpReportes();
+                reporte.tblReporte.setModel(obtenerModeloTablaCH(Integer.parseInt(cbCliente.getSelectedItem().toString()) , Integer.parseInt(cbHabitacion.getSelectedItem().toString())));
+
+                reporte.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
+                reporte.setLocation(0, 0);
+
+                Dashboard.contenido.removeAll();
+                Dashboard.contenido.add(reporte, BorderLayout.CENTER);
+                Dashboard.contenido.revalidate();
+                Dashboard.contenido.repaint();
+            }
 
         } else {
             new frmMessagep().setVisible(true);
@@ -468,7 +524,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnHabitacionesDMouseExited
 
     private void btnHabitacionesDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHabitacionesDMousePressed
-       jpHabitacionesDesocupadas habitacionesDesocupadas = new jpHabitacionesDesocupadas();
+        jpHabitacionesDesocupadas habitacionesDesocupadas = new jpHabitacionesDesocupadas();
 
         habitacionesDesocupadas.setSize(Dashboard.contenido.getWidth(), Dashboard.contenido.getHeight());
         habitacionesDesocupadas.setLocation(0, 0);
@@ -530,13 +586,13 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
     private javax.swing.JPanel btnHabitacionesO;
     private javax.swing.JPanel btnIngresosCliente;
     private javax.swing.JPanel btnIngresosHabitacion;
-    private javax.swing.JComboBox<String> cbCliente;
-    private javax.swing.JComboBox<String> cbHabitacion;
+    protected javax.swing.JComboBox<String> cbCliente;
+    protected javax.swing.JComboBox<String> cbHabitacion;
     private javax.swing.JCheckBox chxCliente;
     private javax.swing.JCheckBox chxHabitacion;
     private javax.swing.JPanel jPanel1;
-    private com.toedter.calendar.JDateChooser jcFinal;
-    private com.toedter.calendar.JDateChooser jcInicial;
+    protected com.toedter.calendar.JDateChooser jcFinal;
+    protected com.toedter.calendar.JDateChooser jcInicial;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtFechaFinal;
     private javax.swing.JLabel txtFechaInicial;
@@ -601,5 +657,137 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
 
         return "";
 
+    }
+
+    public DefaultTableModel obtenerModeloTablaClientes(int id) {
+        jpAgregarR editar = new jpAgregarR();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
+        );
+        String fila[] = new String[6];
+        for (Reservaciones reservaciones : listaReservaciones) {
+
+            if (reservaciones.getIdCliente() == id && jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
+                fila[0] = reservaciones.getIdRentaHabi();
+
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+
+                fila[1] = fecha;
+                fila[2] = "" + reservaciones.getIdHabi();
+                fila[3] = "" + reservaciones.getIdCliente();
+                String fP = "";
+                if (reservaciones.getFormaPago().equals("1")) {
+                    fP = "Tarjeta";
+                }
+                if (reservaciones.getFormaPago().equals("2")) {
+                    fP = "Efectivo";
+                }
+                fila[4] = fP;
+                fila[5] = String.valueOf(reservaciones.getTotal());
+                modelo.addRow(fila);
+
+            }
+        }
+        return modelo;
+    }
+
+    public DefaultTableModel obtenerModeloTablaHabi(int id) {
+        jpAgregarR editar = new jpAgregarR();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
+        );
+        String fila[] = new String[6];
+        for (Reservaciones reservaciones : listaReservaciones) {
+
+            if (reservaciones.getIdHabi() == id && jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
+                fila[0] = reservaciones.getIdRentaHabi();
+
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+
+                fila[1] = fecha;
+                fila[2] = "" + reservaciones.getIdHabi();
+                fila[3] = "" + reservaciones.getIdCliente();
+                String fP = "";
+                if (reservaciones.getFormaPago().equals("1")) {
+                    fP = "Tarjeta";
+                }
+                if (reservaciones.getFormaPago().equals("2")) {
+                    fP = "Efectivo";
+                }
+                fila[4] = fP;
+                fila[5] = String.valueOf(reservaciones.getTotal());
+                modelo.addRow(fila);
+
+            }
+        }
+        return modelo;
+    }
+
+    public DefaultTableModel obtenerModeloTablaTodo() {
+        jpAgregarR editar = new jpAgregarR();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
+        );
+        String fila[] = new String[6];
+        for (Reservaciones reservaciones : listaReservaciones) {
+
+            if (jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
+                fila[0] = reservaciones.getIdRentaHabi();
+
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+
+                fila[1] = fecha;
+                fila[2] = "" + reservaciones.getIdHabi();
+                fila[3] = "" + reservaciones.getIdCliente();
+                String fP = "";
+                if (reservaciones.getFormaPago().equals("1")) {
+                    fP = "Tarjeta";
+                }
+                if (reservaciones.getFormaPago().equals("2")) {
+                    fP = "Efectivo";
+                }
+                fila[4] = fP;
+                fila[5] = String.valueOf(reservaciones.getTotal());
+                modelo.addRow(fila);
+
+            }
+        }
+        return modelo;
+    }
+    
+    public DefaultTableModel obtenerModeloTablaCH(int idC, int idH) {
+        jpAgregarR editar = new jpAgregarR();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
+        );
+        String fila[] = new String[6];
+        for (Reservaciones reservaciones : listaReservaciones) {
+
+            if (reservaciones.getIdCliente() == idC && reservaciones.getIdHabi() == idH && jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
+                fila[0] = reservaciones.getIdRentaHabi();
+
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+
+                fila[1] = fecha;
+                fila[2] = "" + reservaciones.getIdHabi();
+                fila[3] = "" + reservaciones.getIdCliente();
+                String fP = "";
+                if (reservaciones.getFormaPago().equals("1")) {
+                    fP = "Tarjeta";
+                }
+                if (reservaciones.getFormaPago().equals("2")) {
+                    fP = "Efectivo";
+                }
+                fila[4] = fP;
+                fila[5] = String.valueOf(reservaciones.getTotal());
+                modelo.addRow(fila);
+
+            }
+        }
+        return modelo;
     }
 }
