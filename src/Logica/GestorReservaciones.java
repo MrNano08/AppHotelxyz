@@ -117,6 +117,66 @@ public class GestorReservaciones implements Global, Serializable {
         }
         return modelo;
     }
+    
+     public DefaultTableModel obtenerModeloTablaReporteC(int idC) {
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
+        );
+        String fila[] = new String[6];
+        for (Reservaciones reservaciones : listaReservaciones) {
+            if (reservaciones.getIdCliente() == idC) {
+            fila[0] = reservaciones.getIdRentaHabi();
+            
+            String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+            
+            fila[1] = fecha;
+            fila[2] = "" + reservaciones.getIdHabi();
+            fila[3] = "" + reservaciones.getIdCliente();
+            String fP="";
+            if (reservaciones.getFormaPago().equals("1")) {
+                fP = "Tarjeta";
+            }
+            if (reservaciones.getFormaPago().equals("2")) {
+                fP = "Efectivo";
+            }
+            fila[4] = fP;
+            fila[5] = String.valueOf(reservaciones.getTotal());
+            modelo.addRow(fila);
+        }
+        }
+        return modelo;
+    }
+     
+      public DefaultTableModel obtenerModeloTablaReporteH(int idH) {
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ID RENTA", "FECHA", "ID HABITACION", "ID CLIENTE", "FORMA DE PAGO", "TOTAL"}
+        );
+        String fila[] = new String[6];
+        for (Reservaciones reservaciones : listaReservaciones) {
+            if (reservaciones.getIdCliente() == idH) {
+            fila[0] = reservaciones.getIdRentaHabi();
+            
+            String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+            
+            fila[1] = fecha;
+            fila[2] = "" + reservaciones.getIdHabi();
+            fila[3] = "" + reservaciones.getIdCliente();
+            String fP="";
+            if (reservaciones.getFormaPago().equals("1")) {
+                fP = "Tarjeta";
+            }
+            if (reservaciones.getFormaPago().equals("2")) {
+                fP = "Efectivo";
+            }
+            fila[4] = fP;
+            fila[5] = String.valueOf(reservaciones.getTotal());
+            modelo.addRow(fila);
+        }
+        }
+        return modelo;
+    }
 
     public DefaultTableModel obtenerModeloTablaIngresosC(int id) {
         DefaultTableModel modelo = new DefaultTableModel(
