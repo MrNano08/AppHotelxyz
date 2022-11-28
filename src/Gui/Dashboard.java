@@ -76,7 +76,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnReportesFacturacion = new javax.swing.JPanel();
         txtReportesFacturacion = new javax.swing.JLabel();
         btnConfiguracion = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        textConfi = new javax.swing.JLabel();
         infoBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JLabel();
@@ -298,10 +298,18 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Roboto Light", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 236, 239));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/engranaje.png"))); // NOI18N
-        jLabel2.setText("Configuracion");
+        textConfi.setFont(new java.awt.Font("Roboto Light", 3, 14)); // NOI18N
+        textConfi.setForeground(new java.awt.Color(255, 236, 239));
+        textConfi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/engranaje.png"))); // NOI18N
+        textConfi.setText("Configuracion");
+        textConfi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textConfiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textConfiMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnConfiguracionLayout = new javax.swing.GroupLayout(btnConfiguracion);
         btnConfiguracion.setLayout(btnConfiguracionLayout);
@@ -309,12 +317,12 @@ public class Dashboard extends javax.swing.JFrame {
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnConfiguracionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textConfi, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnConfiguracionLayout.setVerticalGroup(
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+            .addComponent(textConfi, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout MenuBarLayout = new javax.swing.GroupLayout(MenuBar);
@@ -712,6 +720,14 @@ public class Dashboard extends javax.swing.JFrame {
         btnMinimizar.setForeground(new Color(247,236,222));
     }//GEN-LAST:event_btnMinimizarMouseExited
 
+    private void textConfiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textConfiMouseEntered
+    textsetColor(textConfi);
+    }//GEN-LAST:event_textConfiMouseEntered
+
+    private void textConfiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textConfiMouseExited
+     textresetColor(textConfi);
+    }//GEN-LAST:event_textConfiMouseExited
+
     void setColor(JPanel panel) { //Cambiar color de los paneles(botones)
         panel.setBackground(new Color(37, 27, 55));
 
@@ -784,8 +800,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel infoBar;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel textConfi;
     private javax.swing.JLabel txtAyuda;
     private javax.swing.JLabel txtClientes;
     private javax.swing.JLabel txtHabitaciones;
