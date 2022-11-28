@@ -30,6 +30,7 @@ public class jpReportes extends javax.swing.JPanel {
         tblReporte.setDefaultRenderer(Object.class, new imgTabla());
         gestorReservaciones = new GestorReservaciones();
         gestorReservaciones.recuperarDeArchivo();
+        
      
    
     }
@@ -47,7 +48,6 @@ public class jpReportes extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JPanel();
         txtbtnImprimir = new javax.swing.JLabel();
-        lblTotal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReporte = new javax.swing.JTable();
 
@@ -88,9 +88,6 @@ public class jpReportes extends javax.swing.JPanel {
             .addComponent(txtbtnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        lblTotal.setFont(new java.awt.Font("Roboto", 3, 16)); // NOI18N
-        lblTotal.setText("Total: 0");
-
         tblReporte.setBackground(new java.awt.Color(255, 236, 239));
         tblReporte.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         tblReporte.setModel(new javax.swing.table.DefaultTableModel(
@@ -110,31 +107,27 @@ public class jpReportes extends javax.swing.JPanel {
         bgHabitaciones.setLayout(bgHabitacionesLayout);
         bgHabitacionesLayout.setHorizontalGroup(
             bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
             .addGroup(bgHabitacionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgHabitacionesLayout.createSequentialGroup()
-                        .addComponent(lblTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 723, Short.MAX_VALUE)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bgHabitacionesLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(bgHabitacionesLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addComponent(jScrollPane1)
         );
         bgHabitacionesLayout.setVerticalGroup(
             bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgHabitacionesLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(47, 47, 47))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -183,7 +176,6 @@ public class jpReportes extends javax.swing.JPanel {
     private javax.swing.JPanel btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTotal;
     protected static javax.swing.JTable tblReporte;
     private javax.swing.JLabel txtbtnImprimir;
     // End of variables declaration//GEN-END:variables
