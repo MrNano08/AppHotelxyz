@@ -671,7 +671,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
             if (reservaciones.getIdCliente() == id && jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
                 fila[0] = reservaciones.getIdRentaHabi();
 
-                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()+1) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
 
                 fila[1] = fecha;
                 fila[2] = "" + reservaciones.getIdHabi();
@@ -704,7 +704,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
             if (reservaciones.getIdHabi() == id && jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
                 fila[0] = reservaciones.getIdRentaHabi();
 
-                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()+1) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
 
                 fila[1] = fecha;
                 fila[2] = "" + reservaciones.getIdHabi();
@@ -737,7 +737,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
             if (jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
                 fila[0] = reservaciones.getIdRentaHabi();
 
-                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()+1) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
 
                 fila[1] = fecha;
                 fila[2] = "" + reservaciones.getIdHabi();
@@ -770,7 +770,7 @@ public class jpReportesFacturacion extends javax.swing.JPanel {
             if (reservaciones.getIdCliente() == idC && reservaciones.getIdHabi() == idH && jcInicial.getDate().before(reservaciones.getFechaIni()) && jcFinal.getDate().after(reservaciones.getFechaIni())) {
                 fila[0] = reservaciones.getIdRentaHabi();
 
-                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+                String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()+1) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
 
                 fila[1] = fecha;
                 fila[2] = "" + reservaciones.getIdHabi();

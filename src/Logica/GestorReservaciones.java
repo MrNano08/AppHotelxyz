@@ -99,7 +99,7 @@ public class GestorReservaciones implements Global, Serializable {
         for (Reservaciones reservaciones : listaReservaciones) {
             fila[0] = reservaciones.getIdRentaHabi();
             
-            String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
+            String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()+1) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
             
             fila[1] = fecha;
             fila[2] = "" + reservaciones.getIdHabi();
