@@ -111,7 +111,7 @@ public class jpIngresosHabitaciones extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabel2.setText("Ingresos de habitaciones");
 
-        cboHabitaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar habitaciones" }));
+        cboHabitaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar habitación" }));
         cboHabitaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboHabitacionesActionPerformed(evt);
@@ -241,7 +241,10 @@ public class jpIngresosHabitaciones extends javax.swing.JPanel {
 
     private void btnBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMousePressed
         if (cboHabitaciones.getSelectedIndex() == 0) {
-            
+            new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText("Seleccione la habitación que desea buscar.");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif"))); 
         } else {
             tblIngresosH.setModel(gestorReservaciones.obtenerModeloTablaIngresosH(Integer.parseInt(cboHabitaciones.getSelectedItem().toString())));
         }
