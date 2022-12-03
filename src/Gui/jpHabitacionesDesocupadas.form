@@ -77,7 +77,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto Black" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Habitaciones ocupadas:"/>
+            <Property name="text" type="java.lang.String" value="Habitaciones desocupadas:"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

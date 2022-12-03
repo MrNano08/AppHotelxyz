@@ -23,8 +23,8 @@ public class jpIngresosCliente extends javax.swing.JPanel {
 
     public jpIngresosCliente() {
         initComponents();
+        jpClientes clientes = new jpClientes();
         tblIngresosC.setDefaultRenderer(Object.class, new imgTabla());
-        tblIngresosC.setRowHeight(65);
         gestorReservaciones = new GestorReservaciones();
         gestorReservaciones.recuperarDeArchivo();
         cargarIdsClientes();
@@ -49,7 +49,7 @@ public class jpIngresosCliente extends javax.swing.JPanel {
         txtbtnImprimir = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cboClientes = new javax.swing.JComboBox<>();
+        cbClientes1 = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JLabel();
 
@@ -65,7 +65,7 @@ public class jpIngresosCliente extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Fecha", "Pago"
+                "Fecha", "Ingresos"
             }
         ));
         tblIngresosC.setOpaque(false);
@@ -111,7 +111,7 @@ public class jpIngresosCliente extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabel2.setText("Ingresos de clientes");
 
-        cboClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoger cliente" }));
+        cbClientes1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar cliente" }));
 
         btnBuscar.setBackground(new java.awt.Color(55, 41, 72));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,7 +163,7 @@ public class jpIngresosCliente extends javax.swing.JPanel {
                             .addGroup(bgHabitacionesLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(cboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -179,7 +179,7 @@ public class jpIngresosCliente extends javax.swing.JPanel {
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(bgHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(cboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -235,7 +235,15 @@ public class jpIngresosCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMousePressed
-      tblIngresosC.setModel(gestorReservaciones.obtenerModeloTablaIngresosC(cboClientes.getSelectedIndex()));
+        if (cbClientes1.getSelectedIndex() == 0) {
+           new frmMessagep().setVisible(true);
+
+            frmMessagep.txtMessage.setText("Seleccione el cliente que desea buscar.");
+            frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif"))); 
+            
+        }else{
+        tblIngresosC.setModel(gestorReservaciones.obtenerModeloTablaIngresosC(Integer.parseInt(cbClientes1.getSelectedItem().toString())));
+        }
     }//GEN-LAST:event_btnBuscarMousePressed
 
     public JTable getTblHabitaciones() {
@@ -251,7 +259,7 @@ public class jpIngresosCliente extends javax.swing.JPanel {
     private javax.swing.JPanel bgHabitaciones;
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnImprimir;
-    private javax.swing.JComboBox<String> cboClientes;
+    private javax.swing.JComboBox<String> cbClientes1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -260,11 +268,12 @@ public class jpIngresosCliente extends javax.swing.JPanel {
     private javax.swing.JLabel txtBuscar;
     private javax.swing.JLabel txtbtnImprimir;
     // End of variables declaration//GEN-END:variables
-private void cargarIdsClientes() {
+
+    private void cargarIdsClientes() {
         ArrayList<String> lista = gestorReservaciones.obtenerIdClientes();
 
         for (String cli : lista) {
-            cboClientes.addItem(cli);
+            cbClientes1.addItem(cli);
         }
 
     }

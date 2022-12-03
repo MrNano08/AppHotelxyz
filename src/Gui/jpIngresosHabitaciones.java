@@ -23,8 +23,8 @@ public class jpIngresosHabitaciones extends javax.swing.JPanel {
 
     public jpIngresosHabitaciones() {
         initComponents();
+        jpHabitaciones habitaciones = new jpHabitaciones();
         tblIngresosH.setDefaultRenderer(Object.class, new imgTabla());
-        tblIngresosH.setRowHeight(65);
         gestorReservaciones = new GestorReservaciones();
         gestorReservaciones.recuperarDeArchivo();
         cargarIdsClientes();
@@ -65,7 +65,7 @@ public class jpIngresosHabitaciones extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Fecha", "Pago"
+                "Fecha", "Ingresos"
             }
         ));
         tblIngresosH.setOpaque(false);
@@ -111,7 +111,12 @@ public class jpIngresosHabitaciones extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabel2.setText("Ingresos de habitaciones");
 
-        cboHabitaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoger habitaciones" }));
+        cboHabitaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar habitaciones" }));
+        cboHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHabitacionesActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setBackground(new java.awt.Color(55, 41, 72));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,8 +240,17 @@ public class jpIngresosHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMousePressed
-      tblIngresosH.setModel(gestorReservaciones.obtenerModeloTablaIngresosC(cboHabitaciones.getSelectedIndex()));
+        if (cboHabitaciones.getSelectedIndex() == 0) {
+            
+        } else {
+            tblIngresosH.setModel(gestorReservaciones.obtenerModeloTablaIngresosH(Integer.parseInt(cboHabitaciones.getSelectedItem().toString())));
+        }
+        
     }//GEN-LAST:event_btnBuscarMousePressed
+
+    private void cboHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHabitacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboHabitacionesActionPerformed
 
     public JTable getTblHabitaciones() {
         return tblIngresosH;

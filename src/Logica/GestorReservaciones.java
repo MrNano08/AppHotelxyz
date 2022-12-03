@@ -118,14 +118,14 @@ public class GestorReservaciones implements Global, Serializable {
         return modelo;
     }
 
-    public DefaultTableModel obtenerModeloTablaIngresosC(int Id) {
+    public DefaultTableModel obtenerModeloTablaIngresosC(int id) {
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"Fecha", "Pago"}
+                new String[]{"Fecha", "Ingresos"}
         );
         String fila[] = new String[2];
         for (Reservaciones reservaciones : listaReservaciones) {
-            if (reservaciones.getIdCliente() == Id) {
+            if (reservaciones.getIdCliente() == id) {
             String fecha = String.valueOf(reservaciones.getFecha().getDate()) + "/" + String.valueOf(reservaciones.getFecha().getMonth()) + "/" + String.valueOf(reservaciones.getFecha().getYear() + 1900);
             fila[0] = fecha;
             fila[1] = String.valueOf(reservaciones.getTotal());
@@ -136,10 +136,10 @@ public class GestorReservaciones implements Global, Serializable {
         return modelo;
     }
     
-    public DefaultTableModel obtenerModeloTablaIngresosh(int Id) {
+    public DefaultTableModel obtenerModeloTablaIngresosH(int Id) {
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"Fecha", "Pago"}
+                new String[]{"Fecha", "Ingresos"}
         );
         String fila[] = new String[2];
         for (Reservaciones reservaciones : listaReservaciones) {

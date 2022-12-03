@@ -431,6 +431,14 @@ public class jpAgregarH extends jpHabitaciones {
                     frmMessagep.txtMessage.setText("Datos guardados correctamente.");
                     frmMessagep.txtMessageImage.setIcon(new ImageIcon(getClass().getResource("/resources/Icons/info_iconx64.gif")));
                     gestorHabitaciones.guardarEnArchivo();
+                    jpHabitaciones habitacionesP = new jpHabitaciones();
+        habitacionesP.setSize(contenido.getWidth(), contenido.getHeight());
+        habitacionesP.setLocation(0, 0);
+
+        contenido.removeAll();
+        contenido.add(habitacionesP, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
 
                 }
             } else {

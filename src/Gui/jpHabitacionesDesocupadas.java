@@ -62,7 +62,7 @@ public class jpHabitacionesDesocupadas extends javax.swing.JPanel {
         bgHabitaciones.setBackground(new java.awt.Color(255, 236, 239));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel1.setText("Habitaciones ocupadas:");
+        jLabel1.setText("Habitaciones desocupadas:");
 
         tblHabitacionesDesocupadas.setBackground(new java.awt.Color(255, 236, 239));
         tblHabitacionesDesocupadas.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
