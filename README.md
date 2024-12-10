@@ -20,7 +20,7 @@ Jcalendar: http://www.java2s.com/Code/Jar/j/Downloadjcalendar14jar.htm
 
 Erick Mora Mora: https://github.com/otomora
 
-Iván Agüero Acosta: https://github.com/otomora
+Iván Agüero Acosta:
 
 Oscar Aiza Zuñiga: https://github.com/OAiza
 
